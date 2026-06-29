@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>수학 질문도움터</title>
+  <title>깊이있는 이음, CORE 프로그램</title>
   <style>
     :root {
       --bg: #f8f4f0;
@@ -14,7 +14,7 @@
       --pink: #f03e92;
       --pink-light: #fff0f7;
       --purple: #6f62d7;
-      --purple-light: #f0edff;
+      --purple-light: #f6f3ff;
       --green: #2f8f6b;
       --green-light: #ecfbf5;
       --shadow: 0 14px 34px rgba(37, 48, 69, 0.11);
@@ -103,38 +103,63 @@
     }
 
     header {
-      background: linear-gradient(135deg, #fff 0%, #fff8fc 52%, #f4f8ff 100%);
+      position: relative;
+      text-align: center;
+      background: linear-gradient(135deg, #fff 0%, var(--pink-light) 52%, #f4f8ff 100%);
       border: 1px solid var(--line);
       border-radius: 30px;
-      padding: 26px;
+      padding: 22px 28px 22px;
       box-shadow: var(--shadow);
+    }
+
+    .title-row {
+      display: grid;
+      grid-template-columns: 172px 1fr 172px;
+      align-items: center;
+      gap: 12px;
+      min-height: 58px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 7px;
       background: var(--pink-light);
       color: var(--pink);
       border: 1px solid rgba(240, 62, 146, .18);
-      padding: 7px 12px;
+      padding: 7px 14px;
       border-radius: 999px;
       font-weight: 950;
       font-size: 14px;
+      margin: 0;
+      justify-self: start;
+      white-space: nowrap;
+    }
+
+    .title-spacer {
+      width: 172px;
+      height: 1px;
+      pointer-events: none;
     }
 
     h1 {
-      margin: 13px 0 7px;
-      font-size: clamp(30px, 5vw, 50px);
+      margin: 0;
+      text-align: center;
+      font-size: clamp(30px, 5vw, 52px);
       letter-spacing: -2px;
       line-height: 1.08;
+      justify-self: center;
+      width: fit-content;
     }
 
     .subtitle {
       color: var(--muted);
       font-size: 17px;
-      margin: 0;
+      margin: 4px auto 0;
       max-width: 880px;
+      line-height: 1.45;
+      text-align: center;
     }
 
     .panel {
@@ -162,9 +187,7 @@
     }
 
     .question-seed-header {
-      justify-content: center;
-      min-height: 48px;
-      margin-bottom: 0;
+      display: none;
     }
 
     .question-seed-header h2 {
@@ -180,7 +203,7 @@
     }
 
     .seed-button-row-bottom {
-      margin: 12px 0 0;
+      margin: 14px 0 0;
     }
 
     label {
@@ -331,6 +354,88 @@
       display: none;
     }
 
+
+    .type-intro.type-core strong {
+      color: var(--pink);
+    }
+
+    .type-intro.type-thinking strong {
+      color: var(--purple);
+    }
+
+    .type-intro.type-reflect strong {
+      color: var(--green);
+    }
+
+
+    .type-intro.type-core {
+      background: var(--pink-light);
+      border-color: rgba(240, 62, 146, .22);
+    }
+
+    .type-intro.type-thinking {
+      background: var(--purple-light);
+      border-color: rgba(111, 98, 215, .20);
+    }
+
+    .type-intro.type-reflect {
+      background: var(--green-light);
+      border-color: rgba(47, 143, 107, .22);
+    }
+
+    .q-card.type-core,
+    .work-panel.type-core {
+      background: var(--pink-light);
+      border-color: rgba(240, 62, 146, .22);
+    }
+
+    .q-card.type-thinking,
+    .work-panel.type-thinking {
+      background: var(--purple-light);
+      border-color: rgba(111, 98, 215, .20);
+    }
+
+    .q-card.type-reflect,
+    .work-panel.type-reflect {
+      background: var(--green-light);
+      border-color: rgba(47, 143, 107, .22);
+    }
+
+    .q-card.hidden-seed.type-core {
+      background: var(--pink-light);
+      border-color: rgba(240, 62, 146, .28);
+    }
+
+    .q-card.hidden-seed.type-thinking {
+      background: var(--purple-light);
+      border-color: rgba(111, 98, 215, .23);
+    }
+
+    .q-card.hidden-seed.type-reflect {
+      background: var(--green-light);
+      border-color: rgba(47, 143, 107, .28);
+    }
+
+
+    .q-card.type-core .seed-inner-title {
+      color: var(--pink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .q-card.type-thinking .seed-inner-title {
+      color: var(--purple);
+    }
+
+    .q-card.type-reflect .seed-inner-title {
+      color: var(--green);
+    }
+
     .question-area {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -341,8 +446,9 @@
     }
 
     .question-cards {
-      display: grid;
-      gap: 12px;
+      display: flex;
+      flex: 1;
+      min-height: 0;
     }
 
     .q-card {
@@ -358,8 +464,23 @@
       justify-content: center;
     }
 
+    .q-card {
+      width: 100%;
+      height: 100%;
+    }
+
+    .seed-inner-title {
+      font-size: 31px;
+      font-weight: 950;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      text-align: center;
+      margin-bottom: 38px;
+      line-height: 1.35;
+    }
+
     .q-card strong {
-      font-size: 34px;
+      font-size: 30px;
       line-height: 1.42;
       letter-spacing: -0.7px;
       margin-top: 0;
@@ -383,20 +504,23 @@
     }
 
     .q-card.hidden-seed {
-      min-height: 255px;
+      min-height: 0;
       display: grid;
       place-items: center;
       text-align: center;
       background: #fbfaf7;
       border: 1px dashed var(--line);
+      padding-top: 28px;
+      padding-bottom: 28px;
     }
 
     .q-card.hidden-seed strong {
       color: var(--muted);
-      font-size: 31px;
-      line-height: 1.38;
-      white-space: nowrap;
-      letter-spacing: -0.7px;
+      font-size: 17px;
+      line-height: 1.42;
+      white-space: normal;
+      letter-spacing: -0.6px;
+      display: inline-block;
     }
 
     .q-card.hidden-seed .open-label {
@@ -412,11 +536,47 @@
       font-size: 15px;
     }
 
+    .seed-card-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .seed-card-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 950;
+      font-family: inherit;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .seed-card-btn.primary {
+      background: #fff4c2;
+      color: #7a4b00;
+      border: 1px solid #f4d35e;
+      box-shadow: 0 6px 14px rgba(122, 75, 0, .10);
+    }
+
+    .seed-card-btn.primary:hover {
+      background: #ffeaa0;
+      border-color: #e9bd28;
+    }
+
+    .seed-card-btn.secondary {
+      background: #eef0f4;
+      color: var(--ink);
+    }
+
     .q-card small {
       display: block;
       color: var(--muted);
-      margin-top: 5px;
-      font-size: 12px;
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     .work-panel {
@@ -425,7 +585,7 @@
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 24px;
-      min-height: 360px;
+      min-height: 430px;
       display: flex;
       flex-direction: column;
     }
@@ -433,8 +593,8 @@
     textarea {
       min-height: 150px;
       resize: vertical;
-      font-size: 24px;
-      line-height: 1.7;
+      font-size: 20px;
+      line-height: 1.6;
     }
 
     .hint {
@@ -457,8 +617,58 @@
 
     .action-row-center .action {
       min-width: 220px;
-      font-size: 20px;
+      font-size: 19px;
       padding: 14px 20px;
+    }
+
+    .work-panel > label {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .work-panel .hint {
+      text-align: center;
+      margin: 0 auto 14px;
+      max-width: 90%;
+    }
+
+    .work-action-row {
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .work-action-row .action {
+      flex: 1 1 0;
+      min-width: 0;
+      width: calc(50% - 6px);
+      font-size: 17px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .action.copy {
+      background: var(--purple-light);
+      color: var(--purple);
+      border: 1px solid rgba(111, 98, 215, .25);
+    }
+
+    .seed-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .seed-card-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 18px;
     }
 
     .action {
@@ -505,16 +715,16 @@
     }
 
     .work-panel label {
-      font-size: 30px;
+      font-size: 29px;
       line-height: 1.35;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       letter-spacing: -0.5px;
     }
 
     .work-panel .hint {
-      font-size: 18px;
-      line-height: 1.7;
-      margin: 0 0 16px;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 14px;
       color: var(--muted);
     }
 
@@ -700,6 +910,23 @@
     .hidden { display: none !important; }
 
 
+
+    @media (max-width: 760px) {
+      .title-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        min-height: auto;
+      }
+
+      .eyebrow {
+        justify-self: center;
+      }
+
+      .title-spacer {
+        display: none;
+      }
+    }
+
     @media (min-width: 1100px) {
       h1 {
         font-size: 52px;
@@ -742,11 +969,1958 @@
       body { background: #fff; }
       header, .panel, .unit-card { box-shadow: none; }
     }
-  </style>
+
+
+    /* PC·태블릿 가로 화면 1페이지 맞춤형 압축 레이아웃 */
+    @media (orientation: landscape) and (min-width: 900px) {
+      :root {
+        --shadow: 0 8px 22px rgba(37, 48, 69, 0.09);
+        --radius: 20px;
+      }
+
+      body {
+        min-width: 1024px;
+        line-height: 1.38;
+      }
+
+      .topbar {
+        padding: 6px 16px;
+        min-height: 44px;
+      }
+
+      .brand {
+        gap: 8px;
+        font-size: 15px;
+      }
+
+      .brand-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+      }
+
+      .mode-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100vw - 48px));
+        max-width: 1180px;
+        padding: 10px 16px 14px;
+      }
+
+      header {
+        border-radius: 24px;
+        padding: 11px 22px 12px;
+      }
+
+      .title-row {
+        grid-template-columns: 150px 1fr 150px;
+        min-height: 38px;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        padding: 5px 12px;
+      }
+
+      .title-spacer {
+        width: 150px;
+      }
+
+      h1 {
+        font-size: clamp(30px, 4vw, 42px);
+        line-height: 1;
+        letter-spacing: -1.5px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+        line-height: 1.25;
+        margin-top: 1px;
+      }
+
+      .panel {
+        margin-top: 10px;
+        padding: 13px 16px;
+        border-radius: 22px;
+      }
+
+      .panel-title {
+        margin-bottom: 7px;
+      }
+
+      .panel-title h2 {
+        font-size: 22px;
+        line-height: 1.15;
+      }
+
+      .lesson-message {
+        margin-top: 7px;
+        padding: 10px 15px;
+        border-radius: 17px;
+        font-size: 15px;
+        line-height: 1.32;
+      }
+
+      .lesson-message strong {
+        font-size: 21px;
+        line-height: 1.18;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .type-grid {
+        gap: 9px;
+        margin-top: 9px;
+      }
+
+      .type-btn {
+        min-height: 58px;
+        border-radius: 16px;
+        padding: 8px 8px;
+        font-size: 20px;
+      }
+
+      .type-intro {
+        margin-top: 9px;
+        padding: 12px 18px;
+        min-height: 70px;
+        border-radius: 18px;
+      }
+
+      .type-intro strong {
+        font-size: 26px;
+        margin-bottom: 4px;
+        line-height: 1.08;
+      }
+
+      .type-intro p {
+        font-size: 17px;
+        line-height: 1.25;
+        margin: 4px 0 0;
+      }
+
+      .question-area {
+        gap: 18px;
+        margin-top: 9px;
+        align-items: stretch;
+      }
+
+      .q-card {
+        min-height: 0;
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .q-card.hidden-seed {
+        padding: 16px 18px;
+      }
+
+      .seed-inner-title {
+        font-size: 25px;
+        margin-bottom: 14px;
+        line-height: 1.2;
+      }
+
+      .q-card strong {
+        font-size: 23px;
+        line-height: 1.28;
+      }
+
+      .q-card.hidden-seed strong {
+        font-size: 15px;
+        line-height: 1.32;
+      }
+
+      .q-card.hidden-seed .open-label {
+        margin-top: 8px;
+        padding: 7px 13px;
+        font-size: 14px;
+      }
+
+      .seed-card-buttons {
+        margin-top: 8px;
+        padding-top: 8px;
+        gap: 8px;
+      }
+
+      .seed-card-btn {
+        padding: 7px 13px;
+        font-size: 14px;
+      }
+
+      #randomBtn {
+        padding: 7px 13px;
+        font-size: 14px;
+      }
+
+      .work-panel {
+        min-height: 0;
+        padding: 15px;
+        border-radius: 19px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 24px;
+        margin-bottom: 5px;
+        line-height: 1.22;
+      }
+
+      .work-panel .hint {
+        font-size: 14px;
+        line-height: 1.3;
+        margin: 0 auto 8px;
+        max-width: 96%;
+      }
+
+      textarea {
+        min-height: 78px;
+        font-size: 17px;
+        line-height: 1.42;
+        padding: 9px 11px;
+        border-radius: 14px;
+      }
+
+      .work-action-row {
+        margin-top: 8px;
+        gap: 8px;
+      }
+
+      .work-action-row .action {
+        font-size: 15px;
+        padding: 8px 10px;
+        border-radius: 13px;
+      }
+
+      .finish-guide {
+        margin-top: 8px;
+        padding: 8px 10px;
+        font-size: 13px;
+        line-height: 1.25;
+        border-radius: 14px;
+      }
+
+      .finish-guide strong {
+        font-size: 14px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .topbar {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        min-height: 40px;
+      }
+
+      .wrap {
+        padding-top: 7px;
+        padding-bottom: 10px;
+      }
+
+      header {
+        padding-top: 9px;
+        padding-bottom: 9px;
+      }
+
+      .title-row {
+        min-height: 34px;
+      }
+
+      h1 {
+        font-size: clamp(28px, 3.4vw, 38px);
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+
+      .panel {
+        margin-top: 8px;
+        padding-top: 11px;
+        padding-bottom: 11px;
+      }
+
+      .panel-title h2 {
+        font-size: 21px;
+      }
+
+      .lesson-message {
+        padding-top: 9px;
+        padding-bottom: 9px;
+      }
+
+      .lesson-message strong {
+        font-size: 20px;
+      }
+
+      .type-btn {
+        min-height: 54px;
+        font-size: 19px;
+      }
+
+      .type-intro {
+        min-height: 64px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .type-intro strong {
+        font-size: 24px;
+      }
+
+      .type-intro p {
+        font-size: 16px;
+      }
+
+      .work-panel {
+        padding: 13px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 23px;
+      }
+
+      textarea {
+        min-height: 70px;
+      }
+    }
+
+
+    /* 요청 반영: 단원 질문터 제목 제거 + 너무 압축된 현재판보다 약간 여유 있게 조정 */
+    .student-card > .panel-title {
+      display: none;
+    }
+
+    .student-card > .lesson-message {
+      margin-top: 0;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .wrap {
+        padding-bottom: 12px;
+      }
+
+      .lesson-message {
+        padding: 12px 16px;
+        font-size: 16px;
+        line-height: 1.38;
+      }
+
+      .lesson-message strong {
+        font-size: 22px;
+        line-height: 1.2;
+        margin-bottom: 5px;
+      }
+
+      .type-grid {
+        margin-top: 10px;
+      }
+
+      .type-btn {
+        min-height: 62px;
+        padding: 9px 8px;
+        font-size: 21px;
+      }
+
+      .type-intro {
+        margin-top: 10px;
+        min-height: 76px;
+        padding: 14px 18px;
+      }
+
+      .type-intro strong {
+        font-size: 27px;
+        margin-bottom: 5px;
+        line-height: 1.1;
+      }
+
+      .type-intro p {
+        font-size: 17px;
+        line-height: 1.32;
+      }
+
+      .question-area {
+        margin-top: 10px;
+        gap: 18px;
+      }
+
+      .q-card {
+        padding: 22px;
+      }
+
+      .q-card.hidden-seed {
+        padding: 20px 18px;
+      }
+
+      .seed-inner-title {
+        font-size: 26px;
+        margin-bottom: 16px;
+        line-height: 1.23;
+      }
+
+      .q-card strong {
+        font-size: 24px;
+        line-height: 1.32;
+      }
+
+      .q-card.hidden-seed strong {
+        font-size: 16px;
+        line-height: 1.38;
+      }
+
+      .q-card.hidden-seed .open-label {
+        margin-top: 9px;
+        padding: 8px 14px;
+      }
+
+      .seed-card-buttons {
+        margin-top: 9px;
+        padding-top: 9px;
+      }
+
+      .work-panel {
+        padding: 17px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 25px;
+        margin-bottom: 6px;
+      }
+
+      .work-panel .hint {
+        font-size: 15px;
+        line-height: 1.34;
+        margin: 0 auto 9px;
+      }
+
+      textarea {
+        min-height: 88px;
+        font-size: 18px;
+        line-height: 1.45;
+        padding: 10px 12px;
+      }
+
+      .work-action-row {
+        margin-top: 9px;
+        gap: 9px;
+      }
+
+      .work-action-row .action {
+        font-size: 16px;
+        padding: 9px 11px;
+      }
+
+      .finish-guide {
+        margin-top: 9px;
+        padding: 9px 11px;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .finish-guide strong {
+        font-size: 15px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .wrap {
+        padding-bottom: 6px;
+      }
+
+      .lesson-message {
+        padding-top: 11px;
+        padding-bottom: 11px;
+      }
+
+      .type-btn {
+        min-height: 60px;
+        font-size: 20px;
+      }
+
+      .type-intro {
+        min-height: 70px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .type-intro strong {
+        font-size: 26px;
+      }
+
+      .type-intro p {
+        font-size: 17px;
+      }
+
+      .q-card {
+        padding: 18px;
+      }
+
+      .q-card.hidden-seed {
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .work-panel {
+        padding: 15px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 24px;
+      }
+
+      textarea {
+        min-height: 80px;
+      }
+    }
+
+  
+
+    /* 2026-06-29 재조정: 화면 여백을 활용해 이전판과 현재판의 중간보다 약간 넉넉하게 확대 */
+    @media (orientation: landscape) and (min-width: 900px) {
+      .topbar {
+        min-height: 48px;
+        padding: 7px 18px;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100vw - 48px));
+        padding: 14px 16px 22px;
+      }
+
+      header {
+        border-radius: 28px;
+        padding: 18px 28px 17px;
+      }
+
+      .title-row {
+        grid-template-columns: 160px 1fr 160px;
+        min-height: 62px;
+      }
+
+      .title-spacer { width: 160px; }
+
+      .eyebrow {
+        font-size: 14px;
+        padding: 7px 14px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 4.3vw, 52px);
+        line-height: 1.04;
+        letter-spacing: -1.8px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        line-height: 1.35;
+        margin-top: 4px;
+      }
+
+      .panel {
+        margin-top: 12px;
+        padding: 18px 16px 20px;
+        border-radius: 24px;
+      }
+
+      .lesson-message {
+        padding: 16px 18px;
+        border-radius: 20px;
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .lesson-message strong {
+        font-size: 24px;
+        line-height: 1.22;
+        margin-bottom: 8px;
+      }
+
+      .type-grid {
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .type-btn {
+        min-height: 76px;
+        padding: 12px 10px;
+        border-radius: 18px;
+        font-size: 22px;
+      }
+
+      .type-intro {
+        margin-top: 12px;
+        min-height: 96px;
+        padding: 18px 20px;
+        border-radius: 20px;
+      }
+
+      .type-intro strong {
+        font-size: 30px;
+        margin-bottom: 8px;
+        line-height: 1.15;
+      }
+
+      .type-intro p {
+        font-size: 18px;
+        line-height: 1.42;
+      }
+
+      .question-area {
+        margin-top: 12px;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .question-seed-panel,
+      .question-cards {
+        min-height: 0;
+      }
+
+      .q-card {
+        min-height: 248px;
+        padding: 28px;
+        border-radius: 20px;
+      }
+
+      .q-card.hidden-seed {
+        min-height: 248px;
+        padding: 24px 22px;
+      }
+
+      .seed-inner-title {
+        font-size: 29px;
+        margin-bottom: 26px;
+        line-height: 1.28;
+      }
+
+      .q-card strong {
+        font-size: 27px;
+        line-height: 1.38;
+      }
+
+      .q-card.hidden-seed strong {
+        font-size: 17px;
+        line-height: 1.48;
+      }
+
+      .q-card.hidden-seed .open-label {
+        margin-top: 13px;
+        padding: 9px 16px;
+        font-size: 15px;
+      }
+
+      .seed-card-buttons {
+        margin-top: 14px;
+        padding-top: 14px;
+      }
+
+      .seed-card-btn,
+      #randomBtn {
+        padding: 9px 15px;
+        font-size: 15px;
+      }
+
+      .seed-button-row-bottom {
+        margin-top: 14px;
+      }
+
+      .work-panel {
+        min-height: 248px;
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 28px;
+        margin-bottom: 8px;
+        line-height: 1.28;
+      }
+
+      .work-panel .hint {
+        font-size: 16px;
+        line-height: 1.45;
+        margin: 0 auto 12px;
+      }
+
+      textarea {
+        min-height: 112px;
+        font-size: 18px;
+        line-height: 1.5;
+        padding: 12px 13px;
+      }
+
+      .work-action-row {
+        margin-top: 11px;
+        gap: 10px;
+      }
+
+      .work-action-row .action {
+        font-size: 16px;
+        padding: 11px 12px;
+      }
+
+      .finish-guide {
+        margin-top: 11px;
+        padding: 11px 12px;
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .finish-guide strong {
+        font-size: 16px;
+      }
+    }
+
+    /* 720~760px 가로 화면: 한 화면 진입성을 유지하되 직전판보다 덜 옹졸하게 */
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .topbar {
+        min-height: 42px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .wrap {
+        padding-top: 9px;
+        padding-bottom: 10px;
+      }
+
+      header {
+        padding: 14px 24px 13px;
+        border-radius: 26px;
+      }
+
+      .title-row {
+        min-height: 50px;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        padding: 6px 13px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 3.8vw, 46px);
+        line-height: 1.03;
+      }
+
+      .subtitle {
+        font-size: 15px;
+        line-height: 1.3;
+        margin-top: 2px;
+      }
+
+      .panel {
+        margin-top: 10px;
+        padding: 14px 16px 14px;
+      }
+
+      .lesson-message {
+        padding: 13px 16px;
+        font-size: 16px;
+        line-height: 1.36;
+      }
+
+      .lesson-message strong {
+        font-size: 22px;
+        margin-bottom: 5px;
+      }
+
+      .type-grid {
+        margin-top: 10px;
+      }
+
+      .type-btn {
+        min-height: 66px;
+        padding: 10px 8px;
+        font-size: 21px;
+      }
+
+      .type-intro {
+        margin-top: 10px;
+        min-height: 82px;
+        padding: 15px 18px;
+      }
+
+      .type-intro strong {
+        font-size: 27px;
+        margin-bottom: 5px;
+      }
+
+      .type-intro p {
+        font-size: 17px;
+        line-height: 1.35;
+      }
+
+      .question-area {
+        margin-top: 10px;
+      }
+
+      .q-card,
+      .q-card.hidden-seed {
+        min-height: 218px;
+        padding: 20px;
+      }
+
+      .seed-inner-title {
+        font-size: 26px;
+        margin-bottom: 16px;
+      }
+
+      .q-card strong {
+        font-size: 24px;
+        line-height: 1.32;
+      }
+
+      .q-card.hidden-seed strong {
+        font-size: 16px;
+        line-height: 1.38;
+      }
+
+      .q-card.hidden-seed .open-label {
+        margin-top: 9px;
+        padding: 8px 14px;
+      }
+
+      .seed-card-buttons {
+        margin-top: 9px;
+        padding-top: 9px;
+      }
+
+      .seed-button-row-bottom {
+        margin-top: 9px;
+      }
+
+      .work-panel {
+        min-height: 218px;
+        padding: 17px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 25px;
+        margin-bottom: 6px;
+      }
+
+      .work-panel .hint {
+        font-size: 15px;
+        line-height: 1.34;
+        margin-bottom: 9px;
+      }
+
+      textarea {
+        min-height: 88px;
+        font-size: 17px;
+        line-height: 1.42;
+        padding: 10px 12px;
+      }
+
+      .work-action-row {
+        margin-top: 9px;
+        gap: 9px;
+      }
+
+      .work-action-row .action {
+        font-size: 15px;
+        padding: 9px 11px;
+      }
+
+      .finish-guide {
+        margin-top: 9px;
+        padding: 9px 11px;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+    }
+
+    /* 일반 PC 모니터처럼 세로 공간이 넉넉한 경우: 빈 공간이 크게 남지 않도록 더 시원하게 */
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      .wrap {
+        padding-top: 20px;
+        padding-bottom: 30px;
+      }
+
+      header {
+        padding-top: 24px;
+        padding-bottom: 23px;
+      }
+
+      .title-row {
+        min-height: 74px;
+      }
+
+      h1 {
+        font-size: clamp(48px, 4.6vw, 58px);
+      }
+
+      .subtitle {
+        font-size: 17px;
+        margin-top: 6px;
+      }
+
+      .panel {
+        margin-top: 16px;
+        padding-top: 22px;
+        padding-bottom: 24px;
+      }
+
+      .lesson-message {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .type-btn {
+        min-height: 88px;
+        font-size: 23px;
+      }
+
+      .type-intro {
+        min-height: 112px;
+        padding-top: 22px;
+        padding-bottom: 22px;
+      }
+
+      .type-intro strong {
+        font-size: 32px;
+      }
+
+      .type-intro p {
+        font-size: 19px;
+      }
+
+      .question-area {
+        margin-top: 16px;
+      }
+
+      .q-card,
+      .q-card.hidden-seed,
+      .work-panel {
+        min-height: 292px;
+      }
+
+      .q-card {
+        padding: 34px;
+      }
+
+      .q-card.hidden-seed {
+        padding: 30px 28px;
+      }
+
+      .seed-inner-title {
+        font-size: 31px;
+        margin-bottom: 34px;
+      }
+
+      .work-panel {
+        padding: 26px;
+      }
+
+      textarea {
+        min-height: 130px;
+      }
+    }
+
+
+    /* 2026-06-29 사용자 피드백 반영: 미세하게만 더 줄이기 + 문구 정렬 조정 */
+    .lesson-guide {
+      display: block;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .wrap {
+        padding-top: 10px;
+      }
+
+      .panel {
+        margin-top: 9px;
+        padding-top: 16px;
+        padding-bottom: 18px;
+      }
+
+      .lesson-message {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 13px 18px 12px;
+        font-size: 16px;
+        line-height: 1.34;
+      }
+
+      .lesson-message strong {
+        display: block;
+        margin-bottom: 0;
+        font-size: 24px;
+        line-height: 1.2;
+      }
+
+      .lesson-guide {
+        margin-left: 2px;
+      }
+
+      .type-grid {
+        gap: 9px;
+        margin-top: 10px;
+      }
+
+      .type-btn {
+        min-height: 72px;
+        padding: 11px 10px;
+        font-size: 21px;
+      }
+
+      .type-intro {
+        margin-top: 10px;
+        min-height: 78px;
+        padding: 13px 18px;
+      }
+
+      .type-intro-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 14px;
+        width: fit-content;
+        max-width: 100%;
+        margin: 0 auto;
+        transform: translateX(-18px);
+      }
+
+      .type-intro strong {
+        margin: 0;
+        font-size: 29px;
+        line-height: 1.12;
+        white-space: nowrap;
+        text-align: left;
+      }
+
+      .type-intro p {
+        margin: 2px 0 0;
+        max-width: 560px;
+        font-size: 17px;
+        line-height: 1.3;
+        text-align: left;
+      }
+
+      .question-area {
+        margin-top: 10px;
+        gap: 16px;
+      }
+
+      .q-card {
+        min-height: 238px;
+        padding: 22px 24px 20px;
+      }
+
+      .q-card.hidden-seed {
+        min-height: 238px;
+        padding: 18px 22px 20px;
+      }
+
+      .seed-inner-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .work-panel {
+        min-height: 238px;
+        padding: 18px 20px 18px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 27px;
+        margin-bottom: 5px;
+      }
+
+      .work-panel .hint {
+        margin-bottom: 10px;
+      }
+
+      textarea {
+        min-height: 104px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .wrap {
+        padding-top: 8px;
+      }
+
+      .panel {
+        margin-top: 8px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+
+      .lesson-message {
+        padding: 12px 16px 10px;
+        font-size: 15px;
+      }
+
+      .lesson-message strong {
+        font-size: 22px;
+      }
+
+      .type-btn {
+        min-height: 64px;
+        font-size: 20px;
+      }
+
+      .type-intro {
+        min-height: 72px;
+        padding: 11px 16px;
+      }
+
+      .type-intro-row {
+        gap: 12px;
+        transform: translateX(-14px);
+      }
+
+      .type-intro strong {
+        font-size: 26px;
+      }
+
+      .type-intro p {
+        font-size: 16px;
+      }
+
+      .q-card,
+      .q-card.hidden-seed,
+      .work-panel {
+        min-height: 210px;
+      }
+
+      .q-card {
+        padding: 18px 20px;
+      }
+
+      .q-card.hidden-seed {
+        padding: 16px 20px 18px;
+      }
+
+      .seed-inner-title {
+        font-size: 25px;
+        margin-bottom: 14px;
+      }
+
+      .work-panel {
+        padding: 16px 18px;
+      }
+
+      .work-panel > label,
+      .work-panel label {
+        font-size: 24px;
+      }
+
+      textarea {
+        min-height: 84px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      .wrap {
+        padding-top: 14px;
+        padding-bottom: 24px;
+      }
+
+      .panel {
+        margin-top: 12px;
+        padding-top: 18px;
+        padding-bottom: 20px;
+      }
+
+      .lesson-message {
+        padding-top: 15px;
+        padding-bottom: 13px;
+      }
+
+      .type-btn {
+        min-height: 76px;
+      }
+
+      .type-intro {
+        min-height: 82px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+
+      .type-intro strong {
+        font-size: 30px;
+      }
+
+      .type-intro p {
+        font-size: 18px;
+      }
+
+      .type-intro-row {
+        transform: translateX(-20px);
+      }
+
+      .question-area {
+        margin-top: 12px;
+      }
+
+      .q-card,
+      .q-card.hidden-seed,
+      .work-panel {
+        min-height: 250px;
+      }
+
+      .q-card {
+        padding: 24px 26px 22px;
+      }
+
+      .q-card.hidden-seed {
+        padding: 20px 24px 22px;
+      }
+
+      .seed-inner-title {
+        font-size: 29px;
+        margin-bottom: 22px;
+      }
+
+      .work-panel {
+        padding: 20px 22px;
+      }
+
+      textarea {
+        min-height: 112px;
+      }
+    }
+
+    /* 2026-06-29 마지막 미세 조정: 유형 설명 한 줄 정렬 */
+    @media (orientation: landscape) and (min-width: 900px) {
+      .type-intro-row {
+        gap: 22px;
+        transform: translateX(-24px);
+      }
+
+      .type-intro strong {
+        transform: translateX(-8px);
+      }
+
+      .type-intro p {
+        margin-top: 3px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .type-intro-row {
+        gap: 20px;
+        transform: translateX(-20px);
+      }
+
+      .type-intro strong {
+        transform: translateX(-7px);
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      .type-intro-row {
+        gap: 24px;
+        transform: translateX(-28px);
+      }
+
+      .type-intro strong {
+        transform: translateX(-9px);
+      }
+    }
+
+    /* 2026-06-29 최종 미세 조정 2: 제목 설명·유형 설명 세로 기준 조정 */
+    @media (orientation: landscape) and (min-width: 900px) {
+      .subtitle {
+        margin-top: 9px;
+      }
+
+      .type-intro-row {
+        gap: 30px;
+        align-items: center;
+      }
+
+      .type-intro p {
+        margin-top: 8px;
+        align-self: center;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .subtitle {
+        margin-top: 6px;
+      }
+
+      .type-intro-row {
+        gap: 28px;
+      }
+
+      .type-intro p {
+        margin-top: 7px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      .subtitle {
+        margin-top: 10px;
+      }
+
+      .type-intro-row {
+        gap: 32px;
+      }
+
+      .type-intro p {
+        margin-top: 9px;
+      }
+    }
+
+    /* 2026-06-29 최종 미세 조정 4:
+       왼쪽 핑크 영역을 오른쪽 카드 하단선까지 연장하고
+       '다른 질문 보기'를 그 핑크 영역 안으로 포함 */
+    @media (orientation: landscape) and (min-width: 900px) {
+      .question-area {
+        align-items: stretch;
+      }
+
+      .question-seed-panel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+
+      .question-seed-panel .question-cards {
+        flex: 1 1 auto;
+        display: flex;
+        min-height: 100%;
+      }
+
+      .question-seed-panel .q-card,
+      .question-seed-panel .q-card.hidden-seed {
+        min-height: 100%;
+        height: 100%;
+        padding-bottom: 92px;
+      }
+
+      .question-seed-panel .seed-button-row-bottom {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 18px;
+        margin: 0;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .question-seed-panel .seed-button-row-bottom button {
+        pointer-events: auto;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .question-seed-panel .q-card,
+      .question-seed-panel .q-card.hidden-seed {
+        padding-bottom: 82px;
+      }
+
+      .question-seed-panel .seed-button-row-bottom {
+        bottom: 14px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      .question-seed-panel .q-card,
+      .question-seed-panel .q-card.hidden-seed {
+        padding-bottom: 98px;
+      }
+
+      .question-seed-panel .seed-button-row-bottom {
+        bottom: 20px;
+      }
+    }
+
+
+    /* 2026-06-29 최종 미세 조정 5: 씨앗 안내문 한 줄 + 유형 제목 뒷부분 검정 */
+    .type-intro-main {
+      color: inherit;
+    }
+
+    .type-intro-suffix {
+      color: var(--ink);
+      margin-left: 2px;
+    }
+
+
+    /* 2026-06-29 최종 미세 조정 6:
+       1) 질문 유형 탭을 학생용 별명 + 정식명 2줄로 표시
+       2) 왼쪽 씨앗 카드 하단의 빈 흰 여백이 보이지 않도록 카드 영역을 아래로 연장 */
+    .type-btn {
+      flex-direction: column;
+      gap: 4px;
+      line-height: 1.15;
+    }
+
+    .type-btn-main {
+      display: block;
+      font-size: 1em;
+      font-weight: 950;
+      letter-spacing: -0.4px;
+    }
+
+    .type-btn-sub {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.1;
+      opacity: 0.95;
+      color: var(--muted);
+    }
+
+    .type-btn.type-core .type-btn-sub,
+    .type-btn.type-thinking .type-btn-sub,
+    .type-btn.type-reflect .type-btn-sub,
+    .type-btn.active .type-btn-sub {
+      color: inherit;
+      opacity: 0.92;
+    }
+
+    .question-seed-panel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .question-seed-panel .question-cards {
+      flex: 1 1 auto;
+      display: flex;
+      min-height: 100%;
+    }
+
+    .question-seed-panel .q-card,
+    .question-seed-panel .q-card.hidden-seed {
+      min-height: 100%;
+      height: 100%;
+      padding-bottom: 94px;
+    }
+
+    .question-seed-panel .seed-button-row-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      margin: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .question-seed-panel .seed-button-row-bottom button {
+      pointer-events: auto;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .type-btn {
+        min-height: 86px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .type-btn-main {
+        font-size: 22px;
+      }
+
+      .type-btn-sub {
+        font-size: 12px;
+      }
+
+      .question-area {
+        align-items: stretch;
+      }
+
+      .question-seed-panel .q-card,
+      .question-seed-panel .q-card.hidden-seed {
+        padding-bottom: 92px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .type-btn {
+        min-height: 80px;
+      }
+
+      .type-btn-main {
+        font-size: 20px;
+      }
+
+      .type-btn-sub {
+        font-size: 11px;
+      }
+
+      .question-seed-panel .q-card,
+      .question-seed-panel .q-card.hidden-seed {
+        padding-bottom: 84px;
+      }
+
+      .question-seed-panel .seed-button-row-bottom {
+        bottom: 14px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      .type-btn {
+        min-height: 92px;
+      }
+
+      .type-btn-main {
+        font-size: 23px;
+      }
+
+      .type-btn-sub {
+        font-size: 13px;
+      }
+
+      .question-seed-panel .q-card,
+      .question-seed-panel .q-card.hidden-seed {
+        padding-bottom: 98px;
+      }
+
+      .question-seed-panel .seed-button-row-bottom {
+        bottom: 20px;
+      }
+    }
+
+
+    /* 2026-06-29 최종 미세 조정 8:
+       - 소개 제목은 학생용 별명(큰씨앗/찾기씨앗...)으로 표시
+       - 씨앗 카드 제목도 탭과 같은 2줄 구조로 통일
+       - 제목 아래 본문과의 간격을 조금 더 확보 */
+    .seed-inner-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 44px;
+    }
+
+    .seed-title-main {
+      font-size: 1em;
+      font-weight: 950;
+      line-height: 1.15;
+    }
+
+    .seed-title-sub {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--muted);
+      opacity: 0.95;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .seed-inner-title {
+        margin-bottom: 34px;
+      }
+      .seed-title-sub {
+        font-size: 14px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .seed-inner-title {
+        margin-bottom: 28px;
+      }
+      .seed-title-sub {
+        font-size: 13px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      .seed-inner-title {
+        margin-bottom: 38px;
+      }
+      .seed-title-sub {
+        font-size: 15px;
+      }
+    }
+
+
+    /* 2026-06-29 최종 미세 조정 9:
+       입력 흰 영역 높이를 조금 더 늘리고, 아래 버튼/안내는 자연스럽게 아래로 이동 */
+    textarea {
+      min-height: 170px;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      textarea {
+        min-height: 122px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      textarea {
+        min-height: 96px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      textarea {
+        min-height: 132px;
+      }
+    }
+
+    /* 2026-06-29 최종 미세 조정 10:
+       입력 흰 영역 아주 조금 추가 확대 + 상단 제목 하이픈 제거 */
+    textarea {
+      min-height: 178px;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      textarea {
+        min-height: 128px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      textarea {
+        min-height: 102px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (min-height: 820px) {
+      textarea {
+        min-height: 138px;
+      }
+    }
+
+
+    /* 2026-06-29 최종 미세 조정 11:
+       찾기·까닭·의견 씨앗(탐구 계열) 가독성 개선용 인디고 팔레트 적용 */
+    .type-btn.type-thinking {
+      border-color: #4F46E5;
+      color: #4F46E5;
+      background: #EEF2FF;
+    }
+
+    .type-btn.type-thinking.active {
+      border-color: #4F46E5;
+      color: #4F46E5;
+      background: #EEF2FF;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, .06) inset;
+    }
+
+    .type-intro.type-thinking {
+      background: #EEF2FF;
+      border-color: rgba(79, 70, 229, .28);
+    }
+
+    .type-intro.type-thinking strong,
+    .q-card.type-thinking .seed-inner-title,
+    .work-panel.type-thinking label,
+    .work-panel.type-thinking > label {
+      color: #4F46E5;
+    }
+
+    .q-card.type-thinking,
+    .work-panel.type-thinking,
+    .q-card.hidden-seed.type-thinking {
+      background: #EEF2FF;
+      border-color: rgba(79, 70, 229, .28);
+    }
+
+    .tag {
+      background: #EEF2FF;
+      color: #4F46E5;
+    }
+
+
+    /* 2026-06-29 최종 미세 조정 12:
+       탐구 계열 블루 톤을 더 은은하게 조정하고, 권고 아이콘을 별명에 반영 */
+    .type-btn-main,
+    .seed-title-main,
+    .type-intro-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+
+    /* 2026-06-30 Google Sheets 제출 기능 UI */
+    .student-info-row {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .student-info-row input {
+      height: 42px;
+      font-size: 15px;
+      font-weight: 800;
+      text-align: center;
+      border-radius: 14px;
+    }
+
+    .work-action-row .action {
+      flex: 1 1 0;
+      width: auto;
+    }
+
+    #submitBtn.submitting {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .student-info-row {
+        margin-top: 9px;
+        gap: 8px;
+      }
+      .student-info-row input {
+        height: 38px;
+        font-size: 14px;
+      }
+      .work-action-row .action {
+        font-size: 14px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .student-info-row {
+        margin-top: 8px;
+      }
+      .student-info-row input {
+        height: 34px;
+        font-size: 13px;
+      }
+    }
+
+    /* 2026-06-30 제출 버튼 폭 축소 + 하단 안내 문구 정리 */
+    .work-action-row {
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .work-action-row .action {
+      flex: 0 0 auto;
+      width: auto;
+      min-width: 132px;
+      max-width: 160px;
+      padding-left: 14px;
+      padding-right: 14px;
+      white-space: nowrap;
+    }
+
+    .work-action-row #makeNoteBtn {
+      min-width: 150px;
+    }
+
+    .work-action-row #copyBtn {
+      min-width: 118px;
+    }
+
+    .work-action-row #submitBtn {
+      min-width: 150px;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .work-action-row {
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .work-action-row .action {
+        flex: 0 0 auto;
+        width: auto;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .work-action-row #makeNoteBtn {
+        min-width: 142px;
+      }
+
+      .work-action-row #copyBtn {
+        min-width: 104px;
+      }
+
+      .work-action-row #submitBtn {
+        min-width: 142px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .work-action-row #makeNoteBtn {
+        min-width: 134px;
+      }
+
+      .work-action-row #copyBtn {
+        min-width: 96px;
+      }
+
+      .work-action-row #submitBtn {
+        min-width: 134px;
+      }
+    }
+
+    /* 2026-06-30 제출 UI 미세 조정:
+       - 3개 버튼 사이 간격 조금 확대
+       - 학번/이름 입력칸 동일 폭 + 전체 폭 축소
+       - placeholder를 '학번:' / '이름:' 형태로 정리 */
+    .student-info-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 10px auto 12px;
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .student-info-row input {
+      flex: 0 0 auto;
+      width: 150px;
+      min-width: 150px;
+      max-width: 150px;
+      text-align: left;
+      padding-left: 14px;
+    }
+
+    .student-info-row input::placeholder {
+      color: var(--muted);
+      opacity: 0.95;
+    }
+
+    .work-action-row {
+      gap: 18px;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .student-info-row {
+        gap: 10px;
+        margin-top: 8px;
+        margin-bottom: 10px;
+      }
+
+      .student-info-row input {
+        width: 136px;
+        min-width: 136px;
+        max-width: 136px;
+        padding-left: 13px;
+      }
+
+      .work-action-row {
+        gap: 14px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .student-info-row {
+        gap: 9px;
+        margin-top: 7px;
+        margin-bottom: 9px;
+      }
+
+      .student-info-row input {
+        width: 126px;
+        min-width: 126px;
+        max-width: 126px;
+      }
+
+      .work-action-row {
+        gap: 12px;
+      }
+    }
+
+    /* 2026-06-30 제출 UI 미세 조정 2:
+       - 3개 제출 버튼 사이 간격 추가 확대
+       - 번호/이름 입력칸 사이 간격 추가 확대
+       - 학번 표기를 번호로 변경 */
+    .student-info-row {
+      gap: 24px;
+    }
+
+    .work-action-row {
+      gap: 26px;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .student-info-row {
+        gap: 22px;
+      }
+
+      .work-action-row {
+        gap: 22px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .student-info-row {
+        gap: 18px;
+      }
+
+      .work-action-row {
+        gap: 18px;
+      }
+    }
+
+    /* 2026-06-30 교사용 화면 및 제출 UI 정리:
+       - 번호/이름 입력칸 사이 간격 추가 확대
+       - 교사화면 C·O·R·E 드롭다운 숨김
+       - 교사화면 질문유형 표기 통일 */
+    .student-info-row {
+      gap: 36px;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .student-info-row {
+        gap: 34px;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .student-info-row {
+        gap: 28px;
+      }
+    }
+
+    .teacher-core-filter-hidden {
+      display: none !important;
+    }
+
+    .filters {
+      grid-template-columns: 1.1fr .9fr 1fr;
+    }
+
+    @media (max-width: 520px) {
+      .filters {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 2026-06-30 제출 UI 미세 조정 3:
+       - 번호/이름 입력값과 placeholder 중앙 정렬
+       - 브라우저 제출시간 전송 제거 */
+    .student-info-row input {
+      text-align: center;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .student-info-row input::placeholder {
+      text-align: center;
+    }
+
+</style>
 </head>
 <body>
   <div class="topbar">
-    <div class="brand"><div class="brand-icon">Q</div> 수학 질문도움터</div>
+    <div class="brand"><div class="brand-icon">Q</div> 깊이있는 이음, CORE 프로그램</div>
     <div class="mode-row">
       <button class="mode-btn active" id="studentModeBtn" type="button">학생용</button>
       <button class="mode-btn" id="teacherModeBtn" type="button">교사용</button>
@@ -755,9 +2929,12 @@
 
   <div class="wrap">
     <header>
-      <div class="eyebrow" id="eyebrow">학생용</div>
-      <h1 id="mainTitle">오늘 수업 질문터</h1>
-      <p class="subtitle" id="mainSubtitle">질문 씨앗을 하나씩 참고해 나만의 질문으로 바꾸고, 질문노트에 직접 적어 봅니다.</p>
+      <div class="title-row">
+        <div class="eyebrow" id="eyebrow">학생용</div>
+        <h1 id="mainTitle">질문이음터</h1>
+        <div class="title-spacer" aria-hidden="true"></div>
+      </div>
+      <p class="subtitle" id="mainSubtitle">5가지 질문 씨앗으로 자라는 나의 질문</p>
     </header>
 
     <main>
@@ -773,7 +2950,7 @@
           <div class="type-intro" id="typeIntro"></div>
 
           <div class="question-area">
-            <div>
+            <div class="question-seed-panel">
               <div class="panel-title question-seed-header">
                 <h2 id="questionTitle">질문 씨앗</h2>
               </div>
@@ -785,13 +2962,19 @@
 
             <aside class="work-panel">
               <label for="studentQuestion">나만의 질문으로 바꾸기</label>
-              <p class="hint">질문 씨앗을 그대로 베끼지 말고, 오늘 수업과 내 생각에 맞게 바꾸어 보세요.</p>
+              <p class="hint">질문 씨앗을 내 생각에 맞게 바꾸어 보세요.</p>
               <textarea id="studentQuestion" placeholder="질문 씨앗을 누른 뒤 내 말로 바꾸어 써 보세요."></textarea>
-              <div class="action-row action-row-center">
+              <div class="student-info-row" aria-label="학생 정보 입력">
+                <input id="studentNo" type="text" inputmode="numeric" autocomplete="off" placeholder="번호:" / data-clear-on-load="true">
+                <input id="studentName" type="text" autocomplete="off" placeholder="이름:" / data-clear-on-load="true">
+              </div>
+              <div class="action-row work-action-row">
                 <button class="action green" id="makeNoteBtn" type="button">내 질문 완성하기</button>
+                <button class="action copy" id="copyBtn" type="button">복사하기</button>
+                <button class="action pink" id="submitBtn" type="button">선생님께 제출</button>
               </div>
               <div class="finish-guide" id="finishGuide">
-                <strong>완성한 질문은 질문노트에 직접 적어 보세요.</strong>
+                <strong>완성한 질문은 질문노트에 옮겨 적으세요.</strong>
               </div>
             </aside>
           </div>
@@ -843,7 +3026,7 @@
                 <label for="unitFilter">단원</label>
                 <select id="unitFilter"><option value="all">전체 단원</option></select>
               </div>
-              <div>
+              <div class="core-filter-wrap teacher-core-filter-hidden">
                 <label for="programFilter">C·O·R·E</label>
                 <select id="programFilter">
                   <option value="all">전체</option>
@@ -857,11 +3040,11 @@
                 <label for="typeFilter">질문 유형</label>
                 <select id="typeFilter">
                   <option value="all">전체 유형</option>
-                  <option value="핵심질문">핵심질문</option>
-                  <option value="사실질문">사실질문</option>
-                  <option value="개념질문">개념질문</option>
-                  <option value="논쟁질문">논쟁질문</option>
-                  <option value="성찰질문">성찰질문</option>
+                  <option value="핵심질문">큰씨앗(핵심질문)</option>
+                  <option value="사실질문">🔍 찾기씨앗(사실질문)</option>
+                  <option value="개념질문">💡 까닭씨앗(개념질문)</option>
+                  <option value="논쟁질문">💬 의견씨앗(논쟁질문)</option>
+                  <option value="성찰질문">거울씨앗(성찰질문)</option>
                 </select>
               </div>
               <div>
@@ -885,35 +3068,40 @@
 
   <script>
     const TEACHER_PASSWORD = "11111111";
-    const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "큰 수 질문터", "guide": "생활 속 큰 수를 보고, 읽고, 비교하며 궁금한 점을 질문으로 만들어 봅니다.", "focus": "생활 속 큰 수 자료를 보고 읽기·쓰기·자릿값·크기 비교 질문 만들기", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "각도 질문터", "guide": "우리 주변의 각을 찾고, 왜 예각·직각·둔각인지 근거를 들어 설명합니다.", "focus": "생활 속 각을 찾고 예각·직각·둔각 판단 근거 설명하기", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "곱셈과 나눗셈 질문터", "guide": "계산 과정에서 헷갈린 부분을 찾고, 오답을 바른 풀이로 고쳐 봅니다.", "focus": "계산 오답을 찾고 손풀이·검산·설명으로 보정하기", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "도형 이동 질문터", "guide": "도형을 밀고, 뒤집고, 돌리며 이동 전후의 변화를 질문으로 정리합니다.", "focus": "도형을 밀기·뒤집기·돌리기 하며 이동 미션 만들기", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "막대그래프 질문터", "guide": "우리 반을 자료로 알아보기 위한 질문을 만들고, 그래프로 나타내기 좋은 질문인지 생각합니다.", "focus": "우리 반 자료 탐구를 위한 조사 질문 만들기", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "규칙과 관계 질문터", "guide": "수, 모양, 식에서 규칙을 찾고 ‘왜 그렇게 되는지’ 질문으로 설명합니다.", "focus": "규칙을 찾고 왜 그렇게 되는지 질문과 설명으로 나타내기", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}}];
+    const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "", "guide": "생활 속 큰 수를 보고, 읽고, 비교하며 궁금한 점을 질문으로 만들어 봅니다.", "focus": "생활 속 큰 수 자료를 보고 읽기·쓰기·자릿값·크기 비교 질문 만들기", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "각도 질문터", "guide": "우리 주변의 각을 찾고, 왜 예각·직각·둔각인지 근거를 들어 설명합니다.", "focus": "생활 속 각을 찾고 예각·직각·둔각 판단 근거 설명하기", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "곱셈과 나눗셈 질문터", "guide": "계산 과정에서 헷갈린 부분을 찾고, 오답을 바른 풀이로 고쳐 봅니다.", "focus": "계산 오답을 찾고 손풀이·검산·설명으로 보정하기", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "도형 이동 질문터", "guide": "도형을 밀고, 뒤집고, 돌리며 이동 전후의 변화를 질문으로 정리합니다.", "focus": "도형을 밀기·뒤집기·돌리기 하며 이동 미션 만들기", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "막대그래프 질문터", "guide": "우리 반을 자료로 알아보기 위한 질문을 만들고, 그래프로 나타내기 좋은 질문인지 생각합니다.", "focus": "우리 반 자료 탐구를 위한 조사 질문 만들기", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "규칙과 관계 질문터", "guide": "수, 모양, 식에서 규칙을 찾고 ‘왜 그렇게 되는지’ 질문으로 설명합니다.", "focus": "규칙을 찾고 왜 그렇게 되는지 질문과 설명으로 나타내기", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}}];
     const questionTypes = ["핵심질문", "사실질문", "개념질문", "논쟁질문", "성찰질문"];
+    const questionTypeLabels = {"핵심질문": {alias: "큰씨앗", formal: "핵심질문", icon: ""}, "사실질문": {alias: "찾기씨앗", formal: "사실질문", icon: "🔍"}, "개념질문": {alias: "까닭씨앗", formal: "개념질문", icon: "💡"}, "논쟁질문": {alias: "의견씨앗", formal: "논쟁질문", icon: "💬"}, "성찰질문": {alias: "거울씨앗", formal: "성찰질문", icon: ""}};
     const questionTypeInfo = {
       "핵심질문": {
         short: "오늘 배움의 중심을 여는 큰 질문",
-        desc: "오늘 수업에서 가장 중요하게 생각할 큰 질문입니다.",
+        desc: "오늘 수업에서 가장 중요하게 생각할 큰 질문",
         think: "오늘 배울 내용에서 가장 궁금한 한 가지를 떠올려 보세요."
       },
       "사실질문": {
         short: "자료나 문제를 보고 바로 확인할 수 있는 질문",
-        desc: "눈으로 보거나 계산해서 바로 확인할 수 있는 질문입니다.",
+        desc: "눈으로 보거나 계산해서 바로 확인할 수 있는 질문",
         think: "자료, 그림, 문제에서 바로 알 수 있는 것은 무엇인지 찾아보세요."
       },
       "개념질문": {
         short: "수학 개념이나 원리를 묻는 질문",
-        desc: "왜 그런지, 어떤 원리가 숨어 있는지 생각하게 하는 질문입니다.",
+        desc: "왜 그런지, 어떤 원리가 숨어 있는지 생각하게 하는 질문",
         think: "오늘 배운 수학 개념이 왜 그렇게 되는지 생각해 보세요."
       },
       "논쟁질문": {
         short: "친구와 생각을 나눌 수 있는 질문",
-        desc: "정답만 바로 말하기보다 친구와 근거를 들어 이야기할 수 있는 질문입니다.",
+        desc: "정답만 바로 말하기보다 친구와 근거를 들어 이야기할 수 있는 질문",
         think: "친구와 생각이 다를 수 있는 부분은 무엇인지 떠올려 보세요."
       },
       "성찰질문": {
         short: "배운 점과 바뀐 생각을 돌아보는 질문",
-        desc: "수업 뒤에 내가 알게 된 점, 어려웠던 점, 더 궁금한 점을 돌아보는 질문입니다.",
+        desc: "수업 뒤에 내가 알게 된 점, 어려웠던 점, 더 궁금한 점을 돌아보는 질문",
         think: "오늘 배운 뒤 내 생각이 어떻게 달라졌는지 떠올려 보세요."
       }
     };
+    // Google Apps Script Web App URL을 아래에 붙여넣으세요.
+    // 예: https://script.google.com/macros/s/AKfycb.../exec
+    const APPS_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwTf3dSx1H20LdBZqC_6p9Ym7pfMF7dEvebbKs_QV9kALhimSx3pr_QXcjf5onHsXyBvw/exec";
+
     const params = new URLSearchParams(location.search);
 
     let selectedLessonId = resolveInitialLesson();
@@ -930,19 +3118,61 @@
     const teacherModeBtn = document.getElementById("teacherModeBtn");
     const toast = document.getElementById("toast");
 
+
+    function safeGetPublicLesson() {
+      try {
+        return localStorage.getItem("mq_publicLesson");
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function safeSetPublicLesson(value) {
+      try {
+        localStorage.setItem("mq_publicLesson", value);
+      } catch (error) {
+        // 일부 미리보기 환경에서는 localStorage 접근이 제한될 수 있으므로 무시합니다.
+      }
+    }
+
     function resolveInitialLesson() {
       const fromParam = params.get("lesson") || params.get("unit");
       if (fromParam) {
         const found = lessons.find(l => l.id === fromParam || l.slug === fromParam);
         if (found) return found.id;
       }
-      return localStorage.getItem("mq_publicLesson") || "unit5-bargraph";
+      return safeGetPublicLesson() || "unit5-bargraph";
+    }
+
+
+    function clearStudentIdentityFields() {
+      const noInput = document.getElementById("studentNo");
+      const nameInput = document.getElementById("studentName");
+      if (noInput) {
+        noInput.value = "";
+        noInput.setAttribute("autocomplete", "off");
+      }
+      if (nameInput) {
+        nameInput.value = "";
+        nameInput.setAttribute("autocomplete", "off");
+      }
     }
 
     function showToast(message) {
       toast.textContent = message;
       toast.classList.add("show");
       setTimeout(() => toast.classList.remove("show"), 1600);
+    }
+
+
+    function getTypeDisplayName(type) {
+      const label = questionTypeLabels[type] || {alias: type, formal: type, icon: ""};
+      const alias = label.icon ? `${label.icon} ${label.alias}` : label.alias;
+      return `${alias}(${label.formal})`;
+    }
+
+    function getUnitOnlyTitle(lesson) {
+      return lesson && lesson.unit ? lesson.unit : "";
     }
 
     function getLesson(id = selectedLessonId) {
@@ -957,9 +3187,9 @@
       teacherPanel.classList.toggle("hidden", isStudent);
 
       document.getElementById("eyebrow").textContent = isStudent ? "학생용" : "교사용";
-      document.getElementById("mainTitle").textContent = isStudent ? "오늘 수업 질문터" : "교사용 질문은행";
+      document.getElementById("mainTitle").textContent = isStudent ? "질문이음터" : "교사용 질문은행";
       document.getElementById("mainSubtitle").textContent = isStudent 
-        ? "질문 씨앗을 하나씩 참고해 나만의 질문으로 바꾸고, 질문노트에 직접 적어 봅니다."
+        ? "5가지 질문 씨앗으로 자라는 나의 질문"
         : "전체 질문은행을 확인하고, 학생에게 제공할 고정형 학생용 링크를 복사할 수 있습니다.";
 
       if (!isStudent && !teacherUnlocked) {
@@ -972,7 +3202,7 @@
     function renderStudent() {
       const lesson = getLesson();
       document.getElementById("studentTitle").textContent = lesson.student_title;
-      document.getElementById("lessonMessage").innerHTML = `<strong>${lesson.unit}</strong><br>${lesson.guide}`;
+      document.getElementById("lessonMessage").innerHTML = `<strong>${lesson.unit}</strong><div class="lesson-guide">${lesson.guide}</div>`;
       renderTypes();
       renderTypeIntro();
       renderQuestions();
@@ -983,9 +3213,18 @@
       const info = questionTypeInfo[selectedType];
       const box = document.getElementById("typeIntro");
       if (!box || !info) return;
+      const colorClass = selectedType === "핵심질문" ? "type-core" : (selectedType === "성찰질문" ? "type-reflect" : "type-thinking");
+      box.className = "type-intro " + colorClass;
+      const workPanel = document.querySelector(".work-panel");
+      if (workPanel) {
+        workPanel.classList.remove("type-core", "type-thinking", "type-reflect");
+        workPanel.classList.add(colorClass);
+      }
       box.innerHTML = `
-        <strong>${selectedType}은 어떤 질문일까요?</strong>
-        <p>${info.desc}</p>
+        <div class="type-intro-row">
+          <strong><span class="type-intro-main">${(((questionTypeLabels[selectedType] || {alias: selectedType, icon: ""}).icon ? (questionTypeLabels[selectedType] || {alias: selectedType, icon: ""}).icon + " " : "") + (questionTypeLabels[selectedType] || {alias: selectedType, icon: ""}).alias)}</span><span class="type-intro-suffix">은 어떤 질문일까요?</span></strong>
+          <p>${info.desc}</p>
+        </div>
       `;
     }
 
@@ -997,7 +3236,9 @@
         const colorClass = t === "핵심질문" ? "type-core" : (t === "성찰질문" ? "type-reflect" : "type-thinking");
         btn.className = "type-btn " + colorClass + (t === selectedType ? " active" : "");
         btn.type = "button";
-        btn.textContent = t;
+        const label = questionTypeLabels[t] || {alias: t, formal: t};
+        const aliasText = label.icon ? `${label.icon} ${label.alias}` : label.alias;
+        btn.innerHTML = `<span class="type-btn-main">${aliasText}</span><span class="type-btn-sub">(${label.formal})</span>`;
         btn.addEventListener("click", () => {
           selectedType = t;
           currentQuestionIndex = 0;
@@ -1020,7 +3261,7 @@
       box.innerHTML = "";
 
       if (!questions.length) {
-        box.innerHTML = '<div class="q-card"><strong>준비된 질문 씨앗이 없습니다.</strong><small>교사용 질문은행에서 질문을 추가해 주세요.</small></div>';
+        box.innerHTML = `<div class="q-card"><div class="seed-inner-title">${seedTitleHtml}</div><strong>준비된 질문 씨앗이 없습니다.</strong><small>교사용 질문은행에서 질문을 추가해 주세요.</small></div>`;
         return;
       }
 
@@ -1028,24 +3269,42 @@
       if (currentQuestionIndex < 0) currentQuestionIndex = 0;
 
       const q = questions[currentQuestionIndex];
+      const colorClass = selectedType === "핵심질문" ? "type-core" : (selectedType === "성찰질문" ? "type-reflect" : "type-thinking");
+      const typeLabel = questionTypeLabels[selectedType] || {alias: selectedType, formal: selectedType};
+      const seedAliasText = typeLabel.icon ? `${typeLabel.icon} ${typeLabel.alias}` : typeLabel.alias;
+      const seedTitleHtml = `<div class="seed-title-main">${seedAliasText}</div><div class="seed-title-sub">(${typeLabel.formal})</div>`;
       const card = document.createElement("div");
 
       if (!questionRevealed) {
-        card.className = "q-card hidden-seed";
+        card.className = "q-card hidden-seed " + colorClass;
         card.innerHTML = `
-          <div>
+          <div class="seed-content">
+            <div class="seed-inner-title">${seedTitleHtml}</div>
             <strong>먼저 스스로 질문을 생각해 보세요.</strong>
-            <small>준비되면 네모 칸을 눌러 질문 씨앗을 확인합니다.</small>
-            <div class="open-label">질문 씨앗 보기</div>
+            <small>준비되면 질문 씨앗 버튼을 누르세요.</small>
+            <div class="seed-card-buttons">
+              <button class="seed-card-btn primary" type="button" id="revealSeedBtn">질문 씨앗 보기</button>
+            </div>
           </div>
         `;
+        card.querySelector("#revealSeedBtn").addEventListener("click", (event) => {
+          event.stopPropagation();
+          questionRevealed = true;
+          renderQuestions();
+        });
         card.addEventListener("click", () => {
           questionRevealed = true;
           renderQuestions();
         });
       } else {
-        card.className = "q-card";
-        card.innerHTML = `<strong>${q}</strong><small>이 질문을 참고하려면 한 번 더 클릭하세요. 아래 입력창에 들어갑니다.</small>`;
+        card.className = "q-card " + colorClass;
+        card.innerHTML = `
+          <div class="seed-content">
+            <div class="seed-inner-title">${seedTitleHtml}</div>
+            <strong>${q}</strong>
+            <small>이 질문을 참고하려면 한 번 더 클릭하세요. 아래 입력창에 들어갑니다.</small>
+          </div>
+        `;
         card.addEventListener("click", () => {
           document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
           card.classList.add("selected");
@@ -1084,7 +3343,7 @@
 
         const popt = document.createElement("option");
         popt.value = l.id;
-        popt.textContent = l.unit + " · " + l.student_title;
+        popt.textContent = getUnitOnlyTitle(l);
         publicLessonSelect.appendChild(popt);
       });
       publicLessonSelect.value = selectedLessonId;
@@ -1145,7 +3404,7 @@
         const groups = Object.entries(lesson.questions).map(([type, arr]) => `
           <div class="q-group">
             <div class="q-group-head">
-              <strong>${type}</strong>
+              <strong>${getTypeDisplayName(type)}</strong>
               <button class="copy-mini" type="button" onclick="copyText(${JSON.stringify(arr.join('\n'))})">유형 복사</button>
             </div>
             <ol class="q-list">${arr.map(q => `<li>${q}</li>`).join("")}</ol>
@@ -1171,19 +3430,53 @@
     function visibleQuestionText() {
       return filteredLessons().map(lesson => {
         const groups = Object.entries(lesson.questions).map(([type, arr]) => {
-          return `[${type}]\n` + arr.map((q, i) => `${i+1}. ${q}`).join("\n");
+          return `[${getTypeDisplayName(type)}]\n` + arr.map((q, i) => `${i+1}. ${q}`).join("\n");
         }).join("\n\n");
         return `${lesson.unit} / ${lesson.program} ${lesson.program_name}\n${groups}`;
       }).join("\n\n--------------------\n\n");
     }
 
     async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast("복사되었습니다.");
-      } catch (e) {
-        showToast("복사가 어려우면 직접 선택해서 복사하세요.");
+      const finalText = String(text || "").trim();
+      if (!finalText) {
+        showToast("복사할 내용이 없습니다.");
+        return false;
       }
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(finalText);
+          showToast("복사되었습니다.");
+          return true;
+        }
+      } catch (e) {
+        // 아래 예비 복사 방식으로 진행합니다.
+      }
+
+      try {
+        const temp = document.createElement("textarea");
+        temp.value = finalText;
+        temp.setAttribute("readonly", "");
+        temp.style.position = "fixed";
+        temp.style.left = "-9999px";
+        temp.style.top = "0";
+        document.body.appendChild(temp);
+        temp.focus();
+        temp.select();
+        temp.setSelectionRange(0, temp.value.length);
+        const copied = document.execCommand("copy");
+        document.body.removeChild(temp);
+
+        if (copied) {
+          showToast("복사되었습니다.");
+          return true;
+        }
+      } catch (e) {
+        // 수동 복사 안내로 넘어갑니다.
+      }
+
+      showToast("복사가 안 되면 입력창을 길게 눌러 직접 복사하세요.");
+      return false;
     }
 
     function unlockTeacher() {
@@ -1210,16 +3503,105 @@
     document.getElementById("backStudentBtn").addEventListener("click", () => switchMode("student"));
 
     document.getElementById("publicLessonSelect").addEventListener("change", (e) => {
-      localStorage.setItem("mq_publicLesson", e.target.value);
+      safeSetPublicLesson(e.target.value);
     });
     document.getElementById("applyStudentBtn").addEventListener("click", () => {
       selectedLessonId = document.getElementById("publicLessonSelect").value;
-      localStorage.setItem("mq_publicLesson", selectedLessonId);
+      safeSetPublicLesson(selectedLessonId);
       document.getElementById("studentQuestion").value = "";
       selectedType = "핵심질문";
       currentQuestionIndex = 0;
       questionRevealed = false;
-      renderStudent();
+      function saveStudentInfo() {
+      try {
+        const no = document.getElementById("studentNo")?.value.trim() || "";
+        const name = document.getElementById("studentName")?.value.trim() || "";
+        localStorage.setItem("questionEumteoStudentNo", no);
+        localStorage.setItem("questionEumteoStudentName", name);
+      } catch (error) {}
+    }
+
+    function loadStudentInfo() {
+      try {
+        const no = localStorage.getItem("questionEumteoStudentNo") || "";
+        const name = localStorage.getItem("questionEumteoStudentName") || "";
+        const noInput = document.getElementById("studentNo");
+        const nameInput = document.getElementById("studentName");
+        if (noInput) noInput.value = no;
+        if (nameInput) nameInput.value = name;
+      } catch (error) {}
+    }
+
+    function getSelectedSeedLabel() {
+      const label = questionTypeLabels[selectedType] || { alias: selectedType, formal: selectedType, icon: "" };
+      return label.icon ? `${label.icon} ${label.alias}(${label.formal})` : `${label.alias}(${label.formal})`;
+    }
+
+    async function submitQuestionToTeacher() {
+      const submitBtn = document.getElementById("submitBtn");
+      const studentNo = document.getElementById("studentNo")?.value.trim() || "";
+      const studentName = document.getElementById("studentName")?.value.trim() || "";
+      const question = document.getElementById("studentQuestion")?.value.trim() || "";
+      const lesson = getLesson();
+
+      if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
+        showToast("선생님 제출 주소가 아직 설정되지 않았습니다.");
+        return;
+      }
+      if (!studentNo) return showToast("번호를 입력해 주세요.");
+      if (!studentName) return showToast("이름을 입력해 주세요.");
+      if (!question) return showToast("제출할 질문을 먼저 써 주세요.");
+
+      saveStudentInfo();
+
+      const payload = {
+        studentNo,
+        studentName,
+        unit: lesson.unit,
+        lesson: lesson.focus || lesson.student_title || lesson.id,
+        seedType: selectedType,
+        seedLabel: getSelectedSeedLabel(),
+        question,
+        pageUrl: location.href
+      };
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.classList.add("submitting");
+        submitBtn.textContent = "제출 중...";
+
+        // Apps Script Web App은 정적 GitHub Pages에서 별도 서버 없이 호출할 수 있습니다.
+        // CORS 응답을 읽지 않기 위해 no-cors로 전송합니다. 기록 여부는 Google Sheets에서 확인합니다.
+        await fetch(APPS_SCRIPT_WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        showToast("선생님께 제출했습니다. 질문노트에도 옮겨 적으세요.");
+      clearStudentIdentityFields();
+      } catch (error) {
+        console.error(error);
+        showToast("제출 중 오류가 났습니다. 인터넷 연결을 확인해 주세요.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("submitting");
+        submitBtn.textContent = "선생님께 제출";
+      }
+    }
+
+    const studentNoInput = document.getElementById("studentNo");
+    const studentNameInput = document.getElementById("studentName");
+    if (studentNoInput) studentNoInput.addEventListener("input", saveStudentInfo);
+    if (studentNameInput) studentNameInput.addEventListener("input", saveStudentInfo);
+
+    const submitBtn = document.getElementById("submitBtn");
+    if (submitBtn) submitBtn.addEventListener("click", submitQuestionToTeacher);
+
+    loadStudentInfo();
+
+    renderStudent();
       switchMode("student");
     });
     document.getElementById("copyCurrentLinkBtn").addEventListener("click", () => {
@@ -1244,14 +3626,16 @@
     document.getElementById("studentQuestion").addEventListener("input", updatePreview);
     document.getElementById("makeNoteBtn").addEventListener("click", () => {
       updatePreview();
-      showToast("내 질문이 완성되었습니다. 질문노트에 직접 적어 보세요.");
+      showToast("내 질문이 완성되었습니다. 질문노트에 옮겨 적으세요.");
     });
     const copyBtn = document.getElementById("copyBtn");
     if (copyBtn) {
       copyBtn.addEventListener("click", () => {
         const value = document.getElementById("studentQuestion").value.trim();
         if (!value) return showToast("복사할 질문을 먼저 써 주세요.");
-        copyText(value);
+        const prefixed = `${selectedType}: ${value}`;
+        copyText(prefixed);
+        showToast("질문 유형이 붙은 형태로 복사되었습니다.");
       });
     }
     const clearBtn = document.getElementById("clearBtn");
@@ -1263,20 +3647,115 @@
         showToast("입력창을 비웠습니다.");
       });
     }
-    document.getElementById("randomBtn").addEventListener("click", () => {
+    const randomBtn = document.getElementById("randomBtn");
+    if (randomBtn) {
+      randomBtn.addEventListener("click", () => {
+        const lesson = getLesson();
+        const arr = lesson.questions[selectedType] || [];
+        if (!arr.length) return;
+        currentQuestionIndex = (currentQuestionIndex + 1) % arr.length;
+        questionRevealed = false;
+        document.getElementById("studentQuestion").value = "";
+        document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
+        updatePreview();
+        renderQuestions();
+        showToast("먼저 스스로 생각한 뒤 질문 씨앗을 열어 보세요.");
+      });
+    }
+
+    function saveStudentInfo() {
+      try {
+        const no = document.getElementById("studentNo")?.value.trim() || "";
+        const name = document.getElementById("studentName")?.value.trim() || "";
+        localStorage.setItem("questionEumteoStudentNo", no);
+        localStorage.setItem("questionEumteoStudentName", name);
+      } catch (error) {}
+    }
+
+    function loadStudentInfo() {
+      try {
+        const no = localStorage.getItem("questionEumteoStudentNo") || "";
+        const name = localStorage.getItem("questionEumteoStudentName") || "";
+        const noInput = document.getElementById("studentNo");
+        const nameInput = document.getElementById("studentName");
+        if (noInput) noInput.value = no;
+        if (nameInput) nameInput.value = name;
+      } catch (error) {}
+    }
+
+    function getSelectedSeedLabel() {
+      const label = questionTypeLabels[selectedType] || { alias: selectedType, formal: selectedType, icon: "" };
+      return label.icon ? `${label.icon} ${label.alias}(${label.formal})` : `${label.alias}(${label.formal})`;
+    }
+
+    async function submitQuestionToTeacher() {
+      const submitBtn = document.getElementById("submitBtn");
+      const studentNo = document.getElementById("studentNo")?.value.trim() || "";
+      const studentName = document.getElementById("studentName")?.value.trim() || "";
+      const question = document.getElementById("studentQuestion")?.value.trim() || "";
       const lesson = getLesson();
-      const arr = lesson.questions[selectedType] || [];
-      if (!arr.length) return;
-      currentQuestionIndex = (currentQuestionIndex + 1) % arr.length;
-      questionRevealed = false;
-      document.getElementById("studentQuestion").value = "";
-      document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
-      updatePreview();
-      renderQuestions();
-      showToast("먼저 스스로 생각한 뒤 질문 씨앗을 열어 보세요.");
-    });
+
+      if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
+        showToast("선생님 제출 주소가 아직 설정되지 않았습니다.");
+        return;
+      }
+      if (!studentNo) return showToast("번호를 입력해 주세요.");
+      if (!studentName) return showToast("이름을 입력해 주세요.");
+      if (!question) return showToast("제출할 질문을 먼저 써 주세요.");
+
+      saveStudentInfo();
+
+      const payload = {
+        studentNo,
+        studentName,
+        unit: lesson.unit,
+        lesson: lesson.focus || lesson.student_title || lesson.id,
+        seedType: selectedType,
+        seedLabel: getSelectedSeedLabel(),
+        question,
+        pageUrl: location.href
+      };
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.classList.add("submitting");
+        submitBtn.textContent = "제출 중...";
+
+        // Apps Script Web App은 정적 GitHub Pages에서 별도 서버 없이 호출할 수 있습니다.
+        // CORS 응답을 읽지 않기 위해 no-cors로 전송합니다. 기록 여부는 Google Sheets에서 확인합니다.
+        await fetch(APPS_SCRIPT_WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        showToast("선생님께 제출했습니다. 질문노트에도 옮겨 적으세요.");
+      clearStudentIdentityFields();
+      } catch (error) {
+        console.error(error);
+        showToast("제출 중 오류가 났습니다. 인터넷 연결을 확인해 주세요.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("submitting");
+        submitBtn.textContent = "선생님께 제출";
+      }
+    }
+
+    const studentNoInput = document.getElementById("studentNo");
+    const studentNameInput = document.getElementById("studentName");
+    if (studentNoInput) studentNoInput.addEventListener("input", saveStudentInfo);
+    if (studentNameInput) studentNameInput.addEventListener("input", saveStudentInfo);
+
+    const submitBtn = document.getElementById("submitBtn");
+    if (submitBtn) submitBtn.addEventListener("click", submitQuestionToTeacher);
+
+    loadStudentInfo();
 
     renderStudent();
+    window.addEventListener("DOMContentLoaded", clearStudentIdentityFields);
+    window.addEventListener("pageshow", clearStudentIdentityFields);
+
   </script>
 </body>
 </html>
