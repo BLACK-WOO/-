@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>수학 질문도움터</title>
+  <style>
+    :root {
+      --bg: #f8f4f0;
+      --card: #ffffff;
+      --ink: #17213a;
+      --muted: #667085;
+      --line: #e9dfd6;
+      --pink: #f03e92;
+      --pink-light: #fff0f7;
+      --purple: #6f62d7;
+      --purple-light: #f0edff;
+      --green: #2f8f6b;
+      --green-light: #ecfbf5;
+      --shadow: 0 14px 34px rgba(37, 48, 69, 0.11);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 1280px;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(240, 62, 146, .16), transparent 30%),
+        radial-gradient(circle at 90% 0%, rgba(111, 98, 215, .15), transparent 34%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 950;
+      color: var(--pink);
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: var(--pink);
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 18px rgba(240, 62, 146, .25);
+      font-weight: 900;
+    }
+
+    .mode-row {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .mode-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--ink);
+    }
+
+    .mode-btn.active {
+      background: var(--pink);
+      color: #fff;
+      border-color: var(--pink);
+      box-shadow: 0 8px 18px rgba(240, 62, 146, .22);
+    }
+
+    .wrap {
+      width: 1240px;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px 24px 40px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #fff 0%, #fff8fc 52%, #f4f8ff 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--pink-light);
+      color: var(--pink);
+      border: 1px solid rgba(240, 62, 146, .18);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 14px;
+    }
+
+    h1 {
+      margin: 13px 0 7px;
+      font-size: clamp(30px, 5vw, 50px);
+      letter-spacing: -2px;
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0;
+      max-width: 880px;
+    }
+
+    .panel {
+      margin-top: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .panel-title h2 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.8px;
+    }
+
+    .question-seed-header {
+      justify-content: center;
+      min-height: 48px;
+      margin-bottom: 0;
+    }
+
+    .question-seed-header h2 {
+      text-align: center;
+      width: 100%;
+      font-size: 32px;
+    }
+
+    .seed-button-row {
+      display: flex;
+      justify-content: center;
+      margin: 2px 0 14px;
+    }
+
+    .seed-button-row-bottom {
+      margin: 12px 0 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 900;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    select, input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      outline: none;
+    }
+
+    select:focus, input:focus, textarea:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 4px rgba(240, 62, 146, .10);
+    }
+
+    .student-card {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .lesson-message {
+      background: #fbfaf7;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px 20px;
+      color: var(--muted);
+      margin-top: 14px;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .lesson-message strong { color: var(--ink); font-size: 26px; }
+
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .type-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 20px;
+      padding: 16px 12px;
+      cursor: pointer;
+      font-weight: 950;
+      color: var(--ink);
+      font-family: inherit;
+      min-height: 96px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .type-btn.type-core {
+      border-color: rgba(240, 62, 146, .35);
+      color: #d64a8f;
+      background: rgba(240, 62, 146, .06);
+    }
+
+    .type-btn.type-thinking {
+      border-color: rgba(111, 98, 215, .35);
+      color: #5e58c9;
+      background: rgba(111, 98, 215, .06);
+    }
+
+    .type-btn.type-reflect {
+      border-color: rgba(47, 143, 107, .35);
+      color: #23835f;
+      background: rgba(47, 143, 107, .06);
+    }
+
+    .type-btn.type-core.active {
+      border-color: var(--pink);
+      color: var(--pink);
+      background: var(--pink-light);
+      box-shadow: 0 0 0 2px rgba(240, 62, 146, .08) inset;
+    }
+
+    .type-btn.type-thinking.active {
+      border-color: var(--purple);
+      color: var(--purple);
+      background: var(--purple-light);
+      box-shadow: 0 0 0 2px rgba(111, 98, 215, .08) inset;
+    }
+
+    .type-btn.type-reflect.active {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-light);
+      box-shadow: 0 0 0 2px rgba(47, 143, 107, .08) inset;
+    }
+
+    .type-btn small {
+      display: none;
+    }
+
+    .type-btn.active small {
+      color: var(--pink);
+    }
+
+    .type-intro {
+      margin-top: 16px;
+      background: #fbfaf7;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px 28px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .type-intro strong {
+      display: block;
+      font-size: 34px;
+      margin-bottom: 12px;
+      color: var(--ink);
+      letter-spacing: -0.7px;
+      text-align: center;
+    }
+
+    .type-intro p {
+      margin: 8px 0 0;
+      color: #3f4b63;
+      font-size: 21px;
+      line-height: 1.55;
+      letter-spacing: -0.3px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .type-intro .think {
+      display: none;
+    }
+
+    .question-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-top: 18px;
+      align-items: start;
+      min-width: 0;
+    }
+
+    .question-cards {
+      display: grid;
+      gap: 12px;
+    }
+
+    .q-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 22px;
+      padding: 34px;
+      cursor: pointer;
+      transition: all .15s;
+      min-height: 255px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .q-card strong {
+      font-size: 34px;
+      line-height: 1.42;
+      letter-spacing: -0.7px;
+      margin-top: 0;
+    }
+
+    .q-card small {
+      margin-top: 16px;
+      font-size: 18px;
+      line-height: 1.58;
+    }
+
+    .q-card:hover {
+      border-color: var(--pink);
+      box-shadow: 0 8px 18px rgba(37, 48, 69, .08);
+      transform: translateY(-1px);
+    }
+
+    .q-card.selected {
+      border-color: var(--green);
+      background: var(--green-light);
+    }
+
+    .q-card.hidden-seed {
+      min-height: 255px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: #fbfaf7;
+      border: 1px dashed var(--line);
+    }
+
+    .q-card.hidden-seed strong {
+      color: var(--muted);
+      font-size: 31px;
+      line-height: 1.38;
+      white-space: nowrap;
+      letter-spacing: -0.7px;
+    }
+
+    .q-card.hidden-seed .open-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--pink-light);
+      color: var(--pink);
+      font-weight: 950;
+      font-size: 15px;
+    }
+
+    .q-card small {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    .work-panel {
+      position: static;
+      background: #fbfaf7;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      font-size: 24px;
+      line-height: 1.7;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 8px 0 14px;
+      line-height: 1.55;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .action-row-center {
+      justify-content: center;
+    }
+
+    .action-row-center .action {
+      min-width: 220px;
+      font-size: 20px;
+      padding: 14px 20px;
+    }
+
+    .action {
+      border: 0;
+      background: var(--purple);
+      color: #fff;
+      border-radius: 15px;
+      padding: 12px 18px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 18px;
+    }
+
+    .action.pink { background: var(--pink); }
+    .action.green { background: var(--green); }
+
+    #randomBtn {
+      font-size: 15px;
+      padding: 9px 15px;
+      white-space: nowrap;
+    }
+    .action.secondary {
+      background: #eef0f4;
+      color: var(--ink);
+    }
+
+    .finish-guide {
+      margin-top: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .finish-guide strong {
+      color: var(--green);
+      font-weight: 950;
+      font-size: 17px;
+    }
+
+    .work-panel label {
+      font-size: 30px;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .work-panel .hint {
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .teacher-login-box {
+      max-width: 430px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .setting-box {
+      background: #fbfaf7;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: 1.1fr .8fr .8fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .bank {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .unit-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .unit-head {
+      background: #fbfaf7;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .unit-head h3 {
+      margin: 0 0 4px;
+      font-size: 18px;
+    }
+
+    .unit-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: var(--purple-light);
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .tag.C { background: #fff0f7; color: #d63384; }
+    .tag.O { background: #edf7ff; color: #1971c2; }
+    .tag.R { background: #eaf8f2; color: #2b8a3e; }
+    .tag.E { background: #fff2e6; color: #e67700; }
+
+    .q-group {
+      margin: 12px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .q-group-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .q-group-head strong { color: var(--purple); }
+
+    .q-list {
+      margin: 0;
+      padding: 10px 14px 12px 32px;
+    }
+
+    .q-list li { margin: 5px 0; }
+
+    .copy-mini {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 5px 9px;
+      cursor: pointer;
+      color: var(--muted);
+      font-weight: 800;
+      font-family: inherit;
+      font-size: 12px;
+    }
+
+    .link-grid {
+      display: grid;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .link-item {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 9px;
+      background: #fff;
+    }
+
+    .url-box {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 13px;
+      background: #f7f7f9;
+      border-radius: 10px;
+      padding: 7px 9px;
+    }
+
+    .notice {
+      background: #fff7e8;
+      border: 1px solid #f3d6a2;
+      color: #7a4b00;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(80px);
+      background: #202939;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transition: all .25s;
+      z-index: 99;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .hidden { display: none !important; }
+
+
+    @media (min-width: 1100px) {
+      h1 {
+        font-size: 52px;
+      }
+
+      .subtitle {
+        font-size: 19px;
+      }
+
+      .student-card {
+        max-width: 100%;
+      }
+
+      .action-row {
+        gap: 10px;
+      }
+
+      .type-btn {
+        min-height: 108px;
+      }
+
+      .type-intro {
+        min-height: 145px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      /*
+        실제 휴대폰 초소형 화면을 위한 예비 규칙입니다.
+        기본 발표/수업 화면은 가로형 고정 레이아웃을 유지합니다.
+      */
+      .filters, .link-item {
+        grid-template-columns: 1fr;
+      }
+      .tag-row { justify-content: flex-start; }
+    }
+
+    @media print {
+      .topbar, .action-row, .filters, .copy-mini, .teacher-login-box, .setting-box, .toast { display: none !important; }
+      body { background: #fff; }
+      header, .panel, .unit-card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><div class="brand-icon">Q</div> 수학 질문도움터</div>
+    <div class="mode-row">
+      <button class="mode-btn active" id="studentModeBtn" type="button">학생용</button>
+      <button class="mode-btn" id="teacherModeBtn" type="button">교사용</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="eyebrow" id="eyebrow">학생용</div>
+      <h1 id="mainTitle">오늘 수업 질문터</h1>
+      <p class="subtitle" id="mainSubtitle">질문 씨앗을 하나씩 참고해 나만의 질문으로 바꾸고, 질문노트에 직접 적어 봅니다.</p>
+    </header>
+
+    <main>
+      <section class="panel" id="studentPanel">
+        <div class="student-card">
+          <div class="panel-title">
+            <h2 id="studentTitle">막대그래프 질문터</h2>
+            <select id="studentLessonSelect" class="hidden" aria-hidden="true" tabindex="-1"></select>
+          </div>
+          <div class="lesson-message" id="lessonMessage"></div>
+
+          <div class="type-grid" id="typeGrid"></div>
+          <div class="type-intro" id="typeIntro"></div>
+
+          <div class="question-area">
+            <div>
+              <div class="panel-title question-seed-header">
+                <h2 id="questionTitle">질문 씨앗</h2>
+              </div>
+              <div class="question-cards" id="questionCards"></div>
+              <div class="seed-button-row seed-button-row-bottom">
+                <button class="action secondary" id="randomBtn" type="button">다른 질문 보기</button>
+              </div>
+            </div>
+
+            <aside class="work-panel">
+              <label for="studentQuestion">나만의 질문으로 바꾸기</label>
+              <p class="hint">질문 씨앗을 그대로 베끼지 말고, 오늘 수업과 내 생각에 맞게 바꾸어 보세요.</p>
+              <textarea id="studentQuestion" placeholder="질문 씨앗을 누른 뒤 내 말로 바꾸어 써 보세요."></textarea>
+              <div class="action-row action-row-center">
+                <button class="action green" id="makeNoteBtn" type="button">내 질문 완성하기</button>
+              </div>
+              <div class="finish-guide" id="finishGuide">
+                <strong>완성한 질문은 질문노트에 직접 적어 보세요.</strong>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="teacherPanel">
+        <div id="teacherLogin" class="teacher-login-box">
+          <div class="panel-title">
+            <h2>교사용 로그인</h2>
+          </div>
+          <label for="passwordInput">비밀번호</label>
+          <input id="passwordInput" type="password" placeholder="비밀번호를 입력하세요" />
+          <div class="action-row">
+            <button class="action pink" id="loginBtn" type="button">들어가기</button>
+            <button class="action secondary" id="backStudentBtn" type="button">학생용으로 돌아가기</button>
+          </div>
+          <p class="notice">이 비밀번호는 학생 화면을 단순히 구분하기 위한 장치입니다. 정식 보안 로그인은 아닙니다.</p>
+        </div>
+
+        <div id="teacherContent" class="teacher-grid hidden">
+          <section class="setting-box">
+            <div class="panel-title">
+              <h2>설정</h2>
+            </div>
+            <label for="publicLessonSelect">학생에게 보여줄 수업 선택</label>
+            <select id="publicLessonSelect"></select>
+            <div class="action-row">
+              <button class="action pink" id="applyStudentBtn" type="button">선택한 단원 학생용으로 보기</button>
+              <button class="action secondary" id="copyCurrentLinkBtn" type="button">선택한 단원 링크 복사</button>
+            </div>
+            <div class="notice">
+              현재 학생용은 고정형입니다. 학생은 단원이나 차시를 선택하지 않고, 교사가 제공한 링크에 해당하는 질문터만 봅니다.
+              지금은 데모형이라 단원별 링크로 운영하지만, 나중에는 같은 구조로 차시별 링크까지 세분화할 수 있습니다.
+            </div>
+
+            <div class="panel-title" style="margin-top:16px;">
+              <h2>단원별 고정 학생용 링크</h2>
+            </div>
+            <div class="link-grid" id="linkGrid"></div>
+          </section>
+
+          <section class="setting-box">
+            <div class="panel-title">
+              <h2>현재 질문은행</h2>
+            </div>
+            <div class="filters">
+              <div>
+                <label for="unitFilter">단원</label>
+                <select id="unitFilter"><option value="all">전체 단원</option></select>
+              </div>
+              <div>
+                <label for="programFilter">C·O·R·E</label>
+                <select id="programFilter">
+                  <option value="all">전체</option>
+                  <option value="C">C 질문 만들기</option>
+                  <option value="O">O 디지털-아날로그 이음</option>
+                  <option value="R">R 근거 설명하기</option>
+                  <option value="E">E 체험·놀이·표현</option>
+                </select>
+              </div>
+              <div>
+                <label for="typeFilter">질문 유형</label>
+                <select id="typeFilter">
+                  <option value="all">전체 유형</option>
+                  <option value="핵심질문">핵심질문</option>
+                  <option value="사실질문">사실질문</option>
+                  <option value="개념질문">개념질문</option>
+                  <option value="논쟁질문">논쟁질문</option>
+                  <option value="성찰질문">성찰질문</option>
+                </select>
+              </div>
+              <div>
+                <label for="searchInput">검색</label>
+                <input id="searchInput" placeholder="예: 막대그래프, 오답, 각도" />
+              </div>
+            </div>
+            <div class="action-row">
+              <button class="action" id="copyVisibleBtn" type="button">현재 보이는 질문 복사</button>
+              <button class="action secondary" id="resetFiltersBtn" type="button">전체 보기</button>
+              <button class="action secondary" id="printBtn" type="button">인쇄/PDF 저장</button>
+            </div>
+            <div class="bank" id="bank"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">완료되었습니다.</div>
+
+  <script>
+    const TEACHER_PASSWORD = "11111111";
+    const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "큰 수 질문터", "guide": "생활 속 큰 수를 보고, 읽고, 비교하며 궁금한 점을 질문으로 만들어 봅니다.", "focus": "생활 속 큰 수 자료를 보고 읽기·쓰기·자릿값·크기 비교 질문 만들기", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "각도 질문터", "guide": "우리 주변의 각을 찾고, 왜 예각·직각·둔각인지 근거를 들어 설명합니다.", "focus": "생활 속 각을 찾고 예각·직각·둔각 판단 근거 설명하기", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "곱셈과 나눗셈 질문터", "guide": "계산 과정에서 헷갈린 부분을 찾고, 오답을 바른 풀이로 고쳐 봅니다.", "focus": "계산 오답을 찾고 손풀이·검산·설명으로 보정하기", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "도형 이동 질문터", "guide": "도형을 밀고, 뒤집고, 돌리며 이동 전후의 변화를 질문으로 정리합니다.", "focus": "도형을 밀기·뒤집기·돌리기 하며 이동 미션 만들기", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "막대그래프 질문터", "guide": "우리 반을 자료로 알아보기 위한 질문을 만들고, 그래프로 나타내기 좋은 질문인지 생각합니다.", "focus": "우리 반 자료 탐구를 위한 조사 질문 만들기", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "규칙과 관계 질문터", "guide": "수, 모양, 식에서 규칙을 찾고 ‘왜 그렇게 되는지’ 질문으로 설명합니다.", "focus": "규칙을 찾고 왜 그렇게 되는지 질문과 설명으로 나타내기", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}}];
+    const questionTypes = ["핵심질문", "사실질문", "개념질문", "논쟁질문", "성찰질문"];
+    const questionTypeInfo = {
+      "핵심질문": {
+        short: "오늘 배움의 중심을 여는 큰 질문",
+        desc: "오늘 수업에서 가장 중요하게 생각할 큰 질문입니다.",
+        think: "오늘 배울 내용에서 가장 궁금한 한 가지를 떠올려 보세요."
+      },
+      "사실질문": {
+        short: "자료나 문제를 보고 바로 확인할 수 있는 질문",
+        desc: "눈으로 보거나 계산해서 바로 확인할 수 있는 질문입니다.",
+        think: "자료, 그림, 문제에서 바로 알 수 있는 것은 무엇인지 찾아보세요."
+      },
+      "개념질문": {
+        short: "수학 개념이나 원리를 묻는 질문",
+        desc: "왜 그런지, 어떤 원리가 숨어 있는지 생각하게 하는 질문입니다.",
+        think: "오늘 배운 수학 개념이 왜 그렇게 되는지 생각해 보세요."
+      },
+      "논쟁질문": {
+        short: "친구와 생각을 나눌 수 있는 질문",
+        desc: "정답만 바로 말하기보다 친구와 근거를 들어 이야기할 수 있는 질문입니다.",
+        think: "친구와 생각이 다를 수 있는 부분은 무엇인지 떠올려 보세요."
+      },
+      "성찰질문": {
+        short: "배운 점과 바뀐 생각을 돌아보는 질문",
+        desc: "수업 뒤에 내가 알게 된 점, 어려웠던 점, 더 궁금한 점을 돌아보는 질문입니다.",
+        think: "오늘 배운 뒤 내 생각이 어떻게 달라졌는지 떠올려 보세요."
+      }
+    };
+    const params = new URLSearchParams(location.search);
+
+    let selectedLessonId = resolveInitialLesson();
+    let selectedType = "핵심질문";
+    let currentQuestionIndex = 0;
+    let questionRevealed = false;
+    let teacherUnlocked = false;
+
+    const studentPanel = document.getElementById("studentPanel");
+    const teacherPanel = document.getElementById("teacherPanel");
+    const teacherLogin = document.getElementById("teacherLogin");
+    const teacherContent = document.getElementById("teacherContent");
+    const studentModeBtn = document.getElementById("studentModeBtn");
+    const teacherModeBtn = document.getElementById("teacherModeBtn");
+    const toast = document.getElementById("toast");
+
+    function resolveInitialLesson() {
+      const fromParam = params.get("lesson") || params.get("unit");
+      if (fromParam) {
+        const found = lessons.find(l => l.id === fromParam || l.slug === fromParam);
+        if (found) return found.id;
+      }
+      return localStorage.getItem("mq_publicLesson") || "unit5-bargraph";
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1600);
+    }
+
+    function getLesson(id = selectedLessonId) {
+      return lessons.find(l => l.id === id) || lessons[0];
+    }
+
+    function switchMode(mode) {
+      const isStudent = mode === "student";
+      studentModeBtn.classList.toggle("active", isStudent);
+      teacherModeBtn.classList.toggle("active", !isStudent);
+      studentPanel.classList.toggle("hidden", !isStudent);
+      teacherPanel.classList.toggle("hidden", isStudent);
+
+      document.getElementById("eyebrow").textContent = isStudent ? "학생용" : "교사용";
+      document.getElementById("mainTitle").textContent = isStudent ? "오늘 수업 질문터" : "교사용 질문은행";
+      document.getElementById("mainSubtitle").textContent = isStudent 
+        ? "질문 씨앗을 하나씩 참고해 나만의 질문으로 바꾸고, 질문노트에 직접 적어 봅니다."
+        : "전체 질문은행을 확인하고, 학생에게 제공할 고정형 학생용 링크를 복사할 수 있습니다.";
+
+      if (!isStudent && !teacherUnlocked) {
+        teacherLogin.classList.remove("hidden");
+        teacherContent.classList.add("hidden");
+        setTimeout(() => document.getElementById("passwordInput").focus(), 50);
+      }
+    }
+
+    function renderStudent() {
+      const lesson = getLesson();
+      document.getElementById("studentTitle").textContent = lesson.student_title;
+      document.getElementById("lessonMessage").innerHTML = `<strong>${lesson.unit}</strong><br>${lesson.guide}`;
+      renderTypes();
+      renderTypeIntro();
+      renderQuestions();
+      updatePreview();
+    }
+
+    function renderTypeIntro() {
+      const info = questionTypeInfo[selectedType];
+      const box = document.getElementById("typeIntro");
+      if (!box || !info) return;
+      box.innerHTML = `
+        <strong>${selectedType}은 어떤 질문일까요?</strong>
+        <p>${info.desc}</p>
+      `;
+    }
+
+    function renderTypes() {
+      const typeGrid = document.getElementById("typeGrid");
+      typeGrid.innerHTML = "";
+      questionTypes.forEach(t => {
+        const btn = document.createElement("button");
+        const colorClass = t === "핵심질문" ? "type-core" : (t === "성찰질문" ? "type-reflect" : "type-thinking");
+        btn.className = "type-btn " + colorClass + (t === selectedType ? " active" : "");
+        btn.type = "button";
+        btn.textContent = t;
+        btn.addEventListener("click", () => {
+          selectedType = t;
+          currentQuestionIndex = 0;
+          questionRevealed = false;
+          document.getElementById("studentQuestion").value = "";
+          updatePreview();
+          renderTypes();
+          renderTypeIntro();
+          renderQuestions();
+        });
+        typeGrid.appendChild(btn);
+      });
+    }
+
+    function renderQuestions() {
+      const lesson = getLesson();
+      const questions = lesson.questions[selectedType] || [];
+      document.getElementById("questionTitle").textContent = `${selectedType} 씨앗`;
+      const box = document.getElementById("questionCards");
+      box.innerHTML = "";
+
+      if (!questions.length) {
+        box.innerHTML = '<div class="q-card"><strong>준비된 질문 씨앗이 없습니다.</strong><small>교사용 질문은행에서 질문을 추가해 주세요.</small></div>';
+        return;
+      }
+
+      if (currentQuestionIndex >= questions.length) currentQuestionIndex = 0;
+      if (currentQuestionIndex < 0) currentQuestionIndex = 0;
+
+      const q = questions[currentQuestionIndex];
+      const card = document.createElement("div");
+
+      if (!questionRevealed) {
+        card.className = "q-card hidden-seed";
+        card.innerHTML = `
+          <div>
+            <strong>먼저 스스로 질문을 생각해 보세요.</strong>
+            <small>준비되면 네모 칸을 눌러 질문 씨앗을 확인합니다.</small>
+            <div class="open-label">질문 씨앗 보기</div>
+          </div>
+        `;
+        card.addEventListener("click", () => {
+          questionRevealed = true;
+          renderQuestions();
+        });
+      } else {
+        card.className = "q-card";
+        card.innerHTML = `<strong>${q}</strong><small>이 질문을 참고하려면 한 번 더 클릭하세요. 아래 입력창에 들어갑니다.</small>`;
+        card.addEventListener("click", () => {
+          document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
+          card.classList.add("selected");
+          document.getElementById("studentQuestion").value = q;
+          updatePreview();
+          document.getElementById("studentQuestion").focus();
+        });
+      }
+
+      box.appendChild(card);
+    }
+
+    function updatePreview() {
+      // 미리보기 박스는 제거했습니다. 입력창의 내용은 학생이 직접 질문노트에 옮겨 씁니다.
+      return;
+    }
+
+    function currentBaseUrl() {
+      return location.origin + location.pathname;
+    }
+
+    function studentUrlFor(lesson) {
+      return currentBaseUrl() + "?lesson=" + encodeURIComponent(lesson.slug);
+    }
+
+    function fillTeacherSelects() {
+      const unitFilter = document.getElementById("unitFilter");
+      const publicLessonSelect = document.getElementById("publicLessonSelect");
+      unitFilter.innerHTML = '<option value="all">전체 단원</option>';
+      publicLessonSelect.innerHTML = "";
+      lessons.forEach(l => {
+        const opt = document.createElement("option");
+        opt.value = l.id;
+        opt.textContent = l.unit;
+        unitFilter.appendChild(opt);
+
+        const popt = document.createElement("option");
+        popt.value = l.id;
+        popt.textContent = l.unit + " · " + l.student_title;
+        publicLessonSelect.appendChild(popt);
+      });
+      publicLessonSelect.value = selectedLessonId;
+    }
+
+    function renderLinks() {
+      const grid = document.getElementById("linkGrid");
+      grid.innerHTML = "";
+      lessons.forEach(l => {
+        const url = studentUrlFor(l);
+        const item = document.createElement("div");
+        item.className = "link-item";
+        item.innerHTML = `
+          <strong>${l.unit}</strong>
+          <div class="url-box">${url}</div>
+          <button class="copy-mini" type="button">복사</button>
+        `;
+        item.querySelector("button").addEventListener("click", () => copyText(url));
+        grid.appendChild(item);
+      });
+    }
+
+    function filteredLessons() {
+      const unit = document.getElementById("unitFilter").value;
+      const program = document.getElementById("programFilter").value;
+      const type = document.getElementById("typeFilter").value;
+      const keyword = document.getElementById("searchInput").value.trim();
+
+      return lessons
+        .filter(l => unit === "all" || l.id === unit)
+        .filter(l => program === "all" || l.program === program)
+        .map(l => {
+          const qObj = {};
+          Object.entries(l.questions).forEach(([t, arr]) => {
+            if (type !== "all" && t !== type) return;
+            const filtered = keyword 
+              ? arr.filter(q => q.includes(keyword) || l.unit.includes(keyword) || l.focus.includes(keyword))
+              : arr;
+            if (filtered.length) qObj[t] = filtered;
+          });
+          return {...l, questions: qObj};
+        })
+        .filter(l => Object.keys(l.questions).length);
+    }
+
+    function renderBank() {
+      const data = filteredLessons();
+      const bank = document.getElementById("bank");
+      bank.innerHTML = "";
+      if (!data.length) {
+        bank.innerHTML = '<div class="unit-card"><div class="unit-head"><h3>검색 결과가 없습니다.</h3><p>필터를 다시 확인하세요.</p></div></div>';
+        return;
+      }
+      data.forEach(lesson => {
+        const count = Object.values(lesson.questions).reduce((a, arr) => a + arr.length, 0);
+        const card = document.createElement("article");
+        card.className = "unit-card";
+        const groups = Object.entries(lesson.questions).map(([type, arr]) => `
+          <div class="q-group">
+            <div class="q-group-head">
+              <strong>${type}</strong>
+              <button class="copy-mini" type="button" onclick="copyText(${JSON.stringify(arr.join('\n'))})">유형 복사</button>
+            </div>
+            <ol class="q-list">${arr.map(q => `<li>${q}</li>`).join("")}</ol>
+          </div>
+        `).join("");
+        card.innerHTML = `
+          <div class="unit-head">
+            <div>
+              <h3>${lesson.unit}</h3>
+              <p>${lesson.focus}</p>
+            </div>
+            <div class="tag-row">
+              <span class="tag ${lesson.program}">${lesson.program} · ${lesson.program_name}</span>
+              <span class="tag">${count}개 질문</span>
+            </div>
+          </div>
+          ${groups}
+        `;
+        bank.appendChild(card);
+      });
+    }
+
+    function visibleQuestionText() {
+      return filteredLessons().map(lesson => {
+        const groups = Object.entries(lesson.questions).map(([type, arr]) => {
+          return `[${type}]\n` + arr.map((q, i) => `${i+1}. ${q}`).join("\n");
+        }).join("\n\n");
+        return `${lesson.unit} / ${lesson.program} ${lesson.program_name}\n${groups}`;
+      }).join("\n\n--------------------\n\n");
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("복사되었습니다.");
+      } catch (e) {
+        showToast("복사가 어려우면 직접 선택해서 복사하세요.");
+      }
+    }
+
+    function unlockTeacher() {
+      const pw = document.getElementById("passwordInput").value;
+      if (pw === TEACHER_PASSWORD) {
+        teacherUnlocked = true;
+        teacherLogin.classList.add("hidden");
+        teacherContent.classList.remove("hidden");
+        fillTeacherSelects();
+        renderLinks();
+        renderBank();
+        showToast("교사용 화면을 열었습니다.");
+      } else {
+        showToast("비밀번호가 맞지 않습니다.");
+      }
+    }
+
+    studentModeBtn.addEventListener("click", () => switchMode("student"));
+    teacherModeBtn.addEventListener("click", () => switchMode("teacher"));
+    document.getElementById("loginBtn").addEventListener("click", unlockTeacher);
+    document.getElementById("passwordInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") unlockTeacher();
+    });
+    document.getElementById("backStudentBtn").addEventListener("click", () => switchMode("student"));
+
+    document.getElementById("publicLessonSelect").addEventListener("change", (e) => {
+      localStorage.setItem("mq_publicLesson", e.target.value);
+    });
+    document.getElementById("applyStudentBtn").addEventListener("click", () => {
+      selectedLessonId = document.getElementById("publicLessonSelect").value;
+      localStorage.setItem("mq_publicLesson", selectedLessonId);
+      document.getElementById("studentQuestion").value = "";
+      selectedType = "핵심질문";
+      currentQuestionIndex = 0;
+      questionRevealed = false;
+      renderStudent();
+      switchMode("student");
+    });
+    document.getElementById("copyCurrentLinkBtn").addEventListener("click", () => {
+      const lesson = getLesson(document.getElementById("publicLessonSelect").value);
+      copyText(studentUrlFor(lesson));
+    });
+
+    ["unitFilter", "programFilter", "typeFilter"].forEach(id => {
+      document.getElementById(id).addEventListener("change", renderBank);
+    });
+    document.getElementById("searchInput").addEventListener("input", renderBank);
+    document.getElementById("copyVisibleBtn").addEventListener("click", () => copyText(visibleQuestionText()));
+    document.getElementById("resetFiltersBtn").addEventListener("click", () => {
+      document.getElementById("unitFilter").value = "all";
+      document.getElementById("programFilter").value = "all";
+      document.getElementById("typeFilter").value = "all";
+      document.getElementById("searchInput").value = "";
+      renderBank();
+    });
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+    document.getElementById("studentQuestion").addEventListener("input", updatePreview);
+    document.getElementById("makeNoteBtn").addEventListener("click", () => {
+      updatePreview();
+      showToast("내 질문이 완성되었습니다. 질문노트에 직접 적어 보세요.");
+    });
+    const copyBtn = document.getElementById("copyBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", () => {
+        const value = document.getElementById("studentQuestion").value.trim();
+        if (!value) return showToast("복사할 질문을 먼저 써 주세요.");
+        copyText(value);
+      });
+    }
+    const clearBtn = document.getElementById("clearBtn");
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        document.getElementById("studentQuestion").value = "";
+        document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
+        updatePreview();
+        showToast("입력창을 비웠습니다.");
+      });
+    }
+    document.getElementById("randomBtn").addEventListener("click", () => {
+      const lesson = getLesson();
+      const arr = lesson.questions[selectedType] || [];
+      if (!arr.length) return;
+      currentQuestionIndex = (currentQuestionIndex + 1) % arr.length;
+      questionRevealed = false;
+      document.getElementById("studentQuestion").value = "";
+      document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
+      updatePreview();
+      renderQuestions();
+      showToast("먼저 스스로 생각한 뒤 질문 씨앗을 열어 보세요.");
+    });
+
+    renderStudent();
+  </script>
+</body>
+</html>
