@@ -2916,6 +2916,190 @@
       text-align: center;
     }
 
+    /* 2026-06-30 학생 작품관 */
+    .gallery-shell {
+      background:
+        radial-gradient(circle at 0% 0%, rgba(240, 62, 146, .10), transparent 28%),
+        radial-gradient(circle at 100% 0%, rgba(79, 70, 229, .10), transparent 30%),
+        linear-gradient(135deg, #fff 0%, #fff7fb 48%, #f2fbf7 100%);
+      border: 1px solid rgba(240, 62, 146, .14);
+      border-radius: 24px;
+      padding: 18px;
+    }
+
+    .gallery-title-row {
+      align-items: flex-start;
+    }
+
+    .gallery-subtitle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .gallery-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid rgba(47, 143, 107, .20);
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .gallery-filter-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 14px;
+      margin: 14px 0 16px;
+    }
+
+    .gallery-filter-action {
+      display: flex;
+      align-items: end;
+      height: 100%;
+    }
+
+    .gallery-filter-action .action {
+      min-width: 118px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .gallery-status {
+      color: var(--muted);
+      font-weight: 850;
+      margin: 8px 4px 14px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .student-work-card {
+      position: relative;
+      min-height: 210px;
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(233, 223, 214, .95);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 12px 26px rgba(37, 48, 69, .08);
+      overflow: hidden;
+    }
+
+    .student-work-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 7px;
+      background: var(--pink);
+      border-radius: 22px 0 0 22px;
+    }
+
+    .student-work-card.seed-thinking::before {
+      background: #4F46E5;
+    }
+
+    .student-work-card.seed-reflect::before {
+      background: var(--green);
+    }
+
+    .work-card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      margin-left: 4px;
+    }
+
+    .work-unit {
+      font-size: 18px;
+      font-weight: 950;
+      letter-spacing: -.4px;
+      color: var(--ink);
+    }
+
+    .work-student-no {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: var(--pink-light);
+      color: var(--pink);
+      border: 1px solid rgba(240, 62, 146, .18);
+      padding: 5px 10px;
+      font-weight: 950;
+      font-size: 13px;
+    }
+
+    .work-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 12px 0 12px 4px;
+    }
+
+    .work-chip {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #EEF2FF;
+      color: #4F46E5;
+      border: 1px solid rgba(79, 70, 229, .16);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .work-chip.lesson {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: rgba(47, 143, 107, .18);
+    }
+
+    .work-question {
+      margin: 0 0 0 4px;
+      padding: 14px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fff 0%, #fff7fb 100%);
+      border: 1px dashed rgba(240, 62, 146, .22);
+      font-size: 17px;
+      font-weight: 850;
+      line-height: 1.62;
+      word-break: keep-all;
+    }
+
+    .empty-gallery {
+      grid-column: 1 / -1;
+      background: rgba(255,255,255,.9);
+      border: 1px dashed rgba(240, 62, 146, .32);
+      border-radius: 22px;
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-filter-box {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -2923,6 +3107,7 @@
     <div class="brand"><div class="brand-icon">Q</div> 깊이있는 이음, CORE 프로그램</div>
     <div class="mode-row">
       <button class="mode-btn active" id="studentModeBtn" type="button">학생용</button>
+      <button class="mode-btn" id="galleryModeBtn" type="button">학생 작품관</button>
       <button class="mode-btn" id="teacherModeBtn" type="button">교사용</button>
     </div>
   </div>
@@ -2965,8 +3150,8 @@
               <p class="hint">질문 씨앗을 내 생각에 맞게 바꾸어 보세요.</p>
               <textarea id="studentQuestion" placeholder="질문 씨앗을 누른 뒤 내 말로 바꾸어 써 보세요."></textarea>
               <div class="student-info-row" aria-label="학생 정보 입력">
-                <input id="studentNo" type="text" inputmode="numeric" autocomplete="off" placeholder="번호:" / data-clear-on-load="true">
-                <input id="studentName" type="text" autocomplete="off" placeholder="이름:" / data-clear-on-load="true">
+                <input id="studentNo" type="text" inputmode="numeric" autocomplete="off" placeholder="번호:" data-clear-on-load="true" />
+                <input id="studentName" type="text" autocomplete="off" placeholder="이름:" data-clear-on-load="true" />
               </div>
               <div class="action-row work-action-row">
                 <button class="action green" id="makeNoteBtn" type="button">내 질문 완성하기</button>
@@ -3061,6 +3246,40 @@
           </section>
         </div>
       </section>
+
+
+      <section class="panel hidden" id="galleryPanel">
+        <div class="gallery-shell">
+          <div class="panel-title gallery-title-row">
+            <div>
+              <h2>학생 작품관</h2>
+              <p class="gallery-subtitle">우리 반 친구들이 만든 질문을 단원과 씨앗별로 살펴봅니다.</p>
+            </div>
+            <div class="gallery-badge">질문으로 이어지는 배움</div>
+          </div>
+
+          <div class="gallery-filter-box">
+            <div>
+              <label for="galleryUnitFilter">단원별 보기</label>
+              <select id="galleryUnitFilter">
+                <option value="all">전체 단원</option>
+              </select>
+            </div>
+            <div>
+              <label for="gallerySeedFilter">씨앗별 보기</label>
+              <select id="gallerySeedFilter">
+                <option value="all">전체 씨앗</option>
+              </select>
+            </div>
+            <div class="gallery-filter-action">
+              <button class="action secondary" id="galleryResetBtn" type="button">전체 보기</button>
+            </div>
+          </div>
+
+          <div class="gallery-status" id="galleryStatus">Google Sheets의 실제 제출 데이터를 불러오는 중입니다.</div>
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -3112,12 +3331,27 @@
 
     const studentPanel = document.getElementById("studentPanel");
     const teacherPanel = document.getElementById("teacherPanel");
+    const galleryPanel = document.getElementById("galleryPanel");
     const teacherLogin = document.getElementById("teacherLogin");
     const teacherContent = document.getElementById("teacherContent");
     const studentModeBtn = document.getElementById("studentModeBtn");
+    const galleryModeBtn = document.getElementById("galleryModeBtn");
     const teacherModeBtn = document.getElementById("teacherModeBtn");
     const toast = document.getElementById("toast");
+    const STUDENT_WORKS_JSON_URL = ""; // 학생 작품관은 Google Sheets 실제 제출 데이터만 사용
+    let studentWorksData = [];
+    let galleryLoaded = false;
 
+
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
 
     function safeGetPublicLesson() {
       try {
@@ -3181,22 +3415,175 @@
 
     function switchMode(mode) {
       const isStudent = mode === "student";
+      const isGallery = mode === "gallery";
+      const isTeacher = mode === "teacher";
+
       studentModeBtn.classList.toggle("active", isStudent);
-      teacherModeBtn.classList.toggle("active", !isStudent);
+      if (galleryModeBtn) galleryModeBtn.classList.toggle("active", isGallery);
+      teacherModeBtn.classList.toggle("active", isTeacher);
+
       studentPanel.classList.toggle("hidden", !isStudent);
-      teacherPanel.classList.toggle("hidden", isStudent);
+      if (galleryPanel) galleryPanel.classList.toggle("hidden", !isGallery);
+      teacherPanel.classList.toggle("hidden", !isTeacher);
 
-      document.getElementById("eyebrow").textContent = isStudent ? "학생용" : "교사용";
-      document.getElementById("mainTitle").textContent = isStudent ? "질문이음터" : "교사용 질문은행";
-      document.getElementById("mainSubtitle").textContent = isStudent 
-        ? "5가지 질문 씨앗으로 자라는 나의 질문"
-        : "전체 질문은행을 확인하고, 학생에게 제공할 고정형 학생용 링크를 복사할 수 있습니다.";
+      const eyebrow = document.getElementById("eyebrow");
+      const mainTitle = document.getElementById("mainTitle");
+      const mainSubtitle = document.getElementById("mainSubtitle");
 
-      if (!isStudent && !teacherUnlocked) {
+      if (isStudent) {
+        eyebrow.textContent = "학생용";
+        mainTitle.textContent = "질문이음터";
+        mainSubtitle.textContent = "5가지 질문 씨앗으로 자라는 나의 질문";
+      } else if (isGallery) {
+        eyebrow.textContent = "학생 작품관";
+        mainTitle.textContent = "질문 작품관";
+        mainSubtitle.textContent = "친구들이 만든 질문을 살펴보며 내 질문을 더 깊게 이어 갑니다.";
+        loadStudentWorks();
+      } else {
+        eyebrow.textContent = "교사용";
+        mainTitle.textContent = "교사용 질문은행";
+        mainSubtitle.textContent = "전체 질문은행을 확인하고, 학생에게 제공할 고정형 학생용 링크를 복사할 수 있습니다.";
+      }
+
+      if (isTeacher && !teacherUnlocked) {
         teacherLogin.classList.remove("hidden");
         teacherContent.classList.add("hidden");
         setTimeout(() => document.getElementById("passwordInput").focus(), 50);
       }
+    }
+
+
+    const sampleStudentWorks = [];
+
+    function normalizeStudentWork(item) {
+      return {
+        unit: item.unit || item.unitName || item["단원"] || "단원 미지정",
+        lesson: item.lesson || item.lessonName || item["차시"] || item["수업 주제"] || "수업 주제 미지정",
+        seed: item.seed || item.seedLabel || item.seedType || item["씨앗 종류"] || "씨앗 미지정",
+        studentNo: item.studentNo || item.no || item.number || item["학번"] || item["번호"] || "",
+        question: item.question || item["학생 질문"] || item["질문"] || ""
+      };
+    }
+
+    function getSeedCardClass(seed) {
+      if (String(seed).includes("성찰") || String(seed).includes("거울")) return "seed-reflect";
+      if (String(seed).includes("사실") || String(seed).includes("개념") || String(seed).includes("논쟁") || String(seed).includes("찾기") || String(seed).includes("까닭") || String(seed).includes("의견")) return "seed-thinking";
+      return "seed-core";
+    }
+
+
+    function loadStudentWorksFromGoogleSheets() {
+      return new Promise((resolve, reject) => {
+        if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
+          resolve([]);
+          return;
+        }
+
+        const callbackName = "__questionGalleryCallback_" + Date.now();
+        const script = document.createElement("script");
+        const separator = APPS_SCRIPT_WEB_APP_URL.includes("?") ? "&" : "?";
+        const timeoutId = setTimeout(() => {
+          cleanup();
+          reject(new Error("학생 작품관 데이터를 불러오는 시간이 초과되었습니다."));
+        }, 8000);
+
+        function cleanup() {
+          clearTimeout(timeoutId);
+          delete window[callbackName];
+          if (script.parentNode) script.parentNode.removeChild(script);
+        }
+
+        window[callbackName] = (result) => {
+          cleanup();
+          const works = Array.isArray(result) ? result : (result && Array.isArray(result.works) ? result.works : []);
+          resolve(works);
+        };
+
+        script.onerror = () => {
+          cleanup();
+          reject(new Error("Google Sheets 데이터를 불러오지 못했습니다."));
+        };
+
+        script.src = `${APPS_SCRIPT_WEB_APP_URL}${separator}mode=gallery&callback=${callbackName}&v=${Date.now()}`;
+        document.body.appendChild(script);
+      });
+    }
+
+    async function loadStudentWorks() {
+      if (galleryLoaded) {
+        renderStudentGallery();
+        return;
+      }
+
+      const status = document.getElementById("galleryStatus");
+      if (status) status.textContent = "Google Sheets의 실제 제출 데이터를 불러오는 중입니다.";
+
+      try {
+        const rawWorks = await loadStudentWorksFromGoogleSheets();
+        studentWorksData = rawWorks.map(normalizeStudentWork).filter(item => item.question);
+      } catch (error) {
+        console.warn(error);
+        studentWorksData = [];
+      }
+
+      galleryLoaded = true;
+      setupGalleryFilters();
+      renderStudentGallery();
+    }
+
+    function setupGalleryFilters() {
+      const unitFilter = document.getElementById("galleryUnitFilter");
+      const seedFilter = document.getElementById("gallerySeedFilter");
+      if (!unitFilter || !seedFilter) return;
+
+      const currentUnit = unitFilter.value || "all";
+      const currentSeed = seedFilter.value || "all";
+
+      const units = [...new Set(studentWorksData.map(item => item.unit).filter(Boolean))];
+      const seeds = [...new Set(studentWorksData.map(item => item.seed).filter(Boolean))];
+
+      unitFilter.innerHTML = '<option value="all">전체 단원</option>' + units.map(unit => `<option value="${escapeHtml(unit)}">${escapeHtml(unit)}</option>`).join("");
+      seedFilter.innerHTML = '<option value="all">전체 씨앗</option>' + seeds.map(seed => `<option value="${escapeHtml(seed)}">${escapeHtml(seed)}</option>`).join("");
+
+      if (units.includes(currentUnit)) unitFilter.value = currentUnit;
+      if (seeds.includes(currentSeed)) seedFilter.value = currentSeed;
+    }
+
+    function filteredStudentWorks() {
+      const unit = document.getElementById("galleryUnitFilter")?.value || "all";
+      const seed = document.getElementById("gallerySeedFilter")?.value || "all";
+
+      return studentWorksData
+        .filter(item => unit === "all" || item.unit === unit)
+        .filter(item => seed === "all" || item.seed === seed);
+    }
+
+    function renderStudentGallery() {
+      const grid = document.getElementById("galleryGrid");
+      const status = document.getElementById("galleryStatus");
+      if (!grid || !status) return;
+
+      const data = filteredStudentWorks();
+      status.textContent = `총 ${data.length}개의 질문 작품을 보고 있습니다.`;
+
+      if (!data.length) {
+        grid.innerHTML = '<div class="empty-gallery">아직 학생 작품관에 등록된 질문이 없습니다. student-works.json에 질문을 추가해 주세요.</div>';
+        return;
+      }
+
+      grid.innerHTML = data.map(item => `
+        <article class="student-work-card ${getSeedCardClass(item.seed)}">
+          <div class="work-card-top">
+            <div class="work-unit">${escapeHtml(item.unit)}</div>
+            <div class="work-student-no">학번 ${escapeHtml(item.studentNo || "-")}</div>
+          </div>
+          <div class="work-meta">
+            <span class="work-chip lesson">차시 · ${escapeHtml(item.lesson)}</span>
+            <span class="work-chip">${escapeHtml(item.seed)}</span>
+          </div>
+          <p class="work-question">${escapeHtml(item.question)}</p>
+        </article>
+      `).join("");
     }
 
     function renderStudent() {
@@ -3495,7 +3882,23 @@
     }
 
     studentModeBtn.addEventListener("click", () => switchMode("student"));
+    if (galleryModeBtn) galleryModeBtn.addEventListener("click", () => switchMode("gallery"));
     teacherModeBtn.addEventListener("click", () => switchMode("teacher"));
+
+    ["galleryUnitFilter", "gallerySeedFilter"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("change", renderStudentGallery);
+    });
+
+    const galleryResetBtn = document.getElementById("galleryResetBtn");
+    if (galleryResetBtn) {
+      galleryResetBtn.addEventListener("click", () => {
+        document.getElementById("galleryUnitFilter").value = "all";
+        document.getElementById("gallerySeedFilter").value = "all";
+        renderStudentGallery();
+      });
+    }
+
     document.getElementById("loginBtn").addEventListener("click", unlockTeacher);
     document.getElementById("passwordInput").addEventListener("keydown", (e) => {
       if (e.key === "Enter") unlockTeacher();
@@ -3522,14 +3925,7 @@
     }
 
     function loadStudentInfo() {
-      try {
-        const no = localStorage.getItem("questionEumteoStudentNo") || "";
-        const name = localStorage.getItem("questionEumteoStudentName") || "";
-        const noInput = document.getElementById("studentNo");
-        const nameInput = document.getElementById("studentName");
-        if (noInput) noInput.value = no;
-        if (nameInput) nameInput.value = name;
-      } catch (error) {}
+      clearStudentIdentityFields();
     }
 
     function getSelectedSeedLabel() {
