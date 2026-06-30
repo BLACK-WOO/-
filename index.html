@@ -3090,6 +3090,53 @@
       font-weight: 900;
     }
 
+
+    /* 2026-06-30 학생 작품관 씨앗별 3색 구분 강화 */
+    .student-work-card.seed-core::before {
+      background: var(--pink);
+    }
+
+    .student-work-card.seed-thinking::before {
+      background: #4F46E5;
+    }
+
+    .student-work-card.seed-reflect::before {
+      background: var(--green);
+    }
+
+    .student-work-card.seed-core .work-chip.seed-chip {
+      background: var(--pink-light);
+      color: var(--pink);
+      border-color: rgba(240, 62, 146, .22);
+    }
+
+    .student-work-card.seed-thinking .work-chip.seed-chip {
+      background: #EEF2FF;
+      color: #4F46E5;
+      border-color: rgba(79, 70, 229, .20);
+    }
+
+    .student-work-card.seed-reflect .work-chip.seed-chip {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: rgba(47, 143, 107, .22);
+    }
+
+    .student-work-card.seed-core .work-question {
+      border-color: rgba(240, 62, 146, .24);
+      background: linear-gradient(135deg, #fff 0%, #fff7fb 100%);
+    }
+
+    .student-work-card.seed-thinking .work-question {
+      border-color: rgba(79, 70, 229, .24);
+      background: linear-gradient(135deg, #fff 0%, #F8FAFF 100%);
+    }
+
+    .student-work-card.seed-reflect .work-question {
+      border-color: rgba(47, 143, 107, .24);
+      background: linear-gradient(135deg, #fff 0%, #F4FEFA 100%);
+    }
+
     @media (max-width: 900px) {
       .gallery-filter-box {
         grid-template-columns: 1fr;
@@ -3098,6 +3145,584 @@
       .gallery-grid {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* 2026-06-30 화면 높이 미세 압축: 상단 제목틀·질문씨앗 탭·씨앗 설명틀 */
+    header {
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+
+    .title-row {
+      min-height: 52px;
+    }
+
+    h1 {
+      line-height: 1.04;
+    }
+
+    .subtitle {
+      margin-top: 2px;
+      font-size: 16px;
+      line-height: 1.38;
+    }
+
+    .type-grid {
+      margin-top: 14px;
+      gap: 12px;
+    }
+
+    .type-btn {
+      min-height: 84px;
+      padding: 13px 10px;
+      font-size: 23px;
+      border-radius: 18px;
+    }
+
+    .type-intro {
+      margin-top: 12px;
+      min-height: 132px;
+      padding: 19px 24px;
+      border-radius: 20px;
+    }
+
+    .type-intro strong {
+      font-size: 32px;
+      margin-bottom: 8px;
+      line-height: 1.18;
+    }
+
+    .type-intro p {
+      margin-top: 6px;
+      font-size: 20px;
+      line-height: 1.48;
+    }
+
+    /* 2026-06-30 씨앗 설명틀 여백 추가 축소 */
+    .type-intro {
+      min-height: 104px;
+      padding: 13px 22px;
+    }
+
+    .type-intro strong {
+      margin-bottom: 4px;
+      line-height: 1.12;
+    }
+
+    .type-intro p {
+      margin-top: 3px;
+      line-height: 1.34;
+    }
+
+    /* 2026-06-30 씨앗 설명 박스 세로폭 추가 축소 */
+    .type-intro {
+      min-height: 84px;
+      padding: 9px 20px;
+    }
+
+    .type-intro strong {
+      font-size: 30px;
+      margin-bottom: 2px;
+      line-height: 1.08;
+    }
+
+    .type-intro p {
+      font-size: 19px;
+      margin-top: 2px;
+      line-height: 1.28;
+    }
+
+    /* 2026-06-30 '다른 질문 보기' 버튼 위치 위로 이동 */
+    .seed-display-card {
+      min-height: 340px;
+      padding-bottom: 26px;
+    }
+
+    .seed-display-card .seed-button-row-bottom {
+      margin-top: 34px;
+      margin-bottom: 0;
+    }
+
+    .seed-display-card .seed-button-row-bottom .action {
+      transform: translateY(-42px);
+    }
+
+    /* 2026-06-30 '다른 질문 보기' 버튼만 추가 위로 이동 */
+    .seed-display-card .seed-button-row-bottom .action {
+      transform: translateY(-84px);
+    }
+
+    /* 2026-06-30 제출 경고창 크게/상단 표시 */
+    .big-alert-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 92px;
+      background: rgba(23, 33, 58, .24);
+      backdrop-filter: blur(3px);
+    }
+
+    .big-alert-overlay.show {
+      display: flex;
+    }
+
+    .big-alert-box {
+      width: 560px;
+      max-width: calc(100vw - 40px);
+      min-height: 190px;
+      background: #fff;
+      border: 3px solid var(--pink);
+      border-radius: 28px;
+      box-shadow: 0 28px 70px rgba(37, 48, 69, .28);
+      padding: 30px 34px 26px;
+      text-align: center;
+      animation: bigAlertPop .18s ease-out;
+    }
+
+    .big-alert-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 12px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--pink-light);
+      color: var(--pink);
+      font-size: 34px;
+      font-weight: 950;
+    }
+
+    .big-alert-message {
+      color: var(--ink);
+      font-size: 30px;
+      font-weight: 950;
+      line-height: 1.32;
+      letter-spacing: -0.8px;
+      word-break: keep-all;
+    }
+
+    .big-alert-close {
+      margin-top: 22px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 30px;
+      background: var(--pink);
+      color: white;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(240, 62, 146, .22);
+    }
+
+    @keyframes bigAlertPop {
+      from {
+        opacity: 0;
+        transform: translateY(-12px) scale(.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* 2026-06-30 씨앗 이모지 표시 미세 조정 */
+    .type-btn .type-alias,
+    .seed-inner-title .alias-line,
+    .type-intro strong {
+      letter-spacing: -0.2px;
+    }
+
+    .type-btn .type-icon,
+    .seed-inner-title .type-icon,
+    .type-intro .type-icon-inline {
+      margin-right: 6px;
+    }
+
+    /* 2026-06-30 제출 경고창 초대형/상단 강화 */
+    .big-alert-overlay {
+      padding-top: 18px;
+      background: rgba(23, 33, 58, .32);
+    }
+
+    .big-alert-box {
+      width: 920px;
+      max-width: calc(100vw - 48px);
+      min-height: 390px;
+      border-width: 5px;
+      border-radius: 36px;
+      padding: 54px 58px 46px;
+      box-shadow: 0 36px 90px rgba(37, 48, 69, .34);
+    }
+
+    .big-alert-icon {
+      width: 98px;
+      height: 98px;
+      margin-bottom: 22px;
+      font-size: 58px;
+    }
+
+    .big-alert-message {
+      font-size: 52px;
+      line-height: 1.28;
+      letter-spacing: -1.6px;
+    }
+
+    .big-alert-close {
+      margin-top: 36px;
+      padding: 18px 52px;
+      font-size: 28px;
+      border-radius: 999px;
+    }
+
+    .big-alert-helper {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 23px;
+      font-weight: 850;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 900px) {
+      .big-alert-overlay {
+        padding-top: 12px;
+      }
+
+      .big-alert-box {
+        width: calc(100vw - 32px);
+        min-height: 320px;
+        padding: 38px 28px 34px;
+      }
+
+      .big-alert-icon {
+        width: 78px;
+        height: 78px;
+        font-size: 46px;
+      }
+
+      .big-alert-message {
+        font-size: 38px;
+      }
+
+      .big-alert-close {
+        font-size: 23px;
+      }
+    }
+
+    /* 2026-06-30 경고창 위치 재조정: 질문 입력칸 근처에 크게 표시 */
+    .big-alert-overlay {
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 260px;
+      background: rgba(23, 33, 58, .38);
+      backdrop-filter: blur(4px);
+    }
+
+    .big-alert-box {
+      width: 1080px;
+      max-width: calc(100vw - 52px);
+      min-height: 470px;
+      border-width: 6px;
+      border-radius: 42px;
+      padding: 64px 68px 58px;
+      box-shadow: 0 42px 110px rgba(37, 48, 69, .42);
+    }
+
+    .big-alert-icon {
+      width: 118px;
+      height: 118px;
+      margin-bottom: 28px;
+      font-size: 72px;
+    }
+
+    .big-alert-message {
+      font-size: 66px;
+      line-height: 1.22;
+      letter-spacing: -2px;
+    }
+
+    .big-alert-helper {
+      margin-top: 24px;
+      font-size: 30px;
+      line-height: 1.42;
+    }
+
+    .big-alert-close {
+      margin-top: 42px;
+      padding: 22px 68px;
+      font-size: 34px;
+    }
+
+    @media (max-width: 900px) {
+      .big-alert-overlay {
+        padding-top: 220px;
+      }
+
+      .big-alert-box {
+        width: calc(100vw - 28px);
+        min-height: 400px;
+        padding: 48px 28px 42px;
+      }
+
+      .big-alert-icon {
+        width: 92px;
+        height: 92px;
+        font-size: 56px;
+      }
+
+      .big-alert-message {
+        font-size: 44px;
+      }
+
+      .big-alert-helper {
+        font-size: 24px;
+      }
+
+      .big-alert-close {
+        font-size: 26px;
+        padding: 18px 52px;
+      }
+    }
+
+    /* 2026-06-30 경고창 최종: 초대형, 질문칸 높이까지 상향, 40초 유지 */
+    .big-alert-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      padding-top: 220px !important;
+      background: rgba(23, 33, 58, .42) !important;
+      backdrop-filter: blur(5px) !important;
+    }
+
+    .big-alert-box {
+      width: 1120px !important;
+      max-width: calc(100vw - 24px) !important;
+      min-height: 560px !important;
+      border-width: 7px !important;
+      border-radius: 46px !important;
+      padding: 72px 78px 64px !important;
+      box-shadow: 0 48px 120px rgba(37, 48, 69, .48) !important;
+    }
+
+    .big-alert-icon {
+      width: 132px !important;
+      height: 132px !important;
+      margin-bottom: 32px !important;
+      font-size: 82px !important;
+    }
+
+    .big-alert-message {
+      font-size: 76px !important;
+      line-height: 1.18 !important;
+      letter-spacing: -2.4px !important;
+      word-break: keep-all !important;
+    }
+
+    .big-alert-helper {
+      margin-top: 30px !important;
+      font-size: 36px !important;
+      line-height: 1.38 !important;
+      word-break: keep-all !important;
+    }
+
+    .big-alert-close {
+      margin-top: 48px !important;
+      padding: 26px 82px !important;
+      font-size: 40px !important;
+      border-radius: 999px !important;
+    }
+
+    @media (max-width: 900px) {
+      .big-alert-overlay {
+        padding-top: 170px !important;
+      }
+
+      .big-alert-box {
+        width: calc(100vw - 18px) !important;
+        min-height: 470px !important;
+        padding: 54px 24px 48px !important;
+      }
+
+      .big-alert-icon {
+        width: 100px !important;
+        height: 100px !important;
+        font-size: 62px !important;
+      }
+
+      .big-alert-message {
+        font-size: 48px !important;
+      }
+
+      .big-alert-helper {
+        font-size: 27px !important;
+      }
+
+      .big-alert-close {
+        font-size: 30px !important;
+        padding: 20px 64px !important;
+      }
+    }
+
+    /* 2026-06-30 경고창 면적 1/4 수준 축소 */
+    .big-alert-overlay {
+      padding-top: 220px !important;
+    }
+
+    .big-alert-box {
+      width: 560px !important;
+      max-width: calc(100vw - 36px) !important;
+      min-height: 280px !important;
+      border-width: 4px !important;
+      border-radius: 32px !important;
+      padding: 36px 42px 34px !important;
+      box-shadow: 0 34px 88px rgba(37, 48, 69, .38) !important;
+    }
+
+    .big-alert-icon {
+      width: 72px !important;
+      height: 72px !important;
+      margin-bottom: 16px !important;
+      font-size: 44px !important;
+    }
+
+    .big-alert-message {
+      font-size: 40px !important;
+      line-height: 1.22 !important;
+      letter-spacing: -1.2px !important;
+      word-break: keep-all !important;
+    }
+
+    .big-alert-helper {
+      margin-top: 14px !important;
+      font-size: 21px !important;
+      line-height: 1.36 !important;
+      word-break: keep-all !important;
+    }
+
+    .big-alert-close {
+      margin-top: 24px !important;
+      padding: 14px 44px !important;
+      font-size: 22px !important;
+      border-radius: 999px !important;
+    }
+
+    @media (max-width: 900px) {
+      .big-alert-overlay {
+        padding-top: 170px !important;
+      }
+
+      .big-alert-box {
+        width: calc(100vw - 34px) !important;
+        min-height: 260px !important;
+        padding: 32px 24px 30px !important;
+      }
+
+      .big-alert-icon {
+        width: 64px !important;
+        height: 64px !important;
+        font-size: 38px !important;
+      }
+
+      .big-alert-message {
+        font-size: 34px !important;
+      }
+
+      .big-alert-helper {
+        font-size: 19px !important;
+      }
+
+      .big-alert-close {
+        font-size: 20px !important;
+        padding: 12px 38px !important;
+      }
+    }
+
+    /* 2026-06-30 경고창 현재 면적의 1/2 수준 축소 + 등장 속도 2배 느리게 */
+    .big-alert-overlay {
+      padding-top: 220px !important;
+    }
+
+    .big-alert-box {
+      width: 400px !important;
+      max-width: calc(100vw - 36px) !important;
+      min-height: 200px !important;
+      border-width: 4px !important;
+      border-radius: 28px !important;
+      padding: 26px 30px 24px !important;
+      animation: bigAlertPop .36s ease-out !important;
+    }
+
+    .big-alert-icon {
+      width: 54px !important;
+      height: 54px !important;
+      margin-bottom: 10px !important;
+      font-size: 34px !important;
+    }
+
+    .big-alert-message {
+      font-size: 29px !important;
+      line-height: 1.24 !important;
+      letter-spacing: -0.8px !important;
+      word-break: keep-all !important;
+    }
+
+    .big-alert-helper {
+      margin-top: 8px !important;
+      font-size: 16px !important;
+      line-height: 1.34 !important;
+      word-break: keep-all !important;
+    }
+
+    .big-alert-close {
+      margin-top: 16px !important;
+      padding: 10px 32px !important;
+      font-size: 18px !important;
+      border-radius: 999px !important;
+    }
+
+    @media (max-width: 900px) {
+      .big-alert-overlay {
+        padding-top: 170px !important;
+      }
+
+      .big-alert-box {
+        width: calc(100vw - 44px) !important;
+        min-height: 190px !important;
+        padding: 24px 22px 22px !important;
+        animation: bigAlertPop .36s ease-out !important;
+      }
+
+      .big-alert-icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 30px !important;
+      }
+
+      .big-alert-message {
+        font-size: 27px !important;
+      }
+
+      .big-alert-helper {
+        font-size: 15px !important;
+      }
+
+      .big-alert-close {
+        font-size: 17px !important;
+        padding: 9px 30px !important;
+      }
+    }
+
+    /* 2026-06-30 질문 유형 설명 한 줄 유지 */
+    .type-intro p {
+      white-space: nowrap;
+      font-size: 18px;
+      letter-spacing: -0.35px;
     }
 
 </style>
@@ -3159,7 +3784,7 @@
                 <button class="action pink" id="submitBtn" type="button">선생님께 제출</button>
               </div>
               <div class="finish-guide" id="finishGuide">
-                <strong>완성한 질문은 질문노트에 옮겨 적으세요.</strong>
+                <strong>완성한 질문은 질문이음공책에 옮겨 적으세요.</strong>
               </div>
             </aside>
           </div>
@@ -3225,11 +3850,11 @@
                 <label for="typeFilter">질문 유형</label>
                 <select id="typeFilter">
                   <option value="all">전체 유형</option>
-                  <option value="핵심질문">큰씨앗(핵심질문)</option>
+                  <option value="핵심질문">🌸 큰씨앗(핵심질문)</option>
                   <option value="사실질문">🔍 찾기씨앗(사실질문)</option>
                   <option value="개념질문">💡 까닭씨앗(개념질문)</option>
                   <option value="논쟁질문">💬 의견씨앗(논쟁질문)</option>
-                  <option value="성찰질문">거울씨앗(성찰질문)</option>
+                  <option value="성찰질문">🪞 거울씨앗(성찰질문)</option>
                 </select>
               </div>
               <div>
@@ -3289,7 +3914,7 @@
     const TEACHER_PASSWORD = "11111111";
     const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "", "guide": "생활 속 큰 수를 보고, 읽고, 비교하며 궁금한 점을 질문으로 만들어 봅니다.", "focus": "생활 속 큰 수 자료를 보고 읽기·쓰기·자릿값·크기 비교 질문 만들기", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "각도 질문터", "guide": "우리 주변의 각을 찾고, 왜 예각·직각·둔각인지 근거를 들어 설명합니다.", "focus": "생활 속 각을 찾고 예각·직각·둔각 판단 근거 설명하기", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "곱셈과 나눗셈 질문터", "guide": "계산 과정에서 헷갈린 부분을 찾고, 오답을 바른 풀이로 고쳐 봅니다.", "focus": "계산 오답을 찾고 손풀이·검산·설명으로 보정하기", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "도형 이동 질문터", "guide": "도형을 밀고, 뒤집고, 돌리며 이동 전후의 변화를 질문으로 정리합니다.", "focus": "도형을 밀기·뒤집기·돌리기 하며 이동 미션 만들기", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "막대그래프 질문터", "guide": "우리 반을 자료로 알아보기 위한 질문을 만들고, 그래프로 나타내기 좋은 질문인지 생각합니다.", "focus": "우리 반 자료 탐구를 위한 조사 질문 만들기", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "규칙과 관계 질문터", "guide": "수, 모양, 식에서 규칙을 찾고 ‘왜 그렇게 되는지’ 질문으로 설명합니다.", "focus": "규칙을 찾고 왜 그렇게 되는지 질문과 설명으로 나타내기", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}}];
     const questionTypes = ["핵심질문", "사실질문", "개념질문", "논쟁질문", "성찰질문"];
-    const questionTypeLabels = {"핵심질문": {alias: "큰씨앗", formal: "핵심질문", icon: ""}, "사실질문": {alias: "찾기씨앗", formal: "사실질문", icon: "🔍"}, "개념질문": {alias: "까닭씨앗", formal: "개념질문", icon: "💡"}, "논쟁질문": {alias: "의견씨앗", formal: "논쟁질문", icon: "💬"}, "성찰질문": {alias: "거울씨앗", formal: "성찰질문", icon: ""}};
+    const questionTypeLabels = {"핵심질문": {alias: "큰씨앗", formal: "핵심질문", icon: "🌸"}, "사실질문": {alias: "찾기씨앗", formal: "사실질문", icon: "🔍"}, "개념질문": {alias: "까닭씨앗", formal: "개념질문", icon: "💡"}, "논쟁질문": {alias: "의견씨앗", formal: "논쟁질문", icon: "💬"}, "성찰질문": {alias: "거울씨앗", formal: "성찰질문", icon: "🪞"}};
     const questionTypeInfo = {
       "핵심질문": {
         short: "오늘 배움의 중심을 여는 큰 질문",
@@ -3313,7 +3938,7 @@
       },
       "성찰질문": {
         short: "배운 점과 바뀐 생각을 돌아보는 질문",
-        desc: "수업 뒤에 내가 알게 된 점, 어려웠던 점, 더 궁금한 점을 돌아보는 질문",
+        desc: "배운 점과 더 궁금한 점을 돌아보는 질문",
         think: "오늘 배운 뒤 내 생각이 어떻게 달라졌는지 떠올려 보세요."
       }
     };
@@ -3338,9 +3963,35 @@
     const galleryModeBtn = document.getElementById("galleryModeBtn");
     const teacherModeBtn = document.getElementById("teacherModeBtn");
     const toast = document.getElementById("toast");
+
+    function showBigAlert(message) {
+      const overlay = document.getElementById("bigAlertOverlay");
+      const messageBox = document.getElementById("bigAlertMessage");
+      const helperBox = document.getElementById("bigAlertHelper");
+      const closeBtn = document.getElementById("bigAlertClose");
+
+      if (!overlay || !messageBox || !closeBtn) {
+        alert(message);
+        return;
+      }
+
+      messageBox.textContent = message;
+      if (helperBox) helperBox.textContent = "번호와 이름을 확인한 뒤 다시 제출해 주십시오.";
+      overlay.classList.add("show");
+
+      setTimeout(() => closeBtn.focus(), 60);
+
+      const closeAlert = () => {
+        overlay.classList.remove("show");
+      };
+
+      closeBtn.onclick = closeAlert;
+    }
+
     const STUDENT_WORKS_JSON_URL = ""; // 학생 작품관은 Google Sheets 실제 제출 데이터만 사용
     let studentWorksData = [];
     let galleryLoaded = false;
+    let bigAlertAutoCloseTimer = null;
 
 
 
@@ -3466,47 +4117,13 @@
     }
 
     function getSeedCardClass(seed) {
-      if (String(seed).includes("성찰") || String(seed).includes("거울")) return "seed-reflect";
-      if (String(seed).includes("사실") || String(seed).includes("개념") || String(seed).includes("논쟁") || String(seed).includes("찾기") || String(seed).includes("까닭") || String(seed).includes("의견")) return "seed-thinking";
+      const s = String(seed || "");
+
+      if (s.includes("성찰") || s.includes("거울")) return "seed-reflect";
+      if (s.includes("핵심") || s.includes("큰씨앗") || s.includes("큰씨앗")) return "seed-core";
+      if (s.includes("사실") || s.includes("개념") || s.includes("논쟁") || s.includes("찾기") || s.includes("까닭") || s.includes("의견")) return "seed-thinking";
+
       return "seed-core";
-    }
-
-
-    function loadStudentWorksFromGoogleSheets() {
-      return new Promise((resolve, reject) => {
-        if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
-          resolve([]);
-          return;
-        }
-
-        const callbackName = "__questionGalleryCallback_" + Date.now();
-        const script = document.createElement("script");
-        const separator = APPS_SCRIPT_WEB_APP_URL.includes("?") ? "&" : "?";
-        const timeoutId = setTimeout(() => {
-          cleanup();
-          reject(new Error("학생 작품관 데이터를 불러오는 시간이 초과되었습니다."));
-        }, 8000);
-
-        function cleanup() {
-          clearTimeout(timeoutId);
-          delete window[callbackName];
-          if (script.parentNode) script.parentNode.removeChild(script);
-        }
-
-        window[callbackName] = (result) => {
-          cleanup();
-          const works = Array.isArray(result) ? result : (result && Array.isArray(result.works) ? result.works : []);
-          resolve(works);
-        };
-
-        script.onerror = () => {
-          cleanup();
-          reject(new Error("Google Sheets 데이터를 불러오지 못했습니다."));
-        };
-
-        script.src = `${APPS_SCRIPT_WEB_APP_URL}${separator}mode=gallery&callback=${callbackName}&v=${Date.now()}`;
-        document.body.appendChild(script);
-      });
     }
 
     async function loadStudentWorks() {
@@ -3564,7 +4181,7 @@
       if (!grid || !status) return;
 
       const data = filteredStudentWorks();
-      status.textContent = `총 ${data.length}개의 질문 작품을 보고 있습니다.`;
+      status.textContent = `누적 학생 질문: ${data.length}개 · 누적 학생 수: ${uniqueStudentCount}명`;
 
       if (!data.length) {
         grid.innerHTML = '<div class="empty-gallery">아직 학생 작품관에 등록된 질문이 없습니다. student-works.json에 질문을 추가해 주세요.</div>';
@@ -3579,7 +4196,7 @@
           </div>
           <div class="work-meta">
             <span class="work-chip lesson">차시 · ${escapeHtml(item.lesson)}</span>
-            <span class="work-chip">${escapeHtml(item.seed)}</span>
+            <span class="work-chip seed-chip">${escapeHtml(item.seed)}</span>
           </div>
           <p class="work-question">${escapeHtml(item.question)}</p>
         </article>
@@ -3705,7 +4322,7 @@
     }
 
     function updatePreview() {
-      // 미리보기 박스는 제거했습니다. 입력창의 내용은 학생이 직접 질문노트에 옮겨 씁니다.
+      // 미리보기 박스는 제거했습니다. 입력창의 내용은 학생이 직접 질문이음공책에 옮겨 씁니다.
       return;
     }
 
@@ -3944,11 +4561,16 @@
         showToast("선생님 제출 주소가 아직 설정되지 않았습니다.");
         return;
       }
-      if (!studentNo) return showToast("번호를 입력해 주세요.");
-      if (!studentName) return showToast("이름을 입력해 주세요.");
-      if (!question) return showToast("제출할 질문을 먼저 써 주세요.");
+      if (!studentNo || !studentName) { showBigAlert("번호와 이름을 입력해 주십시오."); return; }
+      
+      if (!question) { showBigAlert("완성한 질문을 먼저 작성해 주십시오."); return; }
 
       saveStudentInfo();
+
+      if (!studentNo || !studentName) {
+        showBigAlert("번호와 번호와 이름을 입력해 주십시오.");
+        return;
+      }
 
       const payload = {
         studentNo,
@@ -3975,7 +4597,7 @@
           body: JSON.stringify(payload)
         });
 
-        showToast("선생님께 제출했습니다. 질문노트에도 옮겨 적으세요.");
+        showToast("선생님께 제출했습니다. 질문이음공책에도 옮겨 적으세요.");
       clearStudentIdentityFields();
       } catch (error) {
         console.error(error);
@@ -4022,7 +4644,7 @@
     document.getElementById("studentQuestion").addEventListener("input", updatePreview);
     document.getElementById("makeNoteBtn").addEventListener("click", () => {
       updatePreview();
-      showToast("내 질문이 완성되었습니다. 질문노트에 옮겨 적으세요.");
+      showToast("내 질문이 완성되었습니다. 질문이음공책에 옮겨 적으세요.");
     });
     const copyBtn = document.getElementById("copyBtn");
     if (copyBtn) {
@@ -4095,9 +4717,9 @@
         showToast("선생님 제출 주소가 아직 설정되지 않았습니다.");
         return;
       }
-      if (!studentNo) return showToast("번호를 입력해 주세요.");
-      if (!studentName) return showToast("이름을 입력해 주세요.");
-      if (!question) return showToast("제출할 질문을 먼저 써 주세요.");
+      if (!studentNo || !studentName) { showBigAlert("번호와 이름을 입력해 주십시오."); return; }
+      
+      if (!question) { showBigAlert("완성한 질문을 먼저 작성해 주십시오."); return; }
 
       saveStudentInfo();
 
@@ -4126,7 +4748,7 @@
           body: JSON.stringify(payload)
         });
 
-        showToast("선생님께 제출했습니다. 질문노트에도 옮겨 적으세요.");
+        showToast("선생님께 제출했습니다. 질문이음공책에도 옮겨 적으세요.");
       clearStudentIdentityFields();
       } catch (error) {
         console.error(error);
@@ -4153,5 +4775,14 @@
     window.addEventListener("pageshow", clearStudentIdentityFields);
 
   </script>
+  <div class="big-alert-overlay" id="bigAlertOverlay" role="alertdialog" aria-modal="true" aria-labelledby="bigAlertMessage">
+    <div class="big-alert-box">
+      <div class="big-alert-icon">!</div>
+      <div class="big-alert-message" id="bigAlertMessage">번호와 번호와 이름을 입력해 주십시오.</div>
+      <div class="big-alert-helper" id="bigAlertHelper">번호와 이름을 확인한 뒤 다시 제출해 주십시오.</div>
+      <button class="big-alert-close" id="bigAlertClose" type="button">확인</button>
+    </div>
+  </div>
+
 </body>
 </html>
