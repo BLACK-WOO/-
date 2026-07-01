@@ -3725,6 +3725,625 @@
       letter-spacing: -0.35px;
     }
 
+    /* 2026-07-01 공통 주소 방식: 단원별 링크 목록 숨김 */
+    #fixedLinksSection,
+    .fixed-links-section,
+    .lesson-link-list,
+    .fixed-link-list {
+      display: none !important;
+    }
+
+    .teacher-main-action {
+      background: var(--pink) !important;
+      color: white !important;
+      box-shadow: 0 12px 28px rgba(240, 62, 146, .20) !important;
+    }
+
+    .teacher-soft-action {
+      background: #F3F4F6 !important;
+      color: var(--ink) !important;
+      border: 1px solid var(--line) !important;
+      box-shadow: none !important;
+    }
+
+    .teacher-soft-action:hover {
+      background: #EEF2FF !important;
+    }
+
+    /* 2026-07-01 최신 단원·작품관 동기화 안내 */
+    .sync-note {
+      font-weight: 850;
+    }
+
+    /* 2026-07-01 단원·차시 선택형 학생 화면 */
+    .student-card .panel-title {
+      align-items: flex-start;
+    }
+
+    .student-unit-title {
+      font-size: 30px;
+      font-weight: 950;
+      letter-spacing: -0.8px;
+      color: var(--ink);
+      line-height: 1.18;
+    }
+
+    .lesson-message {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 10px 14px;
+    }
+
+    .learning-problem-label {
+      font-weight: 950;
+      color: var(--pink);
+      white-space: nowrap;
+    }
+
+    .student-problem-select {
+      width: auto;
+      min-width: 96px;
+      max-width: 130px;
+      padding: 9px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(240, 62, 146, .28);
+      background: #fff;
+      font-weight: 900;
+    }
+
+    .learning-problem-text {
+      flex: 1 1 460px;
+      min-width: 260px;
+      font-weight: 850;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+
+    .teacher-main-action {
+      background: var(--pink) !important;
+      color: white !important;
+      box-shadow: 0 12px 28px rgba(240, 62, 146, .20) !important;
+    }
+
+    .teacher-soft-action {
+      background: #F3F4F6 !important;
+      color: var(--ink) !important;
+      border: 1px solid var(--line) !important;
+      box-shadow: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .student-unit-title {
+        font-size: 24px;
+      }
+
+      .lesson-message {
+        align-items: stretch;
+      }
+
+      .student-problem-select {
+        width: 100%;
+        max-width: none;
+      }
+
+      .learning-problem-text {
+        flex-basis: 100%;
+      }
+    }
+
+    /* 2026-07-01 v44 기준 보정: 단원 제목 복원 + 학습문제 박스 높이 축소 */
+    .student-card > .panel-title {
+      margin-bottom: 10px !important;
+    }
+
+    #studentTitle {
+      display: block !important;
+      font-size: 30px !important;
+      font-weight: 950 !important;
+      letter-spacing: -0.8px !important;
+      line-height: 1.22 !important;
+      color: var(--ink) !important;
+      margin: 0 !important;
+    }
+
+    .student-unit-title {
+      display: inline !important;
+      font-size: inherit !important;
+      font-weight: inherit !important;
+      letter-spacing: inherit !important;
+      line-height: inherit !important;
+      color: inherit !important;
+    }
+
+    .lesson-message {
+      min-height: 0 !important;
+      height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 10px !important;
+      flex-wrap: nowrap !important;
+      padding: 10px 14px !important;
+      margin: 0 0 14px 0 !important;
+      border-radius: 18px !important;
+    }
+
+    .lesson-message > * {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .learning-problem-label {
+      font-size: 17px !important;
+      line-height: 1.25 !important;
+      font-weight: 950 !important;
+      white-space: nowrap !important;
+      color: var(--pink) !important;
+    }
+
+    .student-problem-select {
+      width: auto !important;
+      min-width: 92px !important;
+      max-width: 118px !important;
+      padding: 8px 10px !important;
+      border-radius: 13px !important;
+      font-size: 16px !important;
+      line-height: 1.2 !important;
+      flex: 0 0 auto !important;
+    }
+
+    .learning-problem-text {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      font-size: 17px !important;
+      line-height: 1.35 !important;
+      font-weight: 850 !important;
+      text-align: left !important;
+      white-space: normal !important;
+      word-break: keep-all !important;
+    }
+
+    @media (max-width: 760px) {
+      #studentTitle {
+        font-size: 24px !important;
+      }
+
+      .lesson-message {
+        flex-wrap: wrap !important;
+        align-items: center !important;
+      }
+
+      .student-problem-select {
+        width: auto !important;
+        max-width: 120px !important;
+      }
+
+      .learning-problem-text {
+        flex-basis: 100% !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 학생화면 단원명·학습문제 가로 정렬 */
+    #studentPanel .student-card {
+      display: grid !important;
+      grid-template-columns: minmax(300px, 380px) minmax(520px, 1fr) !important;
+      column-gap: 34px !important;
+      row-gap: 14px !important;
+      align-items: center !important;
+    }
+
+    #studentPanel .student-card > .panel-title {
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 0 !important;
+      align-self: center !important;
+    }
+
+    #studentPanel .student-card > .lesson-message {
+      grid-column: 2 !important;
+      grid-row: 1 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 10px !important;
+      flex-wrap: nowrap !important;
+      min-height: 0 !important;
+      height: auto !important;
+      margin: 0 !important;
+      padding: 8px 12px !important;
+      border-radius: 16px !important;
+      text-align: left !important;
+    }
+
+    #studentPanel .student-card > .type-grid,
+    #studentPanel .student-card > .type-intro,
+    #studentPanel .student-card > .question-area {
+      grid-column: 1 / -1 !important;
+    }
+
+    #studentTitle {
+      white-space: nowrap !important;
+      font-size: 28px !important;
+      line-height: 1.18 !important;
+      text-align: left !important;
+    }
+
+    .learning-problem-label {
+      flex: 0 0 auto !important;
+      white-space: nowrap !important;
+      font-size: 16px !important;
+      line-height: 1.2 !important;
+    }
+
+    .student-problem-select {
+      flex: 0 0 auto !important;
+      width: 96px !important;
+      min-width: 96px !important;
+      max-width: 96px !important;
+      padding: 7px 9px !important;
+      font-size: 15px !important;
+      line-height: 1.2 !important;
+    }
+
+    .learning-problem-text {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      font-size: 16px !important;
+      line-height: 1.28 !important;
+      text-align: left !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card {
+        grid-template-columns: 1fr !important;
+        row-gap: 10px !important;
+      }
+
+      #studentPanel .student-card > .panel-title,
+      #studentPanel .student-card > .lesson-message {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+      }
+
+      #studentTitle {
+        white-space: normal !important;
+        font-size: 24px !important;
+      }
+
+      #studentPanel .student-card > .lesson-message {
+        flex-wrap: wrap !important;
+      }
+
+      .learning-problem-text {
+        white-space: normal !important;
+        flex-basis: 100% !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 학생 단원 제목 강제 표시 */
+    #studentPanel .student-card > .panel-title {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      min-height: 56px !important;
+      padding-left: 16px !important;
+      padding-right: 10px !important;
+    }
+
+    #studentTitle {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      color: #07152F !important;
+      font-size: 28px !important;
+      font-weight: 950 !important;
+      line-height: 1.2 !important;
+      letter-spacing: -0.7px !important;
+      white-space: nowrap !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: left !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card > .panel-title {
+        min-height: 48px !important;
+        padding-left: 10px !important;
+      }
+
+      #studentTitle {
+        font-size: 24px !important;
+        white-space: normal !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 학습문제 묶음 왼쪽 이동 + 글씨 확대 */
+    #studentPanel .student-card {
+      grid-template-columns: 360px minmax(560px, 1fr) !important;
+      column-gap: 12px !important;
+    }
+
+    #studentPanel .student-card > .lesson-message {
+      justify-self: start !important;
+      width: calc(100% - 4px) !important;
+      max-width: 760px !important;
+      margin-left: 0 !important;
+      padding: 10px 14px !important;
+      gap: 12px !important;
+    }
+
+    .learning-problem-label {
+      font-size: 18px !important;
+      font-weight: 950 !important;
+    }
+
+    .student-problem-select {
+      width: 108px !important;
+      min-width: 108px !important;
+      max-width: 108px !important;
+      padding: 9px 11px !important;
+      font-size: 17px !important;
+      font-weight: 900 !important;
+    }
+
+    .learning-problem-text {
+      font-size: 18px !important;
+      line-height: 1.32 !important;
+      font-weight: 900 !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card {
+        grid-template-columns: 1fr !important;
+        column-gap: 0 !important;
+      }
+
+      #studentPanel .student-card > .lesson-message {
+        width: 100% !important;
+        max-width: none !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 학습문제 묶음 더 왼쪽 이동 + 글씨 약간 확대 */
+    #studentPanel .student-card {
+      grid-template-columns: 335px minmax(600px, 1fr) !important;
+      column-gap: 6px !important;
+    }
+
+    #studentPanel .student-card > .lesson-message {
+      justify-self: start !important;
+      transform: translateX(-12px) !important;
+      max-width: 790px !important;
+      gap: 13px !important;
+      padding: 10px 14px !important;
+    }
+
+    .learning-problem-label {
+      font-size: 19px !important;
+    }
+
+    .student-problem-select {
+      width: 112px !important;
+      min-width: 112px !important;
+      max-width: 112px !important;
+      font-size: 18px !important;
+      padding: 9px 11px !important;
+    }
+
+    .learning-problem-text {
+      font-size: 19px !important;
+      line-height: 1.32 !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card {
+        grid-template-columns: 1fr !important;
+        column-gap: 0 !important;
+      }
+
+      #studentPanel .student-card > .lesson-message {
+        transform: none !important;
+        max-width: none !important;
+      }
+
+      .learning-problem-label,
+      .learning-problem-text {
+        font-size: 17px !important;
+      }
+
+      .student-problem-select {
+        font-size: 16px !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 학습문제 묶음 한 번 더 왼쪽 이동 */
+    #studentPanel .student-card {
+      grid-template-columns: 305px minmax(630px, 1fr) !important;
+      column-gap: 2px !important;
+    }
+
+    #studentPanel .student-card > .lesson-message {
+      transform: translateX(-26px) !important;
+      max-width: 820px !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card {
+        grid-template-columns: 1fr !important;
+        column-gap: 0 !important;
+      }
+
+      #studentPanel .student-card > .lesson-message {
+        transform: none !important;
+        max-width: none !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 겹침 해결, 순서 변경 후 간격 재조정 */
+    #studentPanel .student-card {
+      grid-template-columns: 285px minmax(660px, 1fr) !important;
+      column-gap: 22px !important;
+    }
+
+    #studentPanel .student-card > .lesson-message {
+      transform: translateX(12px) !important;
+      max-width: 820px !important;
+      gap: 12px !important;
+    }
+
+    #studentTitle {
+      font-size: 24px !important;
+      letter-spacing: -0.55px !important;
+      line-height: 1.18 !important;
+    }
+
+    .student-unit-title {
+      font-size: inherit !important;
+      letter-spacing: inherit !important;
+      line-height: inherit !important;
+    }
+
+    .learning-problem-label {
+      color: var(--ink) !important;
+      font-size: 18px !important;
+      font-weight: 950 !important;
+    }
+
+    .student-problem-select {
+      order: 1 !important;
+      width: 108px !important;
+      min-width: 108px !important;
+      max-width: 108px !important;
+      font-size: 17px !important;
+    }
+
+    .learning-problem-label {
+      order: 2 !important;
+    }
+
+    .learning-problem-text {
+      order: 3 !important;
+      font-size: 18px !important;
+      font-weight: 900 !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card {
+        grid-template-columns: 1fr !important;
+        column-gap: 0 !important;
+      }
+
+      #studentPanel .student-card > .lesson-message {
+        transform: none !important;
+        max-width: none !important;
+      }
+
+      #studentTitle {
+        font-size: 23px !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 단원 제목 형식 변경 + 제목만 왼쪽 이동 */
+    #studentPanel .student-card > .panel-title {
+      transform: translateX(-18px) !important;
+      padding-left: 0 !important;
+    }
+
+    #studentTitle {
+      font-size: 24px !important;
+      white-space: nowrap !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card > .panel-title {
+        transform: none !important;
+        padding-left: 10px !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 단원명 삐져나옴 방지, 제목 축소 및 오른쪽 이동 */
+    #studentPanel .student-card {
+      grid-template-columns: 300px minmax(660px, 1fr) !important;
+      column-gap: 18px !important;
+    }
+
+    #studentPanel .student-card > .panel-title {
+      transform: translateX(10px) !important;
+      padding-left: 0 !important;
+      overflow: hidden !important;
+    }
+
+    #studentTitle {
+      font-size: 22px !important;
+      letter-spacing: -0.7px !important;
+      line-height: 1.18 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: 295px !important;
+    }
+
+    @media (max-width: 900px) {
+      #studentPanel .student-card {
+        grid-template-columns: 1fr !important;
+      }
+
+      #studentPanel .student-card > .panel-title {
+        transform: none !important;
+        overflow: visible !important;
+      }
+
+      #studentTitle {
+        font-size: 22px !important;
+        max-width: none !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 차시·학습문제 글씨 약간 확대 */
+    .student-problem-select {
+      font-size: 18px !important;
+      font-weight: 950 !important;
+      padding: 9px 12px !important;
+      width: 114px !important;
+      min-width: 114px !important;
+      max-width: 114px !important;
+    }
+
+    .learning-problem-label {
+      font-size: 19px !important;
+      font-weight: 950 !important;
+    }
+
+    .learning-problem-text {
+      font-size: 19px !important;
+      font-weight: 950 !important;
+      line-height: 1.32 !important;
+    }
+
+    @media (max-width: 900px) {
+      .student-problem-select {
+        font-size: 17px !important;
+      }
+
+      .learning-problem-label,
+      .learning-problem-text {
+        font-size: 18px !important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -3810,20 +4429,15 @@
             <div class="panel-title">
               <h2>설정</h2>
             </div>
-            <label for="publicLessonSelect">학생에게 보여줄 수업 선택</label>
+            <label for="publicLessonSelect">학생에게 보여줄 단원 선택</label>
             <select id="publicLessonSelect"></select>
             <div class="action-row">
-              <button class="action pink" id="applyStudentBtn" type="button">선택한 단원 학생용으로 보기</button>
-              <button class="action secondary" id="copyCurrentLinkBtn" type="button">선택한 단원 링크 복사</button>
+              <button class="action teacher-main-action" id="setActiveLessonBtn" type="button">해당 단원으로 선택하기</button>
+                <button class="action teacher-soft-action" id="applyStudentBtn" type="button">선택한 단원 학생용으로 보기</button>
             </div>
             <div class="notice">
-              현재 학생용은 공통 링크형입니다. 교사가 선택한 단원이 Google Sheets 설정에 저장되고, 학생은 같은 주소로 들어와도 현재 지정된 단원의 질문터를 봅니다.
+              현재 학생용은 공통 주소형입니다. 교사가 ‘해당 단원으로 선택하기’를 누르면 학생은 같은 주소로 들어와도 현재 지정된 단원의 질문터를 봅니다.
             </div>
-
-            <div class="panel-title" style="margin-top:16px;">
-              <h2>공통 학생용 링크</h2>
-            </div>
-            <div class="link-grid" id="linkGrid"></div>
           </section>
 
           <section class="setting-box">
@@ -3911,7 +4525,7 @@
 
   <script>
     const TEACHER_PASSWORD = "11111111";
-    const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "", "guide": "생활 속 큰 수를 보고, 읽고, 비교하며 궁금한 점을 질문으로 만들어 봅니다.", "focus": "생활 속 큰 수 자료를 보고 읽기·쓰기·자릿값·크기 비교 질문 만들기", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "각도 질문터", "guide": "우리 주변의 각을 찾고, 왜 예각·직각·둔각인지 근거를 들어 설명합니다.", "focus": "생활 속 각을 찾고 예각·직각·둔각 판단 근거 설명하기", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "곱셈과 나눗셈 질문터", "guide": "계산 과정에서 헷갈린 부분을 찾고, 오답을 바른 풀이로 고쳐 봅니다.", "focus": "계산 오답을 찾고 손풀이·검산·설명으로 보정하기", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "도형 이동 질문터", "guide": "도형을 밀고, 뒤집고, 돌리며 이동 전후의 변화를 질문으로 정리합니다.", "focus": "도형을 밀기·뒤집기·돌리기 하며 이동 미션 만들기", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "막대그래프 질문터", "guide": "우리 반을 자료로 알아보기 위한 질문을 만들고, 그래프로 나타내기 좋은 질문인지 생각합니다.", "focus": "우리 반 자료 탐구를 위한 조사 질문 만들기", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "규칙과 관계 질문터", "guide": "수, 모양, 식에서 규칙을 찾고 ‘왜 그렇게 되는지’ 질문으로 설명합니다.", "focus": "규칙을 찾고 왜 그렇게 되는지 질문과 설명으로 나타내기", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}}];
+    const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "4학년 1학기 1. 큰 수", "guide": "", "focus": "", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}, "grade_term": "4학년 1학기", "unit_no": "1단원", "unit_name": "큰 수", "lessonProblems": [{"round": "1", "problem": "단원도입(큰 수를 알아봅시다.)"}, {"round": "2~4", "problem": "만, 십만, 백만, 천만을 알아봅시다."}, {"round": "5~6", "problem": "억, 조를 알아봅시다."}, {"round": "8", "problem": "수의 크기를 비교해 봅시다."}, {"round": "11", "problem": "큰 수에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "4학년 1학기 2. 각도", "guide": "", "focus": "", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "2단원", "unit_name": "각도", "lessonProblems": [{"round": "1", "problem": "단원도입(각도를 알아봅시다.)"}, {"round": "3", "problem": "각의 크기를 재어 봅시다."}, {"round": "4", "problem": "직각보다 작은 각과 큰 각을 알아봅시다."}, {"round": "7", "problem": "삼각형의 세 각의 크기의 합을 알아봅시다."}, {"round": "8", "problem": "사각형의 네 각의 크기의 합을 알아봅시다."}, {"round": "11", "problem": "각도에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "4학년 1학기 3. 곱셈과 나눗셈", "guide": "", "focus": "", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "3단원", "unit_name": "곱셈과 나눗셈", "lessonProblems": [{"round": "1", "problem": "단원도입(곱셈과 나눗셈을 알아봅시다.)"}, {"round": "2~3", "problem": "세 자리 수에 몇십몇을 곱해 봅시다."}, {"round": "5~7", "problem": "몇십몇으로 나누어 봅시다."}, {"round": "11", "problem": "곱셈과 나눗셈에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "4학년 1학기 4. 평면도형의 이동", "guide": "", "focus": "", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "4단원", "unit_name": "평면도형의 이동", "lessonProblems": [{"round": "1", "problem": "단원도입(평면도형의 이동을 알아봅시다.)"}, {"round": "2", "problem": "평면도형의 밀기를 공부해 봅시다."}, {"round": "3", "problem": "평면도형의 돌리기를 공부해 봅시다."}, {"round": "4", "problem": "평면도형의 뒤집기를 공부해 봅시다."}, {"round": "9", "problem": "평면도형의 이동에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "4학년 1학기 5. 막대그래프", "guide": "", "focus": "", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}, "grade_term": "4학년 1학기", "unit_no": "5단원", "unit_name": "막대그래프", "lessonProblems": [{"round": "1", "problem": "단원도입(막대그래프를 알아봅시다.)"}, {"round": "3", "problem": "막대그래프의 내용을 알아봅시다."}, {"round": "4", "problem": "막대그래프로 나타내는 방법을 알아봅시다."}, {"round": "5~6", "problem": "자료를 조사하여 막대그래프로 나타내어 봅시다."}, {"round": "10", "problem": "막대그래프에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "4학년 1학기 6. 규칙과 관계", "guide": "", "focus": "", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}, "grade_term": "4학년 1학기", "unit_no": "6단원", "unit_name": "규칙과 관계", "lessonProblems": [{"round": "1", "problem": "단원도입(규칙과 관계를 알아봅시다.)"}, {"round": "2~5", "problem": "수와 도형의 배열에서 규칙을 찾아 나타내어 봅시다."}, {"round": "6~7", "problem": "식에서 규칙을 찾아 나타내어 봅시다."}, {"round": "12", "problem": "규칙과 관계에서 공부한 내용을 정리해 봅시다."}]}];
     const questionTypes = ["핵심질문", "사실질문", "개념질문", "논쟁질문", "성찰질문"];
     const questionTypeLabels = {"핵심질문": {alias: "큰씨앗", formal: "핵심질문", icon: "🌸"}, "사실질문": {alias: "찾기씨앗", formal: "사실질문", icon: "🔍"}, "개념질문": {alias: "까닭씨앗", formal: "개념질문", icon: "💡"}, "논쟁질문": {alias: "의견씨앗", formal: "논쟁질문", icon: "💬"}, "성찰질문": {alias: "거울씨앗", formal: "성찰질문", icon: "🪞"}};
     const questionTypeInfo = {
@@ -3990,6 +4604,8 @@
     const STUDENT_WORKS_JSON_URL = ""; // 학생 작품관은 Google Sheets 실제 제출 데이터만 사용
     let studentWorksData = [];
     let galleryLoaded = false;
+    let currentTeacherSessionId = '';
+    let currentTeacherLoginAt = 0;
     let bigAlertAutoCloseTimer = null;
 
 
@@ -4084,6 +4700,7 @@
         eyebrow.textContent = "학생용";
         mainTitle.textContent = "질문이음터";
         mainSubtitle.textContent = "5가지 질문 씨앗으로 자라는 나의 질문";
+        syncActiveLessonFromGoogleSheets();
       } else if (isGallery) {
         eyebrow.textContent = "학생 작품관";
         mainTitle.textContent = "질문 작품관";
@@ -4174,12 +4791,21 @@
       return Array.isArray(result) ? result : (Array.isArray(result.works) ? result.works : []);
     }
 
-    async function loadActiveLessonFromGoogleSheets() {
+    async function loadActiveLessonStateFromGoogleSheets() {
       const result = await jsonpRequestFromAppsScript("activeLesson");
+      return result || {};
+    }
+
+    async function loadActiveLessonFromGoogleSheets() {
+      const result = await loadActiveLessonStateFromGoogleSheets();
       return result && result.lessonId ? result.lessonId : "";
     }
 
-    function saveActiveLessonToGoogleSheets(lessonId) {
+    function makeTeacherSessionId() {
+      return "teacher_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10);
+    }
+
+    function postToAppsScriptNoCors(payload) {
       if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
         showToast("Apps Script 주소가 설정되지 않았습니다.");
         return;
@@ -4190,35 +4816,74 @@
           method: "POST",
           mode: "no-cors",
           headers: {"Content-Type": "text/plain;charset=utf-8"},
-          body: JSON.stringify({
-            action: "setActiveLesson",
-            lessonId: lessonId
-          })
+          body: JSON.stringify(payload)
         });
       } catch (error) {
         console.warn(error);
       }
     }
 
-    async function syncActiveLessonFromGoogleSheets() {
+    function registerTeacherLoginToGoogleSheets() {
+      currentTeacherSessionId = makeTeacherSessionId();
+      currentTeacherLoginAt = Date.now();
+
+      postToAppsScriptNoCors({
+        action: "teacherLogin",
+        teacherSessionId: currentTeacherSessionId,
+        loginAt: currentTeacherLoginAt
+      });
+    }
+
+    async function confirmActiveLessonSaved(lessonId) {
       try {
-        const lessonId = await loadActiveLessonFromGoogleSheets();
-        const found = lessons.find(l => l.id === lessonId || l.slug === lessonId);
-        if (!found) return;
-
-        selectedLessonId = found.id;
-        safeSetPublicLesson(selectedLessonId);
-
-        const publicLessonSelect = document.getElementById("publicLessonSelect");
-        if (publicLessonSelect) publicLessonSelect.value = selectedLessonId;
-
-        document.getElementById("studentQuestion").value = "";
-        selectedType = "핵심질문";
-        currentQuestionIndex = 0;
-        questionRevealed = false;
-        renderStudent();
+        const state = await loadActiveLessonStateFromGoogleSheets();
+        if (state.lessonId === lessonId && (!state.teacherSessionId || state.teacherSessionId === currentTeacherSessionId)) {
+          } else if (state.teacherSessionId && state.teacherSessionId !== currentTeacherSessionId) {
+          showBigAlert("최근에 로그인한 교사용 화면에서 다시 설정해 주십시오.");
+        }
       } catch (error) {
         console.warn(error);
+      }
+    }
+
+    function saveActiveLessonToGoogleSheets(lessonId) {
+      if (!currentTeacherSessionId) {
+        registerTeacherLoginToGoogleSheets();
+      }
+
+      postToAppsScriptNoCors({
+        action: "setActiveLesson",
+        lessonId: lessonId,
+        teacherSessionId: currentTeacherSessionId,
+        loginAt: currentTeacherLoginAt || Date.now()
+      });
+
+      setTimeout(() => confirmActiveLessonSaved(lessonId), 900);
+    }
+
+    async function syncActiveLessonFromGoogleSheets() {
+      try {
+        const state = await loadActiveLessonStateFromGoogleSheets();
+        const lessonId = state && state.lessonId ? state.lessonId : "";
+        const found = lessons.find(l => l.id === lessonId || l.slug === lessonId);
+
+        if (found) {
+          selectedLessonId = found.id;
+          safeSetPublicLesson(selectedLessonId);
+
+          const publicLessonSelect = document.getElementById("publicLessonSelect");
+          if (publicLessonSelect) publicLessonSelect.value = selectedLessonId;
+
+          const studentQuestion = document.getElementById("studentQuestion");
+          if (studentQuestion) studentQuestion.value = "";
+          selectedType = "핵심질문";
+          currentQuestionIndex = 0;
+          questionRevealed = false;
+        }
+      } catch (error) {
+        console.warn(error);
+      } finally {
+        renderStudent();
       }
     }
 
@@ -4227,7 +4892,7 @@
       const status = document.getElementById("galleryStatus");
       const grid = document.getElementById("galleryGrid");
 
-      if (status) status.textContent = "Google Sheets의 실제 제출 데이터를 불러오는 중입니다.";
+      if (status) status.textContent = "Google Sheets의 최신 제출 데이터를 불러오는 중입니다.";
       if (grid) grid.innerHTML = "";
 
       try {
@@ -4242,6 +4907,15 @@
       galleryLoaded = true;
       setupGalleryFilters();
       renderStudentGallery();
+
+      const now = new Date();
+      if (status) {
+        const count = filteredStudentWorks().length;
+        const uniqueStudentCount = new Set(
+          filteredStudentWorks().map(item => String(item.studentNo || "").trim()).filter(Boolean)
+        ).size;
+        status.textContent = `누적 학생 질문: ${count}개 · 누적 학생 수: ${uniqueStudentCount}명 · 마지막 불러오기: ${now.toLocaleTimeString("ko-KR")}`;
+      }
     }
 
     function setupGalleryFilters() {
@@ -4449,7 +5123,7 @@
 
         const popt = document.createElement("option");
         popt.value = l.id;
-        popt.textContent = getUnitOnlyTitle(l);
+        popt.textContent = l.unit;
         publicLessonSelect.appendChild(popt);
       });
       publicLessonSelect.value = selectedLessonId;
@@ -4589,6 +5263,7 @@
       const pw = document.getElementById("passwordInput").value;
       if (pw === TEACHER_PASSWORD) {
         teacherUnlocked = true;
+        registerTeacherLoginToGoogleSheets();
         teacherLogin.classList.add("hidden");
         teacherContent.classList.remove("hidden");
         fillTeacherSelects();
@@ -4604,6 +5279,265 @@
     if (galleryModeBtn) galleryModeBtn.addEventListener("click", () => switchMode("gallery"));
     teacherModeBtn.addEventListener("click", () => switchMode("teacher"));
 
+
+
+    function saveStudentInfo() {
+      // 번호와 이름은 브라우저에 저장하지 않습니다. 접속할 때마다 새로 입력합니다.
+      return;
+    }
+
+    function loadStudentInfo() {
+      clearStudentIdentityFields();
+    }
+
+
+    function formatStudentUnitTitle(lesson) {
+      const rawUnit = String(lesson.unit || "").trim();
+      const match = rawUnit.match(/^(\d+)\.\s*(.+)$/);
+      if (match) {
+        return `4학년 1학기 ${match[1]}. ${match[2]}`;
+      }
+
+      if (lesson.unit_no && lesson.unit_name) {
+        const unitNumber = String(lesson.unit_no).replace("단원", "").trim();
+        return `4학년 1학기 ${unitNumber}. ${lesson.unit_name}`;
+      }
+
+      return `4학년 1학기 ${rawUnit}`;
+    }
+
+
+    function getCurrentLessonProblem() {
+      const lesson = getLesson();
+      const problems = lesson.lessonProblems || [];
+      if (!problems.length) {
+        return { round: "", problem: "학습문제를 선택해 주세요." };
+      }
+
+      const select = document.getElementById("studentProblemSelect");
+      let idx = select ? Number(select.value) : 0;
+      if (!Number.isFinite(idx) || idx < 0 || idx >= problems.length) idx = 0;
+      return problems[idx];
+    }
+
+    function getCurrentLearningProblemText() {
+      const lp = getCurrentLessonProblem();
+      return lp.round ? `${lp.round}차시. ${lp.problem}` : lp.problem;
+    }
+
+    function getSelectedSeedLabel() {
+      const label = questionTypeLabels[selectedType] || { alias: selectedType, formal: selectedType, icon: "" };
+      return label.icon ? `${label.icon} ${label.alias}(${label.formal})` : `${label.alias}(${label.formal})`;
+    }
+
+    function makeSubmitFingerprint(payload) {
+      return [
+        payload.studentNo || "",
+        payload.studentName || "",
+        payload.unit || "",
+        payload.learningProblem || payload.lesson || "",
+        payload.seedLabel || payload.seedType || "",
+        payload.question || ""
+      ].map(value => String(value).trim()).join("||");
+    }
+
+    function isRecentDuplicateSubmit(payload) {
+      const now = Date.now();
+      const fingerprint = makeSubmitFingerprint(payload);
+      const saved = JSON.parse(localStorage.getItem("questionEumteoLastSubmit") || "{}");
+
+      if (saved.fingerprint === fingerprint && saved.time && now - saved.time < 60000) {
+        return true;
+      }
+
+      localStorage.setItem("questionEumteoLastSubmit", JSON.stringify({ fingerprint, time: now }));
+      return false;
+    }
+
+    async function submitQuestionToTeacher() {
+      const submitBtn = document.getElementById("submitBtn");
+      const studentNo = document.getElementById("studentNo")?.value.trim() || "";
+      const studentName = document.getElementById("studentName")?.value.trim() || "";
+      const question = document.getElementById("studentQuestion")?.value.trim() || "";
+      const lesson = getLesson();
+      const learningProblem = getCurrentLearningProblemText();
+
+      if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
+        showToast("선생님 제출 주소가 아직 설정되지 않았습니다.");
+        return;
+      }
+
+      if (!studentNo || !studentName) {
+        showBigAlert("번호와 이름을 입력해 주십시오.");
+        return;
+      }
+
+      if (!question) {
+        showBigAlert("완성한 질문을 먼저 작성해 주십시오.");
+        return;
+      }
+
+      const payload = {
+        studentNo,
+        studentName,
+        unit: lesson.unit,
+        lesson: learningProblem,
+        learningProblem: learningProblem,
+        seedType: selectedType,
+        seedLabel: getSelectedSeedLabel(),
+        question,
+        pageUrl: location.href
+      };
+
+      if (isRecentDuplicateSubmit(payload)) {
+        showBigAlert("같은 질문은 1분 안에 다시 제출할 수 없습니다.");
+        return;
+      }
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.classList.add("submitting");
+        submitBtn.textContent = "제출 중...";
+
+        await fetch(APPS_SCRIPT_WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        showToast("선생님께 제출했습니다. 질문이음공책에도 옮겨 적으세요.");
+        clearStudentIdentityFields();
+      } catch (error) {
+        console.error(error);
+        showToast("제출 중 오류가 났습니다. 인터넷 연결을 확인해 주세요.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("submitting");
+        submitBtn.textContent = "선생님께 제출";
+      }
+    }
+
+    function handleProblemSelectChange() {
+      document.getElementById("studentQuestion").value = "";
+      selectedType = "핵심질문";
+      currentQuestionIndex = 0;
+      questionRevealed = false;
+      renderStudent();
+    }
+
+    // 기존 renderStudent를 단원명 + 차시별 학습문제 선택형으로 덮어씁니다.
+    const originalRenderStudent = renderStudent;
+    renderStudent = function() {
+      const lesson = getLesson();
+      const problems = lesson.lessonProblems || [];
+
+      const studentTitleEl = document.getElementById("studentTitle");
+      if (studentTitleEl) {
+        studentTitleEl.textContent = formatStudentUnitTitle(lesson);
+      }
+
+      const currentSelect = document.getElementById("studentProblemSelect");
+      let selectedProblemIndex = currentSelect ? Number(currentSelect.value) : 0;
+      if (!Number.isFinite(selectedProblemIndex) || selectedProblemIndex < 0 || selectedProblemIndex >= problems.length) selectedProblemIndex = 0;
+
+      const options = problems.map((p, idx) => {
+        const selected = idx === selectedProblemIndex ? "selected" : "";
+        return `<option value="${idx}" ${selected}>${p.round}차시</option>`;
+      }).join("");
+
+      const currentProblem = problems[selectedProblemIndex] || { round: "", problem: "학습문제를 선택해 주세요." };
+
+      document.getElementById("lessonMessage").innerHTML = `
+        <select id="studentProblemSelect" class="student-problem-select" aria-label="차시 선택">
+          ${options}
+        </select>
+        <span class="learning-problem-label">&lt;학습문제&gt;</span>
+        <span class="learning-problem-text">${currentProblem.problem}</span>
+      `;
+
+      const problemSelect = document.getElementById("studentProblemSelect");
+      if (problemSelect) {
+        problemSelect.addEventListener("change", handleProblemSelectChange);
+      }
+
+      renderTypes();
+      renderTypeIntro();
+      renderQuestions();
+      updatePreview();
+    };
+
+    function setCurrentUnitAndRender(lessonId) {
+      const found = lessons.find(l => l.id === lessonId || l.slug === lessonId);
+      if (!found) return false;
+
+      selectedLessonId = found.id;
+      safeSetPublicLesson(selectedLessonId);
+
+      const publicLessonSelect = document.getElementById("publicLessonSelect");
+      if (publicLessonSelect) publicLessonSelect.value = selectedLessonId;
+
+      const studentQuestion = document.getElementById("studentQuestion");
+      if (studentQuestion) studentQuestion.value = "";
+
+      selectedType = "핵심질문";
+      currentQuestionIndex = 0;
+      questionRevealed = false;
+      renderStudent();
+      return true;
+    }
+
+    // 교사용 로그인/설정
+    document.getElementById("loginBtn").addEventListener("click", unlockTeacher);
+    document.getElementById("passwordInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") unlockTeacher();
+    });
+    document.getElementById("backStudentBtn").addEventListener("click", () => switchMode("student"));
+
+    document.getElementById("publicLessonSelect").addEventListener("change", (e) => {
+      safeSetPublicLesson(e.target.value);
+    });
+
+    const setActiveLessonBtn = document.getElementById("setActiveLessonBtn");
+    if (setActiveLessonBtn) {
+      setActiveLessonBtn.addEventListener("click", () => {
+        const lessonId = document.getElementById("publicLessonSelect").value;
+        setCurrentUnitAndRender(lessonId);
+        saveActiveLessonToGoogleSheets(lessonId);
+      });
+    }
+
+    document.getElementById("applyStudentBtn").addEventListener("click", () => {
+      const lessonId = document.getElementById("publicLessonSelect").value;
+      setCurrentUnitAndRender(lessonId);
+      switchMode("student");
+    });
+
+    ["unitFilter", "programFilter", "typeFilter"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("change", renderBank);
+    });
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) searchInput.addEventListener("input", renderBank);
+    const copyVisibleBtn = document.getElementById("copyVisibleBtn");
+    if (copyVisibleBtn) copyVisibleBtn.addEventListener("click", () => copyText(visibleQuestionText()));
+    const resetFiltersBtn = document.getElementById("resetFiltersBtn");
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener("click", () => {
+        document.getElementById("unitFilter").value = "all";
+        document.getElementById("programFilter").value = "all";
+        document.getElementById("typeFilter").value = "all";
+        document.getElementById("searchInput").value = "";
+        renderBank();
+      });
+    }
+    const printBtn = document.getElementById("printBtn");
+    if (printBtn) printBtn.addEventListener("click", () => window.print());
+
+    document.getElementById("studentModeBtn").addEventListener("click", () => switchMode("student"));
+    if (galleryModeBtn) galleryModeBtn.addEventListener("click", () => switchMode("gallery"));
+    document.getElementById("teacherModeBtn").addEventListener("click", () => switchMode("teacher"));
+
     ["galleryUnitFilter", "gallerySeedFilter"].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.addEventListener("change", renderStudentGallery);
@@ -4618,252 +5552,32 @@
       });
     }
 
-    document.getElementById("loginBtn").addEventListener("click", unlockTeacher);
-    document.getElementById("passwordInput").addEventListener("keydown", (e) => {
-      if (e.key === "Enter") unlockTeacher();
-    });
-    document.getElementById("backStudentBtn").addEventListener("click", () => switchMode("student"));
-
-    document.getElementById("publicLessonSelect").addEventListener("change", (e) => {
-      safeSetPublicLesson(e.target.value);
-    });
-    document.getElementById("applyStudentBtn").addEventListener("click", () => {
-      selectedLessonId = document.getElementById("publicLessonSelect").value;
-      safeSetPublicLesson(selectedLessonId);
-      saveActiveLessonToGoogleSheets(selectedLessonId);
-      showToast("학생용 공통 링크의 단원을 저장했습니다.");
-      document.getElementById("studentQuestion").value = "";
-      selectedType = "핵심질문";
-      currentQuestionIndex = 0;
+    document.getElementById("randomBtn").addEventListener("click", () => {
+      const lesson = getLesson();
+      const arr = lesson.questions[selectedType] || [];
+      if (!arr.length) return;
       questionRevealed = false;
-      function saveStudentInfo() {
-      try {
-        const no = document.getElementById("studentNo")?.value.trim() || "";
-        const name = document.getElementById("studentName")?.value.trim() || "";
-        localStorage.setItem("questionEumteoStudentNo", no);
-        localStorage.setItem("questionEumteoStudentName", name);
-      } catch (error) {}
-    }
-
-    function loadStudentInfo() {
-      clearStudentIdentityFields();
-    }
-
-    function getSelectedSeedLabel() {
-      const label = questionTypeLabels[selectedType] || { alias: selectedType, formal: selectedType, icon: "" };
-      return label.icon ? `${label.icon} ${label.alias}(${label.formal})` : `${label.alias}(${label.formal})`;
-    }
-
-    async function submitQuestionToTeacher() {
-      const submitBtn = document.getElementById("submitBtn");
-      const studentNo = document.getElementById("studentNo")?.value.trim() || "";
-      const studentName = document.getElementById("studentName")?.value.trim() || "";
-      const question = document.getElementById("studentQuestion")?.value.trim() || "";
-      const lesson = getLesson();
-
-      if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
-        showToast("선생님 제출 주소가 아직 설정되지 않았습니다.");
-        return;
-      }
-      if (!studentNo || !studentName) { showBigAlert("번호와 이름을 입력해 주십시오."); return; }
-      
-      if (!question) { showBigAlert("완성한 질문을 먼저 작성해 주십시오."); return; }
-
-      saveStudentInfo();
-
-      if (!studentNo || !studentName) {
-        showBigAlert("번호와 번호와 이름을 입력해 주십시오.");
-        return;
-      }
-
-      const payload = {
-        studentNo,
-        studentName,
-        unit: lesson.unit,
-        lesson: lesson.focus || lesson.student_title || lesson.id,
-        learningProblem: lesson.focus || lesson.student_title || lesson.id,
-        seedType: selectedType,
-        seedLabel: getSelectedSeedLabel(),
-        question,
-        pageUrl: location.href
-      };
-
-      try {
-        submitBtn.disabled = true;
-        submitBtn.classList.add("submitting");
-        submitBtn.textContent = "제출 중...";
-
-        // Apps Script Web App은 정적 GitHub Pages에서 별도 서버 없이 호출할 수 있습니다.
-        // CORS 응답을 읽지 않기 위해 no-cors로 전송합니다. 기록 여부는 Google Sheets에서 확인합니다.
-        await fetch(APPS_SCRIPT_WEB_APP_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
-
-        showToast("선생님께 제출했습니다. 질문이음공책에도 옮겨 적으세요.");
-      clearStudentIdentityFields();
-      } catch (error) {
-        console.error(error);
-        showToast("제출 중 오류가 났습니다. 인터넷 연결을 확인해 주세요.");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove("submitting");
-        submitBtn.textContent = "선생님께 제출";
-      }
-    }
-
-    const studentNoInput = document.getElementById("studentNo");
-    const studentNameInput = document.getElementById("studentName");
-    if (studentNoInput) studentNoInput.addEventListener("input", saveStudentInfo);
-    if (studentNameInput) studentNameInput.addEventListener("input", saveStudentInfo);
-
-    const submitBtn = document.getElementById("submitBtn");
-    if (submitBtn) submitBtn.addEventListener("click", submitQuestionToTeacher);
-
-    loadStudentInfo();
-
-    renderStudent();
-      switchMode("student");
-    });
-    document.getElementById("copyCurrentLinkBtn").addEventListener("click", () => {
-      const lesson = getLesson(document.getElementById("publicLessonSelect").value);
-      copyText(studentUrlFor(lesson));
+      currentQuestionIndex = (currentQuestionIndex + 1) % arr.length;
+      renderQuestions();
     });
 
-    ["unitFilter", "programFilter", "typeFilter"].forEach(id => {
-      document.getElementById(id).addEventListener("change", renderBank);
-    });
-    document.getElementById("searchInput").addEventListener("input", renderBank);
-    document.getElementById("copyVisibleBtn").addEventListener("click", () => copyText(visibleQuestionText()));
-    document.getElementById("resetFiltersBtn").addEventListener("click", () => {
-      document.getElementById("unitFilter").value = "all";
-      document.getElementById("programFilter").value = "all";
-      document.getElementById("typeFilter").value = "all";
-      document.getElementById("searchInput").value = "";
-      renderBank();
-    });
-    document.getElementById("printBtn").addEventListener("click", () => window.print());
-
-    document.getElementById("studentQuestion").addEventListener("input", updatePreview);
     document.getElementById("makeNoteBtn").addEventListener("click", () => {
-      updatePreview();
-      showToast("내 질문이 완성되었습니다. 질문이음공책에 옮겨 적으세요.");
-    });
-    const copyBtn = document.getElementById("copyBtn");
-    if (copyBtn) {
-      copyBtn.addEventListener("click", () => {
-        const value = document.getElementById("studentQuestion").value.trim();
-        if (!value) return showToast("복사할 질문을 먼저 써 주세요.");
-        const prefixed = `${selectedType}: ${value}`;
-        copyText(prefixed);
-        showToast("질문 유형이 붙은 형태로 복사되었습니다.");
-      });
-    }
-    const clearBtn = document.getElementById("clearBtn");
-    if (clearBtn) {
-      clearBtn.addEventListener("click", () => {
-        document.getElementById("studentQuestion").value = "";
-        document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
-        updatePreview();
-        showToast("입력창을 비웠습니다.");
-      });
-    }
-    const randomBtn = document.getElementById("randomBtn");
-    if (randomBtn) {
-      randomBtn.addEventListener("click", () => {
-        const lesson = getLesson();
-        const arr = lesson.questions[selectedType] || [];
-        if (!arr.length) return;
-        currentQuestionIndex = (currentQuestionIndex + 1) % arr.length;
-        questionRevealed = false;
-        document.getElementById("studentQuestion").value = "";
-        document.querySelectorAll(".q-card").forEach(el => el.classList.remove("selected"));
-        updatePreview();
-        renderQuestions();
-        showToast("먼저 스스로 생각한 뒤 질문 씨앗을 열어 보세요.");
-      });
-    }
-
-    function saveStudentInfo() {
-      try {
-        const no = document.getElementById("studentNo")?.value.trim() || "";
-        const name = document.getElementById("studentName")?.value.trim() || "";
-        localStorage.setItem("questionEumteoStudentNo", no);
-        localStorage.setItem("questionEumteoStudentName", name);
-      } catch (error) {}
-    }
-
-    function loadStudentInfo() {
-      try {
-        const no = localStorage.getItem("questionEumteoStudentNo") || "";
-        const name = localStorage.getItem("questionEumteoStudentName") || "";
-        const noInput = document.getElementById("studentNo");
-        const nameInput = document.getElementById("studentName");
-        if (noInput) noInput.value = no;
-        if (nameInput) nameInput.value = name;
-      } catch (error) {}
-    }
-
-    function getSelectedSeedLabel() {
-      const label = questionTypeLabels[selectedType] || { alias: selectedType, formal: selectedType, icon: "" };
-      return label.icon ? `${label.icon} ${label.alias}(${label.formal})` : `${label.alias}(${label.formal})`;
-    }
-
-    async function submitQuestionToTeacher() {
-      const submitBtn = document.getElementById("submitBtn");
-      const studentNo = document.getElementById("studentNo")?.value.trim() || "";
-      const studentName = document.getElementById("studentName")?.value.trim() || "";
-      const question = document.getElementById("studentQuestion")?.value.trim() || "";
-      const lesson = getLesson();
-
-      if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
-        showToast("선생님 제출 주소가 아직 설정되지 않았습니다.");
+      const current = document.getElementById("studentQuestion").value.trim();
+      if (!current) {
+        showToast("먼저 질문을 직접 써 보세요.");
         return;
       }
-      if (!studentNo || !studentName) { showBigAlert("번호와 이름을 입력해 주십시오."); return; }
-      
-      if (!question) { showBigAlert("완성한 질문을 먼저 작성해 주십시오."); return; }
+      showToast("좋습니다. 완성한 질문을 질문이음공책에 옮겨 적으세요.");
+    });
 
-      saveStudentInfo();
-
-      const payload = {
-        studentNo,
-        studentName,
-        unit: lesson.unit,
-        lesson: lesson.focus || lesson.student_title || lesson.id,
-        seedType: selectedType,
-        seedLabel: getSelectedSeedLabel(),
-        question,
-        pageUrl: location.href
-      };
-
-      try {
-        submitBtn.disabled = true;
-        submitBtn.classList.add("submitting");
-        submitBtn.textContent = "제출 중...";
-
-        // Apps Script Web App은 정적 GitHub Pages에서 별도 서버 없이 호출할 수 있습니다.
-        // CORS 응답을 읽지 않기 위해 no-cors로 전송합니다. 기록 여부는 Google Sheets에서 확인합니다.
-        await fetch(APPS_SCRIPT_WEB_APP_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
-
-        showToast("선생님께 제출했습니다. 질문이음공책에도 옮겨 적으세요.");
-      clearStudentIdentityFields();
-      } catch (error) {
-        console.error(error);
-        showToast("제출 중 오류가 났습니다. 인터넷 연결을 확인해 주세요.");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove("submitting");
-        submitBtn.textContent = "선생님께 제출";
+    document.getElementById("copyBtn").addEventListener("click", () => {
+      const q = document.getElementById("studentQuestion").value.trim();
+      if (!q) {
+        showToast("복사할 질문이 없습니다.");
+        return;
       }
-    }
+      copyText(q);
+    });
 
     const studentNoInput = document.getElementById("studentNo");
     const studentNameInput = document.getElementById("studentName");
@@ -4873,25 +5587,17 @@
     const submitBtn = document.getElementById("submitBtn");
     if (submitBtn) submitBtn.addEventListener("click", submitQuestionToTeacher);
 
+    window.addEventListener("pageshow", () => {
+      syncActiveLessonFromGoogleSheets();
+      if (galleryPanel && !galleryPanel.classList.contains("hidden")) {
+        loadStudentWorks();
+      }
+    });
+
+    fillTeacherSelects();
     loadStudentInfo();
-
-    renderStudent();
-    window.addEventListener("DOMContentLoaded", clearStudentIdentityFields);
-    window.addEventListener("pageshow", clearStudentIdentityFields);
-
-    // 공통 링크 방식 보강: 선택한 단원 링크 복사는 현재 사이트 기본 주소를 복사합니다.
-    const copyCurrentLinkBtnFinal = document.getElementById("copyCurrentLinkBtn");
-    if (copyCurrentLinkBtnFinal) {
-      copyCurrentLinkBtnFinal.addEventListener("click", (event) => {
-        event.preventDefault();
-        copyText(currentBaseUrl());
-        showToast("공통 학생용 링크가 복사되었습니다.");
-      }, true);
-    }
-
-    // 학생 화면 진입 시 Google Sheets에 저장된 현재 단원을 불러옵니다.
-    setTimeout(syncActiveLessonFromGoogleSheets, 250);
-
+    syncActiveLessonFromGoogleSheets();
+    renderBank();
   </script>
   <div class="big-alert-overlay" id="bigAlertOverlay" role="alertdialog" aria-modal="true" aria-labelledby="bigAlertMessage">
     <div class="big-alert-box">
