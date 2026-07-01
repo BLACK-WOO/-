@@ -4344,6 +4344,365 @@
       }
     }
 
+    /* 2026-07-01 v44 보정: 질문 씨앗 탭 위아래 여백 축소 */
+    .type-grid {
+      gap: 10px !important;
+      margin-top: 10px !important;
+      margin-bottom: 12px !important;
+    }
+
+    .type-btn {
+      min-height: 72px !important;
+      padding: 10px 16px 9px !important;
+      border-radius: 18px !important;
+    }
+
+    .type-btn-main {
+      font-size: 25px !important;
+      line-height: 1.06 !important;
+      margin-bottom: 2px !important;
+    }
+
+    .type-btn-sub {
+      font-size: 14px !important;
+      line-height: 1.05 !important;
+    }
+
+    @media (max-width: 900px) {
+      .type-btn {
+        min-height: 66px !important;
+        padding: 9px 12px 8px !important;
+      }
+
+      .type-btn-main {
+        font-size: 22px !important;
+      }
+
+      .type-btn-sub {
+        font-size: 13px !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 단원명 한 칸 띄움 + 제목 아주 조금 오른쪽 이동 */
+    #studentPanel .student-card > .panel-title {
+      transform: translateX(16px) !important;
+    }
+
+    /* 2026-07-01 v44 보정: 단원명 간격 + 씨앗 탭 설명 위치 정렬 */
+    .type-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .type-btn-line {
+      display: inline-flex !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      line-height: 1 !important;
+    }
+
+    .type-btn-icon {
+      display: inline-block !important;
+      flex: 0 0 auto !important;
+      font-size: 23px !important;
+      line-height: 1 !important;
+      margin-top: 3px !important;
+    }
+
+    .type-btn-text {
+      display: inline-flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+    }
+
+    .type-btn-main {
+      display: block !important;
+      margin-bottom: 3px !important;
+    }
+
+    .type-btn-sub {
+      display: block !important;
+      text-align: center !important;
+      transform: none !important;
+      margin-left: 0 !important;
+    }
+
+    /* 2026-07-01 v44 보정: PC 화면용 씨앗 탭 세로 정렬 강제 */
+    .type-btn {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 68px !important;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+    }
+
+    .type-btn-line {
+      position: relative !important;
+      display: inline-block !important;
+      min-width: 92px !important;
+      padding-left: 30px !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .type-btn-icon {
+      position: absolute !important;
+      left: 0 !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 28px !important;
+      margin: 0 !important;
+      font-size: 23px !important;
+      line-height: 1 !important;
+      text-align: center !important;
+    }
+
+    .type-btn-text {
+      display: inline-flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
+    }
+
+    .type-btn-main {
+      display: block !important;
+      font-size: 25px !important;
+      line-height: 1.05 !important;
+      margin: 0 0 4px 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+    }
+
+    .type-btn-sub {
+      display: block !important;
+      font-size: 14px !important;
+      line-height: 1.05 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      transform: none !important;
+    }
+
+    @media (max-width: 900px) {
+      .type-btn {
+        min-height: 64px !important;
+      }
+
+      .type-btn-line {
+        min-width: 82px !important;
+        padding-left: 26px !important;
+      }
+
+      .type-btn-icon {
+        width: 24px !important;
+        font-size: 20px !important;
+      }
+
+      .type-btn-main {
+        font-size: 22px !important;
+      }
+
+      .type-btn-sub {
+        font-size: 13px !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 상단 탭 간격·하단 여백·씨앗 카드 제목 정렬 */
+    .type-grid {
+      margin-top: 8px !important;
+      margin-bottom: 5px !important;
+      gap: 10px !important;
+    }
+
+    .type-grid .type-btn {
+      min-height: 66px !important;
+      padding-top: 7px !important;
+      padding-bottom: 7px !important;
+    }
+
+    .type-grid .type-btn-line {
+      min-width: 100px !important;
+      padding-left: 38px !important;
+    }
+
+    .type-grid .type-btn-icon {
+      width: 30px !important;
+      left: 0 !important;
+    }
+
+    .type-intro {
+      margin-top: 5px !important;
+      margin-bottom: 0 !important;
+      min-height: 70px !important;
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+    }
+
+    .question-area {
+      margin-top: 6px !important;
+    }
+
+    .seed-inner-title {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin-bottom: 18px !important;
+    }
+
+    .seed-title-line {
+      display: inline-flex !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      line-height: 1 !important;
+    }
+
+    .seed-title-icon {
+      display: inline-block !important;
+      width: 30px !important;
+      font-size: 30px !important;
+      line-height: 1 !important;
+      text-align: center !important;
+      margin-top: 2px !important;
+      flex: 0 0 auto !important;
+    }
+
+    .seed-title-text {
+      display: inline-flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
+    }
+
+    .seed-title-main {
+      display: block !important;
+      line-height: 1.06 !important;
+      margin: 0 0 4px 0 !important;
+      text-align: left !important;
+    }
+
+    .seed-title-sub {
+      display: block !important;
+      line-height: 1.05 !important;
+      margin: 0 !important;
+      text-align: left !important;
+      transform: none !important;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .type-grid {
+        margin-bottom: 4px !important;
+      }
+
+      .type-intro {
+        margin-top: 4px !important;
+      }
+
+      .question-area {
+        margin-top: 5px !important;
+      }
+
+      .seed-inner-title {
+        margin-bottom: 16px !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .type-grid .type-btn-line {
+        min-width: 88px !important;
+        padding-left: 32px !important;
+      }
+
+      .type-grid .type-btn-icon {
+        width: 26px !important;
+      }
+
+      .type-intro {
+        min-height: 66px !important;
+      }
+
+      .seed-title-icon {
+        width: 26px !important;
+        font-size: 26px !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 세 번째 씨앗 카드 이모지-글자 간격 확대 */
+    .seed-inner-title .seed-title-line {
+      gap: 13px !important;
+    }
+
+    .seed-inner-title .seed-title-icon {
+      margin-right: 0 !important;
+    }
+
+    .seed-inner-title .seed-title-text {
+      align-items: flex-start !important;
+    }
+
+    /* 2026-07-01 v44 보정: 세 번째 씨앗 간격 추가 + 완성 안내 위아래 여백 교체 */
+    .seed-inner-title .seed-title-line {
+      gap: 17px !important;
+    }
+
+    .work-panel {
+      padding-bottom: 24px !important;
+    }
+
+    .finish-guide {
+      margin-top: 6px !important;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .work-panel {
+        padding-bottom: 24px !important;
+      }
+
+      .finish-guide {
+        margin-top: 6px !important;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .work-panel {
+        padding-bottom: 22px !important;
+      }
+
+      .finish-guide {
+        margin-top: 5px !important;
+      }
+    }
+
+    /* 2026-07-01 v44 보정: 완성 안내 탭만 아래로 이동 */
+    .finish-guide {
+      margin-top: 18px !important;
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) {
+      .finish-guide {
+        margin-top: 18px !important;
+      }
+    }
+
+    @media (orientation: landscape) and (min-width: 900px) and (max-height: 760px) {
+      .finish-guide {
+        margin-top: 15px !important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -4370,7 +4729,7 @@
       <section class="panel" id="studentPanel">
         <div class="student-card">
           <div class="panel-title">
-            <h2 id="studentTitle">막대그래프 질문터</h2>
+            <h2 id="studentTitle">4학년 1학기&nbsp;&nbsp;1. 큰 수</h2>
             <select id="studentLessonSelect" class="hidden" aria-hidden="true" tabindex="-1"></select>
           </div>
           <div class="lesson-message" id="lessonMessage"></div>
@@ -4525,7 +4884,7 @@
 
   <script>
     const TEACHER_PASSWORD = "11111111";
-    const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "4학년 1학기 1. 큰 수", "guide": "", "focus": "", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}, "grade_term": "4학년 1학기", "unit_no": "1단원", "unit_name": "큰 수", "lessonProblems": [{"round": "1", "problem": "단원도입(큰 수를 알아봅시다.)"}, {"round": "2~4", "problem": "만, 십만, 백만, 천만을 알아봅시다."}, {"round": "5~6", "problem": "억, 조를 알아봅시다."}, {"round": "8", "problem": "수의 크기를 비교해 봅시다."}, {"round": "11", "problem": "큰 수에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "4학년 1학기 2. 각도", "guide": "", "focus": "", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "2단원", "unit_name": "각도", "lessonProblems": [{"round": "1", "problem": "단원도입(각도를 알아봅시다.)"}, {"round": "3", "problem": "각의 크기를 재어 봅시다."}, {"round": "4", "problem": "직각보다 작은 각과 큰 각을 알아봅시다."}, {"round": "7", "problem": "삼각형의 세 각의 크기의 합을 알아봅시다."}, {"round": "8", "problem": "사각형의 네 각의 크기의 합을 알아봅시다."}, {"round": "11", "problem": "각도에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "4학년 1학기 3. 곱셈과 나눗셈", "guide": "", "focus": "", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "3단원", "unit_name": "곱셈과 나눗셈", "lessonProblems": [{"round": "1", "problem": "단원도입(곱셈과 나눗셈을 알아봅시다.)"}, {"round": "2~3", "problem": "세 자리 수에 몇십몇을 곱해 봅시다."}, {"round": "5~7", "problem": "몇십몇으로 나누어 봅시다."}, {"round": "11", "problem": "곱셈과 나눗셈에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "4학년 1학기 4. 평면도형의 이동", "guide": "", "focus": "", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "4단원", "unit_name": "평면도형의 이동", "lessonProblems": [{"round": "1", "problem": "단원도입(평면도형의 이동을 알아봅시다.)"}, {"round": "2", "problem": "평면도형의 밀기를 공부해 봅시다."}, {"round": "3", "problem": "평면도형의 돌리기를 공부해 봅시다."}, {"round": "4", "problem": "평면도형의 뒤집기를 공부해 봅시다."}, {"round": "9", "problem": "평면도형의 이동에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "4학년 1학기 5. 막대그래프", "guide": "", "focus": "", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}, "grade_term": "4학년 1학기", "unit_no": "5단원", "unit_name": "막대그래프", "lessonProblems": [{"round": "1", "problem": "단원도입(막대그래프를 알아봅시다.)"}, {"round": "3", "problem": "막대그래프의 내용을 알아봅시다."}, {"round": "4", "problem": "막대그래프로 나타내는 방법을 알아봅시다."}, {"round": "5~6", "problem": "자료를 조사하여 막대그래프로 나타내어 봅시다."}, {"round": "10", "problem": "막대그래프에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "4학년 1학기 6. 규칙과 관계", "guide": "", "focus": "", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}, "grade_term": "4학년 1학기", "unit_no": "6단원", "unit_name": "규칙과 관계", "lessonProblems": [{"round": "1", "problem": "단원도입(규칙과 관계를 알아봅시다.)"}, {"round": "2~5", "problem": "수와 도형의 배열에서 규칙을 찾아 나타내어 봅시다."}, {"round": "6~7", "problem": "식에서 규칙을 찾아 나타내어 봅시다."}, {"round": "12", "problem": "규칙과 관계에서 공부한 내용을 정리해 봅시다."}]}];
+    const lessons = [{"id": "unit1-big-number", "slug": "big-number", "unit": "1. 큰 수", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "4학년 1학기  1. 큰 수", "guide": "", "focus": "", "questions": {"핵심질문": ["생활 속에서 큰 수는 언제 필요할까?", "큰 수를 정확히 읽고 쓰려면 무엇을 알아야 할까?", "큰 수를 보면 어떤 정보를 알 수 있을까?", "큰 수를 비교하면 무엇을 판단할 수 있을까?"], "사실질문": ["이 수는 어떻게 읽을까?", "이 수에서 가장 높은 자리는 무엇일까?", "밑줄 친 숫자는 얼마를 나타낼까?", "두 수 중 어느 수가 더 클까?", "이 큰 수는 어디에서 사용된 수일까?"], "개념질문": ["왜 큰 수는 자릿값을 생각하며 읽어야 할까?", "왜 네 자리씩 끊어 읽으면 큰 수를 읽기 쉬울까?", "숫자의 위치가 바뀌면 수의 크기는 어떻게 달라질까?", "큰 수의 크기를 비교할 때 가장 먼저 보아야 할 것은 무엇일까?"], "논쟁질문": ["이 수를 읽는 방법 중 어느 설명이 더 이해하기 쉬울까?", "큰 수를 비교할 때 자리 수부터 보는 것이 항상 좋을까?", "이 자료에서 가장 중요한 큰 수는 무엇이라고 생각할까?", "큰 수가 쓰인 광고나 뉴스는 우리에게 정확한 정보를 줄까?"], "성찰질문": ["오늘 내가 새롭게 읽을 수 있게 된 큰 수는 무엇일까?", "큰 수를 읽을 때 내가 헷갈린 부분은 무엇이었을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "앞으로 큰 수를 볼 때 어떤 점을 먼저 확인할까?"]}, "grade_term": "4학년 1학기", "unit_no": "1단원", "unit_name": "큰 수", "lessonProblems": [{"round": "1", "problem": "단원도입(큰 수를 알아봅시다.)"}, {"round": "2~4", "problem": "만, 십만, 백만, 천만을 알아봅시다."}, {"round": "5~6", "problem": "억, 조를 알아봅시다."}, {"round": "8", "problem": "수의 크기를 비교해 봅시다."}, {"round": "11", "problem": "큰 수에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit2-angle", "slug": "angle", "unit": "2. 각도", "program": "R", "program_name": "근거 설명하기", "student_title": "4학년 1학기  2. 각도", "guide": "", "focus": "", "questions": {"핵심질문": ["왜 이 각은 예각, 직각, 둔각이라고 할 수 있을까?", "우리 학교에는 어떤 각들이 숨어 있을까?", "각을 정확히 판단하려면 무엇을 근거로 삼아야 할까?"], "사실질문": ["사진 속에서 각은 어디에 있을까?", "이 각은 몇 도로 보일까?", "각도기로 재면 몇 도일까?", "90도보다 작은가, 같은가, 큰가?"], "개념질문": ["예각과 둔각을 나누는 기준은 무엇일까?", "각도기는 왜 각의 꼭짓점과 기준선을 맞추어야 할까?", "어림한 각도와 실제 각도가 다를 때 무엇을 확인해야 할까?", "직각과 비교하면 각의 크기를 어떻게 알 수 있을까?"], "논쟁질문": ["이 각은 예각일까, 직각에 가까운 각일까?", "친구의 분류와 내 분류가 다르면 무엇으로 판단해야 할까?", "각도기를 쓰지 않고도 이 각의 종류를 말할 수 있을까?", "사진이 기울어져 있으면 각도 판단이 달라질까?"], "성찰질문": ["내 어림과 실제 측정값은 얼마나 달랐을까?", "친구 설명을 듣고 내 생각이 바뀐 점은 무엇일까?", "다음에 각도를 잴 때 조심할 점은 무엇일까?", "오늘 생활 속에서 새롭게 발견한 수학은 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "2단원", "unit_name": "각도", "lessonProblems": [{"round": "1", "problem": "단원도입(각도를 알아봅시다.)"}, {"round": "3", "problem": "각의 크기를 재어 봅시다."}, {"round": "4", "problem": "직각보다 작은 각과 큰 각을 알아봅시다."}, {"round": "7", "problem": "삼각형의 세 각의 크기의 합을 알아봅시다."}, {"round": "8", "problem": "사각형의 네 각의 크기의 합을 알아봅시다."}, {"round": "11", "problem": "각도에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit3-muldiv", "slug": "calculation", "unit": "3. 곱셈과 나눗셈", "program": "O", "program_name": "디지털-아날로그 이음", "student_title": "4학년 1학기  3. 곱셈과 나눗셈", "guide": "", "focus": "", "questions": {"핵심질문": ["나의 오답을 손풀이로 어떻게 고칠 수 있을까?", "계산에서 틀린 곳을 찾으려면 어떤 순서로 살펴보아야 할까?", "오답은 나의 계산 원리를 어떻게 알려 줄까?"], "사실질문": ["내가 틀린 문제는 몇 번일까?", "틀린 계산에서 처음 잘못된 부분은 어디일까?", "몫, 곱, 차, 나머지 중 어느 부분에서 실수가 있었을까?", "검산을 했을 때 결과가 맞을까?"], "개념질문": ["왜 곱셈의 중간곱은 자리를 맞추어 써야 할까?", "왜 나머지는 나누는 수보다 작아야 할까?", "몫을 세울 때 어림은 왜 필요할까?", "계산 결과가 맞는지 확인하는 방법은 무엇일까?"], "논쟁질문": ["이 오답의 가장 큰 원인은 계산 실수일까, 원리 이해 부족일까?", "친구의 풀이와 내 풀이 중 어느 방법이 더 이해하기 쉬울까?", "계산을 빨리 하는 것과 정확히 설명하는 것 중 무엇이 더 중요할까?", "이 문제는 암산으로 풀어도 될까, 손풀이가 필요할까?"], "성찰질문": ["나는 계산할 때 어떤 부분을 자주 놓칠까?", "다음 계산에서 내가 먼저 확인할 것은 무엇일까?", "친구의 설명을 듣고 내 풀이에서 고친 점은 무엇일까?", "오늘 오답을 통해 새롭게 알게 된 계산 원리는 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "3단원", "unit_name": "곱셈과 나눗셈", "lessonProblems": [{"round": "1", "problem": "단원도입(곱셈과 나눗셈을 알아봅시다.)"}, {"round": "2~3", "problem": "세 자리 수에 몇십몇을 곱해 봅시다."}, {"round": "5~7", "problem": "몇십몇으로 나누어 봅시다."}, {"round": "11", "problem": "곱셈과 나눗셈에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit4-shapeMove", "slug": "shape-move", "unit": "4. 평면도형의 이동", "program": "E", "program_name": "체험·놀이·표현", "student_title": "4학년 1학기  4. 평면도형의 이동", "guide": "", "focus": "", "questions": {"핵심질문": ["도형을 밀고, 뒤집고, 돌리면 모양과 위치는 어떻게 달라질까?", "친구가 해결할 수 있는 도형 이동 미션은 어떻게 만들까?", "도형의 이동 방법을 정확히 설명하려면 어떤 말을 써야 할까?"], "사실질문": ["도형은 어느 방향으로 움직였을까?", "이 이동은 밀기, 뒤집기, 돌리기 중 무엇일까?", "이동 후 도형의 위치는 어디일까?", "도형의 모양은 변했을까, 그대로일까?"], "개념질문": ["밀기와 뒤집기는 어떻게 다를까?", "돌리기를 하면 도형의 방향은 어떻게 달라질까?", "도형을 이동해도 변하지 않는 것은 무엇일까?", "위치와 방향을 함께 말해야 하는 까닭은 무엇일까?"], "논쟁질문": ["이 도형은 뒤집은 것일까, 돌린 것일까?", "친구가 만든 미션 설명은 충분히 정확할까?", "같은 결과를 다른 이동 방법으로 만들 수 있을까?", "미션을 더 쉽게 하려면 어떤 설명을 보태야 할까?"], "성찰질문": ["내가 만든 미션에서 친구가 어려워한 부분은 무엇일까?", "친구 미션을 해결하며 알게 된 점은 무엇일까?", "다음에는 어떤 이동 미션을 만들어 보고 싶은가?", "오늘 도형 이동을 설명할 때 가장 중요했던 말은 무엇일까?"]}, "grade_term": "4학년 1학기", "unit_no": "4단원", "unit_name": "평면도형의 이동", "lessonProblems": [{"round": "1", "problem": "단원도입(평면도형의 이동을 알아봅시다.)"}, {"round": "2", "problem": "평면도형의 밀기를 공부해 봅시다."}, {"round": "3", "problem": "평면도형의 돌리기를 공부해 봅시다."}, {"round": "4", "problem": "평면도형의 뒤집기를 공부해 봅시다."}, {"round": "9", "problem": "평면도형의 이동에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit5-bargraph", "slug": "bargraph", "unit": "5. 막대그래프", "program": "C", "program_name": "질문 만들기", "student_title": "4학년 1학기  5. 막대그래프", "guide": "", "focus": "", "questions": {"핵심질문": ["우리 반을 자료로 알아보려면 어떤 질문을 만들어야 할까?", "막대그래프로 나타내기 좋은 질문은 어떤 질문일까?", "자료를 모으면 우리 반에 대해 무엇을 알 수 있을까?", "좋은 조사 질문은 어떤 조건을 갖추어야 할까?"], "사실질문": ["우리 반 친구들이 가장 좋아하는 것은 무엇일까?", "가장 많은 학생이 고른 항목은 무엇일까?", "가장 적은 학생이 고른 항목은 무엇일까?", "전체 응답 수는 몇 명일까?", "각 항목을 고른 학생은 몇 명일까?"], "개념질문": ["왜 자료를 표로 먼저 정리해야 할까?", "막대그래프의 가로축과 세로축은 각각 무엇을 나타낼까?", "눈금 한 칸의 크기는 어떻게 정하면 좋을까?", "막대의 길이가 길다는 것은 무엇을 뜻할까?", "막대그래프는 어떤 자료를 비교할 때 편리할까?"], "논쟁질문": ["이 질문은 막대그래프로 나타내기에 좋은 질문일까?", "“좋아하는 음식”과 “자주 먹는 음식” 중 어느 질문이 더 조사하기 좋을까?", "우리 모둠의 질문은 친구들이 쉽게 대답할 수 있을까?", "조사 결과가 우리 예상과 다르면 어떻게 해석해야 할까?", "응답 항목을 몇 개로 나누는 것이 가장 알맞을까?"], "성찰질문": ["내가 처음 만든 질문은 어떻게 바뀌었을까?", "친구 질문을 듣고 내 질문에 보탠 점은 무엇일까?", "오늘 만든 질문으로 무엇을 조사해 보고 싶은가?", "다음에는 어떤 질문을 더 잘 만들고 싶은가?", "내 질문은 그래프로 나타내기에 알맞았을까?"]}, "grade_term": "4학년 1학기", "unit_no": "5단원", "unit_name": "막대그래프", "lessonProblems": [{"round": "1", "problem": "단원도입(막대그래프를 알아봅시다.)"}, {"round": "3", "problem": "막대그래프의 내용을 알아봅시다."}, {"round": "4", "problem": "막대그래프로 나타내는 방법을 알아봅시다."}, {"round": "5~6", "problem": "자료를 조사하여 막대그래프로 나타내어 봅시다."}, {"round": "10", "problem": "막대그래프에서 공부한 내용을 정리해 봅시다."}]}, {"id": "unit6-pattern", "slug": "pattern", "unit": "6. 규칙과 관계", "program": "C", "program_name": "질문 만들기", "student_title": "4학년 1학기  6. 규칙과 관계", "guide": "", "focus": "", "questions": {"핵심질문": ["규칙을 찾으려면 무엇을 살펴보아야 할까?", "다음에 올 것은 왜 그렇게 정할 수 있을까?", "규칙을 말이나 식으로 어떻게 나타낼 수 있을까?", "규칙을 바꾸면 어떤 일이 생길까?"], "사실질문": ["처음에는 무엇이 나오고, 다음에는 무엇이 나올까?", "무엇이 반복되고 있을까?", "얼마씩 커지거나 작아지고 있을까?", "빈칸에는 무엇이 들어갈까?"], "개념질문": ["규칙과 반복은 어떻게 다를까?", "수의 배열에서 규칙을 찾는 방법은 무엇일까?", "모양의 배열을 식으로 나타내려면 무엇을 보아야 할까?", "계산식에서 같은 관계를 찾는다는 것은 무슨 뜻일까?"], "논쟁질문": ["친구가 찾은 규칙과 내가 찾은 규칙 중 어느 설명이 더 알맞을까?", "이 배열에는 규칙이 하나만 있을까, 여러 개 있을까?", "다음 모양을 다르게 정할 수도 있을까?", "이 규칙은 계속 이어져도 항상 맞을까?"], "성찰질문": ["나는 규칙을 찾을 때 무엇을 먼저 보았을까?", "친구의 설명에서 새롭게 알게 된 점은 무엇일까?", "내가 만든 규칙 문제에서 어려운 점은 무엇이었을까?", "다음에는 어떤 규칙 문제를 만들어 보고 싶은가?"]}, "grade_term": "4학년 1학기", "unit_no": "6단원", "unit_name": "규칙과 관계", "lessonProblems": [{"round": "1", "problem": "단원도입(규칙과 관계를 알아봅시다.)"}, {"round": "2~5", "problem": "수와 도형의 배열에서 규칙을 찾아 나타내어 봅시다."}, {"round": "6~7", "problem": "식에서 규칙을 찾아 나타내어 봅시다."}, {"round": "12", "problem": "규칙과 관계에서 공부한 내용을 정리해 봅시다."}]}];
     const questionTypes = ["핵심질문", "사실질문", "개념질문", "논쟁질문", "성찰질문"];
     const questionTypeLabels = {"핵심질문": {alias: "큰씨앗", formal: "핵심질문", icon: "🌸"}, "사실질문": {alias: "찾기씨앗", formal: "사실질문", icon: "🔍"}, "개념질문": {alias: "까닭씨앗", formal: "개념질문", icon: "💡"}, "논쟁질문": {alias: "의견씨앗", formal: "논쟁질문", icon: "💬"}, "성찰질문": {alias: "거울씨앗", formal: "성찰질문", icon: "🪞"}};
     const questionTypeInfo = {
@@ -5016,9 +5375,17 @@
         const colorClass = t === "핵심질문" ? "type-core" : (t === "성찰질문" ? "type-reflect" : "type-thinking");
         btn.className = "type-btn " + colorClass + (t === selectedType ? " active" : "");
         btn.type = "button";
-        const label = questionTypeLabels[t] || {alias: t, formal: t};
-        const aliasText = label.icon ? `${label.icon} ${label.alias}` : label.alias;
-        btn.innerHTML = `<span class="type-btn-main">${aliasText}</span><span class="type-btn-sub">(${label.formal})</span>`;
+        const label = questionTypeLabels[t] || {alias: t, formal: t, icon: ""};
+        const iconHtml = label.icon ? `<span class="type-btn-icon">${label.icon}</span>` : "";
+        btn.innerHTML = `
+          <span class="type-btn-line">
+            ${iconHtml}
+            <span class="type-btn-text">
+              <span class="type-btn-main">${label.alias}</span>
+              <span class="type-btn-sub">(${label.formal})</span>
+            </span>
+          </span>
+        `;
         btn.addEventListener("click", () => {
           selectedType = t;
           currentQuestionIndex = 0;
@@ -5050,9 +5417,16 @@
 
       const q = questions[currentQuestionIndex];
       const colorClass = selectedType === "핵심질문" ? "type-core" : (selectedType === "성찰질문" ? "type-reflect" : "type-thinking");
-      const typeLabel = questionTypeLabels[selectedType] || {alias: selectedType, formal: selectedType};
-      const seedAliasText = typeLabel.icon ? `${typeLabel.icon} ${typeLabel.alias}` : typeLabel.alias;
-      const seedTitleHtml = `<div class="seed-title-main">${seedAliasText}</div><div class="seed-title-sub">(${typeLabel.formal})</div>`;
+      const typeLabel = questionTypeLabels[selectedType] || {alias: selectedType, formal: selectedType, icon: ""};
+      const seedTitleHtml = `
+        <div class="seed-title-line">
+          ${typeLabel.icon ? `<span class="seed-title-icon">${typeLabel.icon}</span>` : ""}
+          <span class="seed-title-text">
+            <span class="seed-title-main">${typeLabel.alias}</span>
+            <span class="seed-title-sub">(${typeLabel.formal})</span>
+          </span>
+        </div>
+      `;
       const card = document.createElement("div");
 
       if (!questionRevealed) {
@@ -5295,12 +5669,12 @@
       const rawUnit = String(lesson.unit || "").trim();
       const match = rawUnit.match(/^(\d+)\.\s*(.+)$/);
       if (match) {
-        return `4학년 1학기 ${match[1]}. ${match[2]}`;
+        return `4학년 1학기\u00A0\u00A0${match[1]}. ${match[2]}`;
       }
 
       if (lesson.unit_no && lesson.unit_name) {
         const unitNumber = String(lesson.unit_no).replace("단원", "").trim();
-        return `4학년 1학기 ${unitNumber}. ${lesson.unit_name}`;
+        return `4학년 1학기\u00A0\u00A0${unitNumber}. ${lesson.unit_name}`;
       }
 
       return `4학년 1학기 ${rawUnit}`;
