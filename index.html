@@ -3817,12 +3817,11 @@
               <button class="action secondary" id="copyCurrentLinkBtn" type="button">선택한 단원 링크 복사</button>
             </div>
             <div class="notice">
-              현재 학생용은 고정형입니다. 학생은 단원이나 차시를 선택하지 않고, 교사가 제공한 링크에 해당하는 질문터만 봅니다.
-              지금은 데모형이라 단원별 링크로 운영하지만, 나중에는 같은 구조로 차시별 링크까지 세분화할 수 있습니다.
+              현재 학생용은 공통 링크형입니다. 교사가 선택한 단원이 Google Sheets 설정에 저장되고, 학생은 같은 주소로 들어와도 현재 지정된 단원의 질문터를 봅니다.
             </div>
 
             <div class="panel-title" style="margin-top:16px;">
-              <h2>단원별 고정 학생용 링크</h2>
+              <h2>공통 학생용 링크</h2>
             </div>
             <div class="link-grid" id="linkGrid"></div>
           </section>
@@ -4109,7 +4108,7 @@
     function normalizeStudentWork(item) {
       return {
         unit: item.unit || item.unitName || item["단원"] || "단원 미지정",
-        lesson: item.lesson || item.lessonName || item["차시"] || item["수업 주제"] || "수업 주제 미지정",
+        lesson: item.learningProblem || item.lesson || item.lessonName || item["학습문제"] || item["차시"] || item["수업 주제"] || "학습문제 미지정",
         seed: item.seed || item.seedLabel || item.seedType || item["씨앗 종류"] || "씨앗 미지정",
         studentNo: item.studentNo || item.no || item.number || item["학번"] || item["번호"] || "",
         question: item.question || item["학생 질문"] || item["질문"] || ""
@@ -4126,14 +4125,110 @@
       return "seed-core";
     }
 
-    async function loadStudentWorks() {
-      if (galleryLoaded) {
-        renderStudentGallery();
+
+    function jsonpRequestFromAppsScript(mode, extraParams = {}) {
+      return new Promise((resolve, reject) => {
+        if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
+          reject(new Error("Apps Script Web App URL이 설정되지 않았습니다."));
+          return;
+        }
+
+        const callbackName = "__questionEumteoCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+        const script = document.createElement("script");
+        const separator = APPS_SCRIPT_WEB_APP_URL.includes("?") ? "&" : "?";
+        const query = new URLSearchParams({
+          mode,
+          callback: callbackName,
+          v: Date.now().toString(),
+          ...extraParams
+        });
+
+        const timeoutId = setTimeout(() => {
+          cleanup();
+          reject(new Error("Google Sheets 데이터를 불러오는 시간이 초과되었습니다."));
+        }, 9000);
+
+        function cleanup() {
+          clearTimeout(timeoutId);
+          delete window[callbackName];
+          if (script.parentNode) script.parentNode.removeChild(script);
+        }
+
+        window[callbackName] = (result) => {
+          cleanup();
+          resolve(result || {});
+        };
+
+        script.onerror = () => {
+          cleanup();
+          reject(new Error("Google Sheets 데이터를 불러오지 못했습니다."));
+        };
+
+        script.src = `${APPS_SCRIPT_WEB_APP_URL}${separator}${query.toString()}`;
+        document.body.appendChild(script);
+      });
+    }
+
+    async function loadStudentWorksFromGoogleSheets() {
+      const result = await jsonpRequestFromAppsScript("gallery");
+      return Array.isArray(result) ? result : (Array.isArray(result.works) ? result.works : []);
+    }
+
+    async function loadActiveLessonFromGoogleSheets() {
+      const result = await jsonpRequestFromAppsScript("activeLesson");
+      return result && result.lessonId ? result.lessonId : "";
+    }
+
+    function saveActiveLessonToGoogleSheets(lessonId) {
+      if (!APPS_SCRIPT_WEB_APP_URL || APPS_SCRIPT_WEB_APP_URL.includes("여기에_")) {
+        showToast("Apps Script 주소가 설정되지 않았습니다.");
         return;
       }
 
+      try {
+        fetch(APPS_SCRIPT_WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {"Content-Type": "text/plain;charset=utf-8"},
+          body: JSON.stringify({
+            action: "setActiveLesson",
+            lessonId: lessonId
+          })
+        });
+      } catch (error) {
+        console.warn(error);
+      }
+    }
+
+    async function syncActiveLessonFromGoogleSheets() {
+      try {
+        const lessonId = await loadActiveLessonFromGoogleSheets();
+        const found = lessons.find(l => l.id === lessonId || l.slug === lessonId);
+        if (!found) return;
+
+        selectedLessonId = found.id;
+        safeSetPublicLesson(selectedLessonId);
+
+        const publicLessonSelect = document.getElementById("publicLessonSelect");
+        if (publicLessonSelect) publicLessonSelect.value = selectedLessonId;
+
+        document.getElementById("studentQuestion").value = "";
+        selectedType = "핵심질문";
+        currentQuestionIndex = 0;
+        questionRevealed = false;
+        renderStudent();
+      } catch (error) {
+        console.warn(error);
+      }
+    }
+
+
+    async function loadStudentWorks() {
       const status = document.getElementById("galleryStatus");
+      const grid = document.getElementById("galleryGrid");
+
       if (status) status.textContent = "Google Sheets의 실제 제출 데이터를 불러오는 중입니다.";
+      if (grid) grid.innerHTML = "";
 
       try {
         const rawWorks = await loadStudentWorksFromGoogleSheets();
@@ -4141,6 +4236,7 @@
       } catch (error) {
         console.warn(error);
         studentWorksData = [];
+        if (status) status.textContent = "학생 작품관 데이터를 불러오지 못했습니다. Apps Script 배포와 권한을 확인해 주세요.";
       }
 
       galleryLoaded = true;
@@ -4181,10 +4277,16 @@
       if (!grid || !status) return;
 
       const data = filteredStudentWorks();
+      const uniqueStudentCount = new Set(
+        data
+          .map(item => String(item.studentNo || "").trim())
+          .filter(Boolean)
+      ).size;
+
       status.textContent = `누적 학생 질문: ${data.length}개 · 누적 학생 수: ${uniqueStudentCount}명`;
 
       if (!data.length) {
-        grid.innerHTML = '<div class="empty-gallery">아직 학생 작품관에 등록된 질문이 없습니다. student-works.json에 질문을 추가해 주세요.</div>';
+        grid.innerHTML = '<div class="empty-gallery">아직 제출된 질문이 없습니다.</div>';
         return;
       }
 
@@ -4195,7 +4297,7 @@
             <div class="work-student-no">학번 ${escapeHtml(item.studentNo || "-")}</div>
           </div>
           <div class="work-meta">
-            <span class="work-chip lesson">차시 · ${escapeHtml(item.lesson)}</span>
+            <span class="work-chip lesson">학습문제 · ${escapeHtml(item.lesson)}</span>
             <span class="work-chip seed-chip">${escapeHtml(item.seed)}</span>
           </div>
           <p class="work-question">${escapeHtml(item.question)}</p>
@@ -4331,7 +4433,7 @@
     }
 
     function studentUrlFor(lesson) {
-      return currentBaseUrl() + "?lesson=" + encodeURIComponent(lesson.slug);
+      return currentBaseUrl();
     }
 
     function fillTeacherSelects() {
@@ -4528,6 +4630,8 @@
     document.getElementById("applyStudentBtn").addEventListener("click", () => {
       selectedLessonId = document.getElementById("publicLessonSelect").value;
       safeSetPublicLesson(selectedLessonId);
+      saveActiveLessonToGoogleSheets(selectedLessonId);
+      showToast("학생용 공통 링크의 단원을 저장했습니다.");
       document.getElementById("studentQuestion").value = "";
       selectedType = "핵심질문";
       currentQuestionIndex = 0;
@@ -4577,6 +4681,7 @@
         studentName,
         unit: lesson.unit,
         lesson: lesson.focus || lesson.student_title || lesson.id,
+        learningProblem: lesson.focus || lesson.student_title || lesson.id,
         seedType: selectedType,
         seedLabel: getSelectedSeedLabel(),
         question,
@@ -4773,6 +4878,19 @@
     renderStudent();
     window.addEventListener("DOMContentLoaded", clearStudentIdentityFields);
     window.addEventListener("pageshow", clearStudentIdentityFields);
+
+    // 공통 링크 방식 보강: 선택한 단원 링크 복사는 현재 사이트 기본 주소를 복사합니다.
+    const copyCurrentLinkBtnFinal = document.getElementById("copyCurrentLinkBtn");
+    if (copyCurrentLinkBtnFinal) {
+      copyCurrentLinkBtnFinal.addEventListener("click", (event) => {
+        event.preventDefault();
+        copyText(currentBaseUrl());
+        showToast("공통 학생용 링크가 복사되었습니다.");
+      }, true);
+    }
+
+    // 학생 화면 진입 시 Google Sheets에 저장된 현재 단원을 불러옵니다.
+    setTimeout(syncActiveLessonFromGoogleSheets, 250);
 
   </script>
   <div class="big-alert-overlay" id="bigAlertOverlay" role="alertdialog" aria-modal="true" aria-labelledby="bigAlertMessage">
